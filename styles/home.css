@@ -1,0 +1,19 @@
+* {
+    background-color: #F5E6CC;
+}
+
+.header {
+    background-color: #A64AC9;
+    width: 100%;
+    height: 160px;
+}
+
+.header__logo img {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.header__account img {
+    max-width: 50px;
+    max-height: 50px;
+}
