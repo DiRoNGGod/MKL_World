@@ -219,13 +219,13 @@ a {
 }
 
 /* ---- Секция подписок ---- */
-.subscription__section {
+.subscription__aside {
     background-color: #DC87FC;
 
     width: 250px;
 }
 
-.subscription__section h1 {
+.subscription__aside h1 {
     font-size: 18px;
     text-align: center;
 
