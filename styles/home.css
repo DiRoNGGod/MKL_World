@@ -109,6 +109,12 @@ a {
     color: #000;
 }
 
+main {
+    flex: 1 1 auto;
+
+    display: flex;
+}
+
 /* --------------------- */
 
 .wrapper {
@@ -116,6 +122,8 @@ a {
 
     display: flex;
     flex-direction: column;
+
+    min-height: 100%;
 }
 
 /* ---- Шапка ---- */
@@ -271,12 +279,14 @@ a {
     display: flex;
 
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .footer__logo img {
     max-width: 50px;
     max-height: 50px;
+
+    padding-left: 60px;
 }
 
 /* ---- Кнопка наверх ---- */
