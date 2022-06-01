@@ -98,8 +98,6 @@ h6 {
 
 body {
     font-family: 'Montserrat', sans-serif;
-    font-family: 'Noto Sans', sans-serif;
-
     line-height: 1.2;
 
     background-color: #F5E6CC;
@@ -126,23 +124,26 @@ main {
     min-height: 100%;
 }
 
+.conteiner {
+    margin: 0 auto;
+
+    padding: 0 10px;
+    max-width: 1820px;
+}
+
 /* ---- Шапка ---- */
 .header {
     background-color: #C177DD;
     height: 100px;
 
-    display: flex;
-
     align-items: center;
     justify-content: space-around;
+
+    display: flex;
 }
 
 
 /* ---- Логотип в шапке ---- */
-.header__logo {
-    padding-left: 60px;
-}
-
 .header__logo img {
     max-width: 65px;
     max-height: 65px;
@@ -188,8 +189,6 @@ main {
 /* ---- Иконка аккаунта ---- */
 .header__account {
     font-size: 0;
-
-    padding-right: 60px;
 }
 
 .header__account a img {
@@ -285,8 +284,6 @@ main {
 .footer__logo img {
     max-width: 50px;
     max-height: 50px;
-
-    padding-left: 60px;
 }
 
 /* ---- Кнопка наверх ---- */
