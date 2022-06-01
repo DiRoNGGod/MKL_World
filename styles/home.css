@@ -128,25 +128,31 @@ main {
     margin: 0 auto;
 
     padding: 0 10px;
-    max-width: 1820px;
+    max-width: 1780px;
+
+    overflow: hidden;
 }
 
 /* ---- Шапка ---- */
 .header {
     background-color: #C177DD;
-    height: 100px;
 
+    height: 100px;
+}
+
+.header__contant {
     align-items: center;
     justify-content: space-around;
 
     display: flex;
-}
 
+    min-height: 100px;
+}
 
 /* ---- Логотип в шапке ---- */
 .header__logo img {
-    max-width: 65px;
-    max-height: 65px;
+    width: 90px;
+    max-height: 57px;
 }
 
 .header__logo a img {
@@ -171,7 +177,7 @@ main {
 }
 
 .header__nav a {
-    margin-right: 60px;
+    padding-right: 60px;
 
     transition: 0.2s linear;
 
@@ -273,19 +279,27 @@ main {
 /* ---- Подвал ---- */
 .footer {
     background-color: #A64AC9;
-    height: 160px;
 
+    height: 100px;
+}
+
+.footer__contant {
     display: flex;
 
     align-items: center;
     justify-content: space-between;
+
+    min-height: 100px;
 }
 
 .footer__logo img {
-    max-width: 50px;
-    max-height: 50px;
+    width: 36px;
+    height: 36px;
 }
 
+.footer__social {
+    justify-self: center;
+}
 /* ---- Кнопка наверх ---- */
 .button__up {
     position: fixed;
