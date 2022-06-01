@@ -285,6 +285,8 @@ main {
 .footer__logo img {
     max-width: 50px;
     max-height: 50px;
+
+    padding-left: 60px;
 }
 
 /* ---- Кнопка наверх ---- */
