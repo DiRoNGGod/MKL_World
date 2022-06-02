@@ -251,36 +251,86 @@ main {
 
 /* ---- Секция с обсуждениями ---- */
 .discussins__section {
-    font-family: 'Noto Sans' sans-serif;
+    font-family: 'Noto Sans', sans-serif;
 
-    display: inline-block;
+    display: block;
+    flex-direction: column;
+    
+    overflow: hidden;
+
+    flex: 1 1 auto;
 }
 
 .discussins__sorting {
-    min-height: 45px;
+    padding: 10px;
 
-    display: block;
 }
 
 .discussins__topic {
     background-color: #FBDC5B;
 
-    display: block;
-    min-height: 700px;
-    
-    min-width: 1060px;
+    min-height: 100%;
+
+    overflow: hidden;
+
+    padding: 30px;
 }
 
 .discussins__name {
     background-color: #FFB48F;
-    min-height: 40px;
 
-    display: block;
+    border-radius: 10px 10px 0 0;
+    padding: 15px;
+
+    overflow: hidden;
 }
 
 .discussins__content {
     background-color: #A64AC9;
-    min-height: 160px;
+
+    min-height: 120px;
+    border-radius: 0 0 10px 10px;
+    padding: 15px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+/* тест обсуждений */
+.discussins__topic2 {
+    background-color: #FBDC5B;
+
+    min-height: 100%;
+
+    overflow: hidden;
+
+    padding: 30px;
+}
+
+.discussins__name2 {
+    background-color: #FFB48F;
+
+    border-radius: 10px 10px 0 0;
+    padding: 15px;
+
+    overflow: hidden;
+}
+
+.discussins__content2 {
+    background-color: #A64AC9;
+
+    min-height: 120px;
+    border-radius: 0 0 10px 10px;
+    padding: 15px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    overflow: hidden;
 }
 
 /* ---- Подвал ---- */
