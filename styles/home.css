@@ -253,17 +253,16 @@ main {
 .discussins__section {
     font-family: 'Noto Sans', sans-serif;
 
-    display: block;
+    flex: 1 1 auto;
+
+    display: flex;
     flex-direction: column;
     
     overflow: hidden;
-
-    flex: 1 1 auto;
 }
 
 .discussins__sorting {
     padding: 10px;
-
 }
 
 .discussins__topic {

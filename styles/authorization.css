@@ -94,6 +94,7 @@ body {
     justify-content: center;
 
     display: flex;
+    flex: 1 1 auto;
 }
 
 .main__close img {
@@ -112,6 +113,87 @@ body {
     align-items: center;
 
     overflow: hidden;
+
+    border-radius: 15px;
+
+    padding: 30px;
+}
+
+.main__line {
+    height: 2px;
+    width: 180px;
+
+    background-color: #999999;
+}
+
+.main__forms {
+    display: flex;
+    flex-direction: column;
+}
+
+.main__register a {
+    text-decoration: underline, dashed;
+}
+/* ---- Форма "вход" ---- */
+.main__arrow img {
+    align-items: flex-start;
+}
+
+.main__entrance {
+    display: flex;
+    flex-direction: column;
+
+    background-color: #FFB48F;
+
+    max-width: 300px;
+    max-height: 700px;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    border-radius: 15px;
+
+    padding: 30px;
+}
+
+.main__line {
+    height: 2px;
+    width: 180px;
+
+    background-color: #999999;
+}
+
+.main__forms {
+    display: flex;
+    flex-direction: column;
+}
+
+.main__register a {
+    text-decoration: underline, dashed;
+}
+
+/* ---- Форма "восстановление" ---- */
+.main__arrow img {
+    align-items: flex-start;
+}
+
+.main__recovery {
+    display: flex;
+    flex-direction: column;
+
+    background-color: #FFB48F;
+
+    max-width: 300px;
+    max-height: 700px;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    border-radius: 15px;
+
+    padding: 30px;
 }
 
 .main__line {
