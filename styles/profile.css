@@ -69,6 +69,14 @@ h1,h2,h3,h4,h5,h6 {
 	overflow: hidden;
 }
 
+/* !----------------------------------------- */
+section {
+}
+
+.profile__section {
+	padding: 50px 0;
+}
+
 /* !--------------Общие классы-------------- */
 .button {
 	display: inline-block;
@@ -82,12 +90,18 @@ h1,h2,h3,h4,h5,h6 {
 
 	border-radius: 12px;
 
-	font-size: 24px;
+	font-size: 17px;
 	line-height: 35px;
 	text-align: center;
 }
 .button:hover {
 	cursor: pointer;
+}
+
+.info {
+}
+.info > *:not(:last-child) {
+	margin-bottom: 40px;
 }
 
 /* !---------------------------------------- */
@@ -173,6 +187,106 @@ h1,h2,h3,h4,h5,h6 {
 	flex: 1 1 auto
 }
 
+/* !----------Навигация страницы--------- */
+.way__section {
+	padding: 25px 40px;
+
+	background-color: rgba(252, 205, 4, 0.5);
+}
+
+.way__content {
+}
+
+.way__link {
+}
+
+/* !----------Профиль--------------- */
+
+.profile__content {
+}
+
+.profile__nav {
+	margin-bottom: 30px;
+}
+
+.nav__content {
+	display: flex;
+	align-items: center;
+}
+
+.nav__item {
+	flex: 1 1 25%;
+
+	padding: 15px 0;
+
+	text-align: center;
+	font-size: 30px;
+
+	background-color: rgba(255, 180, 143, 1);
+
+	border-radius: 15px 15px 0 0;
+
+	user-select: none;   /* * Отключение возможности выделения текста */
+}
+.nav__item.active {
+	background-color: #E4A281;
+}
+.nav__item:hover {
+	cursor: pointer;
+}
+
+.profile__login {
+	background-color: rgba(255, 180, 143, 0.5);
+}
+
+/* !------Основная область профиля-------- */
+.profile__body {
+	display: flex;
+
+	padding: 0 30px;
+}
+
+.profile__img {
+	width: 300px;
+	height: 300px;
+
+	border-radius: 10px;
+
+	margin-right: 60px;
+
+	overflow: hidden;
+}
+.profile__img img {
+	width: 100%;
+	height: 100%;
+
+	object-fit: cover;
+}
+
+.profile__info-user {
+	margin-right: 100px;
+}
+
+.info__row {
+}
+.info__row > span:first-child {
+	margin-right: 10px;
+}
+
+.info__item {
+}
+
+.info__item-status {
+	display: block;
+	
+	font-weight: 300;
+	font-style: italic;
+
+	margin-top: 10px;
+}
+
+.profile__info-reg {
+}
 
 /* !---------Подвал-----------*/
 .footer {
@@ -232,7 +346,7 @@ h1,h2,h3,h4,h5,h6 {
 .footer__button {
 	display: none;
 
-	justify-self: center;
+	justify-self: end;
 }
 
 @media (max-width: 600px) {
