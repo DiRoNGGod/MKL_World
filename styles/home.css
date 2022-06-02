@@ -161,12 +161,6 @@ main {
     transition: 0.2s linear;
 }
 
-.header__logo a:hover img {
-    filter: invert(1);
-
-    cursor: pointer;
-}
-
 /* ---- Навигация ---- */
 .header__nav {
     list-style-type: none;
@@ -257,23 +251,36 @@ main {
 
 /* ---- Секция с обсуждениями ---- */
 .discussins__section {
+    font-family: 'Noto Sans' sans-serif;
+
     display: inline-block;
 }
 
 .discussins__sorting {
-    height: 100px;
+    min-height: 45px;
+
+    display: block;
 }
 
 .discussins__topic {
     background-color: #FBDC5B;
+
+    display: block;
+    min-height: 700px;
+    
+    min-width: 1060px;
 }
 
 .discussins__name {
     background-color: #FFB48F;
+    min-height: 40px;
+
+    display: block;
 }
 
 .discussins__content {
     background-color: #A64AC9;
+    min-height: 160px;
 }
 
 /* ---- Подвал ---- */
