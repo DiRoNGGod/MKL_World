@@ -30,13 +30,6 @@ a:hover {
     text-decoration: none;
 }
 
-nav,
-footer,
-header,
-aside {
-    display: block;
-}
-
 html,
 body {
     height: 100%;
@@ -84,23 +77,55 @@ img {
     vertical-align: top;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-size: inherit;
-    font-weight: 400;
-}
-
 /* -------------------- */
 
 body {
-    font-family: 'Montserrat', sans-serif;
     font-family: 'Noto Sans', sans-serif;
 
     line-height: 1.2;
 
     background-color: #F5E6CC;
+}
+
+/* ---------------------- */
+
+/* ---- Форма "зарегистрироваться" ---- */
+.main { 
+    justify-content: center;
+
+    display: flex;
+}
+
+.main__close img {
+    align-items: flex-start;
+}
+
+.main__register {
+    display: flex;
+    flex-direction: column;
+
+    background-color: #FFB48F;
+
+    max-width: 300px;
+    max-height: 700px;
+
+    align-items: center;
+
+    overflow: hidden;
+}
+
+.main__line {
+    height: 2px;
+    width: 180px;
+
+    background-color: #999999;
+}
+
+.main__forms {
+    display: flex;
+    flex-direction: column;
+}
+
+.main__register a {
+    text-decoration: underline, dashed;
 }

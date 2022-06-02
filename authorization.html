@@ -15,17 +15,34 @@
     <!-- Подключение каскадных таблиц стилей, css -->
     <link rel="stylesheet" href="styles/authorization.css" type="text/css">
     <!-- Подключение шрифтов через google fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <!-- Подключение иконки на страницу -->
+    <link rel="icon" href="images/лого.ico">
 </head>
 <!-- Отображаемое тело страницы -->
+
 <body>
-    <main>
+    <main class="main">
         <div class="main__register">
             <div class="main__close">
-                <img src="images/close.png" alt="Закрыть">
+                <img src="images/close.png" width="15" height="15" alt="Закрыть">
             </div>
-            <h1>Загистрироваться</h1>
-            
+            <label>Зарегистрироваться</label>
+            <div class="main__line"></div>
+            <div class="main__forms">
+                <label>Имя</label>
+                <input type="text" required>
+                <label>E-mail</label>
+                <input type="email" required>
+                <label>Пароль</label>
+                <input type="password" required>
+                <label>Подтвердите пароль</label>
+                <input type="password" required>
+            </div>
+            <button>Зарегистрироваться</button>
+            <a href="">Есть аккаунт? Зайдите прямо сейчас</a>
         </div>
     </main>
 </body>
