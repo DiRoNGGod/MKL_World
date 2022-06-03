@@ -140,6 +140,11 @@ section {
 
 	width: 90px;
 	height: 57px;
+
+	transition: 0.2s linear;
+}
+.header__logo:hover {
+	padding-left: 5px;
 }
 .header__logo img {
 	width: 100%;
@@ -152,6 +157,11 @@ section {
 	font-size: 50px;
 	font-weight: 500;
 	text-transform: uppercase;
+
+	transition: 0.2s linear;
+}
+.header__title:hover {
+	letter-spacing: 4px;
 }
 
 .header__profile {
@@ -203,6 +213,10 @@ section {
 }
 
 .way__link {
+	transition: 0.2s linear;
+}
+.way__link:hover {
+	font-weight: 500;
 }
 
 /* !----------Профиль--------------- */
@@ -231,16 +245,35 @@ section {
 	border-radius: 15px 15px 0 0;
 
 	user-select: none;   /* * Отключение возможности выделения текста */
+
+	transition: 0.2s linear;
+}
+.nav__item:hover {
+	background-color: rgb(248, 166, 126);
+
+	cursor: pointer;
 }
 .nav__item.active {
 	background-color: #E4A281;
 }
-.nav__item:hover {
-	cursor: pointer;
+.nav__item.active:hover {
+	background-color: #E4A281;
 }
 
+
 .profile__login {
+	flex: 1 1 25%;
+
+	padding: 15px 0;
+
+	text-align: center;
+	font-size: 30px;
+
 	background-color: rgba(255, 180, 143, 0.5);
+
+	border-radius: 15px 15px 0 0;
+
+	user-select: none;   /* * Отключение возможности выделения текста */
 }
 
 @media (max-width: 1260px) {
@@ -256,7 +289,7 @@ section {
 
 /* !------Основная область профиля 'Информация'-------- */
 .profile__info {
-	display: none;
+	display: flex;
 }
 
 .profile__img {
@@ -267,11 +300,17 @@ section {
 
 	box-shadow: 2px 2px 10px #000;
 
+	border: 2px solid #000;
+
 	margin: 0 40px 20px 0;
 
 	overflow: hidden;
+
+	transition: 0.2s linear;
 }
 .profile__img:hover {
+	box-shadow: 6px 6px 8px #000;
+
 	cursor: pointer;
 }
 .profile__img img {
@@ -315,6 +354,7 @@ section {
 
 /* !----Основная область профиля 'Обсуждения'----- */
 .profile__discussions {
+	display: none;
 }
 
 .discussions__column {
@@ -331,6 +371,8 @@ section {
 	background-color: rgba(166, 74, 201, 0.5);
 	box-shadow: 5px 5px 10px rgba(166, 74, 201, 1);
 
+	border: 3px dashed transparent;
+
 	border-radius: 20px;
 
 	overflow: hidden;
@@ -338,8 +380,14 @@ section {
 	text-align: center;
 
 	user-select: none;   /* * Отключение возможности выделения текста */
+
+	transition: 0.2s linear;
 }
 .discussions__item:hover {
+	box-shadow: 8px 8px 8px rgba(166, 74, 201, 1);
+
+	border: 3px dashed rgba(166, 74, 201, 0.9);
+
 	cursor: pointer;
 }
 
@@ -390,6 +438,11 @@ section {
 	}
 }
 
+/* !----Основная область профиля 'Редактирование'--- */
+.profile__edit{
+	display: none;
+}
+
 /* !---------Подвал-----------*/
 .footer {
 	background-color: #A64AC9;
@@ -437,6 +490,13 @@ section {
 
 	width: 59px;
 	height: 59px;
+
+	opacity: 0.6;
+
+	transition: 0.2s linear;
+}
+.social__item:hover {
+	opacity: 1;
 }
 .social__item img {
 	width: 100%;
