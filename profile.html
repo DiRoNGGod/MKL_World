@@ -58,10 +58,10 @@
 						<!-- !----Навигация профиля---- -->
 						<nav class="profile__nav nav">
 							<div class="nav__content">
-								<div class="nav__item profile__login">Имя пользователя</div>
-								<div class="nav__item active">Информация</div>
-								<div class="nav__item">Обсуждения</div>
-								<div class="nav__item">Редактирование</div>
+								<div class="profile__login">Имя пользователя</div>
+								<div id="info" class="nav__item active">Информация</div>
+								<div id="discus" class="nav__item">Обсуждения</div>
+								<div id="edit" class="nav__item">Редактирование</div>
 							</div>
 						</nav>
 
@@ -119,24 +119,7 @@
 											|Дата создания обсуждения|
 										</span>
 									</div>
-
-									<div class="discussions__description">
-										<span>
-											Описание обсуждения
-										</span>
-									</div>
-								</div>
-
-								<div class="discussions__item">
-									<div class="discussions__header">
-										<span class="discussions__name">
-											Тема обсуждения
-										</span>
-
-										<span class="discussions__date">
-											|Дата создания обсуждения|
-										</span>
-									</div>
+									
 
 									<div class="discussions__description">
 										<span>
@@ -163,6 +146,15 @@
 									</div>
 								</div>
 							</div>
+						</section>
+
+						<!-- !----Основная область профиля 'Редактирование'----- -->
+						<section class="profile__edit profile">
+							<div class="profile__img">
+								<img src="images/test-ava.jpg" alt="Avatarka">
+							</div>
+
+							
 						</section>
 					</div>
 				</section>
@@ -200,7 +192,7 @@
 			</footer>
 		</div>
 		
-		<script src="js/script.js"></script> <!-- ~ Подключение JavaScript -->
+		<script src="js/profile.js"></script> <!-- ~ Подключение JavaScript -->
 	</body>
 
 </html>
