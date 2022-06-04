@@ -21,29 +21,29 @@ function removeClass() {   // * Функция обнуления классов
 
 profileNav.addEventListener("click", function(event){   // * События клика на кнопки родителя
 	if (!event.target.classList.contains('profile__login')){   // * Проверка нажатия на логин пользователя
-		removeClass();
+		removeClass();   // * Вызов функции обнуления классов
 
 		event.target.classList.add('active');   // * Добавляю активный класс элементу события
 
 		if (profileInfo.classList.contains('active')){   // * Включаю блоки взависимости от активной навигации
-			blockInfo.style.display = "flex";
+			blockInfo.classList.add('active');
 		}
 		else {
-			blockInfo.style.display = "none";
+			blockInfo.classList.remove('active');
 		}
 	
 		if (profileDiscus.classList.contains('active')){
-			blockDiscus.style.display = "flex";
+			blockDiscus.classList.add('active');
 		}
 		else {
-			blockDiscus.style.display = "none";
+			blockDiscus.classList.remove('active');
 		}
 	
 		if (profileEdit.classList.contains('active')){
-			blockEdit.style.display = "flex";
+			blockEdit.classList.add('active');
 		}
 		else {
-			blockEdit.style.display = "none";
+			blockEdit.classList.remove('active');
 		}
 	}
 });

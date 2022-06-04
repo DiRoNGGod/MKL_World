@@ -289,8 +289,12 @@ section {
 
 /* !------Основная область профиля 'Информация'-------- */
 .profile__info {
+	display: none;
+}
+.profile__info.active {
 	display: flex;
 }
+
 
 .profile__img {
 	width: 300px;
@@ -355,6 +359,9 @@ section {
 /* !----Основная область профиля 'Обсуждения'----- */
 .profile__discussions {
 	display: none;
+}
+.profile__discussions.active {
+	display: flex;
 }
 
 .discussions__column {
@@ -441,6 +448,9 @@ section {
 /* !----Основная область профиля 'Редактирование'--- */
 .profile__edit{
 	display: none;
+}
+.profile__edit.active {
+	display: flex;
 }
 
 /* !---------Подвал-----------*/
