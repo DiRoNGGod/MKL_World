@@ -188,14 +188,27 @@
 								</li>
 							</div>
 
-							<p class="edit__delete">
+							<p class="edit__delete" onclick="showDelete()">
 								Удалить аккаунт
 							</p>
+
+							<!-- !-------Окно предупреждения удаления аккаунта-------- -->
+							<div class="profile__warning warning">
+								<div class="warning__body">
+									<div class="warning__close"></div>
+
+									<div class="warning__title">
+										<p>Мы будем по Вам скучать</p>
+										<p>Вы уверены, что хотите этого?</p>
+									</div>
+
+									<div class="warning__answer">
+										<span id="warning__yes">К сожалению, да</span>
+										<span id="warning__no">Нет, я передумал</span>
+									</div>
+								</div>
+							</div>
 						</section>
-
-						<!-- !-------Окно предупреждения удаления аккаунта-------- -->
-						
-
 					</div>
 				</section>
 			</main>

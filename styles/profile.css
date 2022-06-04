@@ -528,6 +528,118 @@ section {
 	cursor: pointer;
 }
 
+/* !---------Окно подтверждения удаления аккаунта---------- */
+.profile__warning {
+	display: none;
+
+	height: 30%;
+	width: 50%;
+
+	padding: 20px 30px;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 50;
+
+	border-radius: 15px;
+
+	color: #fff;
+	text-align: center;
+
+	background-color: #A64AC9;
+}
+.profile__warning.active {
+	display: block;
+}
+
+.warning__body {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	height: 100%;
+
+	position: relative;
+}
+
+.warning__close {
+	width: 35px;
+	height: 35px;
+
+	position: absolute;
+	top: -5px;
+	left: -5px;
+
+	transition: 0.2s linear;
+}
+.warning__close:hover {
+	width: 40px;
+	height: 40px;
+	
+	cursor: pointer;
+}
+.warning__close::after,.warning__close::before {
+	content: "";
+
+	position: absolute;
+	top: 16px;
+	left: 0;
+
+	width: 100%;
+	height: 2px;
+
+	background-color: #fff;
+}
+.warning__close::after {
+	transform: rotate(45deg);
+}
+.warning__close::before {
+	transform: rotate(135deg);
+}
+
+.warning__title {
+	font-size: 36px;
+}
+.warning__title > *:not(:last-child) {
+	margin-bottom: 10px;
+}
+
+.warning__answer {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+
+	text-align: center;
+	line-height: 40px;
+}
+.warning__answer span {
+	width: 40%;
+	height: 40px;
+
+	border-radius: 5px;
+
+	user-select: none;   /* * Отключение возможности выделения текста */
+
+	transition: 0.2s linear;
+}
+.warning__answer span:hover {
+	cursor: pointer;
+}
+.warning__answer span:first-child {
+	background-color: #850b0b;
+}
+.warning__answer span:first-child:hover {
+	background-color: #c20d0d;
+}
+.warning__answer span:last-child {
+	background-color: #86C232;
+}
+.warning__answer span:last-child:hover {
+	background-color: #93e027;
+}
+
 @media (max-width: 700px) {
 	.profile__left {
 		margin: 0 auto;
