@@ -249,6 +249,12 @@ main {
     padding-bottom: 20px;
 }
 
+@media (max-width: 850px) {
+    .subscription__aside {
+    max-width: 200px;
+    }
+}
+
 /* ---- Секция с обсуждениями ---- */
 .discussions__section {
     font-family: 'Noto Sans', sans-serif;
@@ -305,13 +311,13 @@ main {
     .discussions__description {
 		font-size: 10px;
 
-		min-height: 80px;
+		min-height: 85px;
 	}    
 
     .discussions__date {
 		font-size: 10px;
 
-		min-height: 80px;
+		min-height: 85px;
 	}
 
     .discussions__image img {
