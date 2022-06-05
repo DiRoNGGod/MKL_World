@@ -49,20 +49,48 @@ profileNav.addEventListener("click", function(event){   // * События кл
 });
 
 //~====================================================================================
-const popap = document.querySelector('.popap');
+const popap = document.querySelector('.popap');  // * Переменная всего модального окна
 
-function showDelete() {
+function showDelete() {   // * Оснавная функция показа и скрытия окна
 	popap.classList.add('active');
 	document.body.style.overflow = "hidden";
 
-	document.addEventListener("click", function(event){
-		if(event.target.closest('.warning__close') || event.target.closest('#warning__no')) {
-			popap.classList.remove('active');
-			document.body.style.overflow = "visible";
+	document.addEventListener("click", function(event){   // * Вешаю прослушку
+		if(event.target.closest('.warning__close') || 
+			event.target.closest('#warning__no')) {   // * Удаление класса при нажатии на кнопку или крестик
+				popap.classList.remove('active');
+				document.body.style.overflow = "visible";
 		}
-		if(event.target.closest('.popap') && !event.target.closest('.warning')){
+		if(event.target.closest('.popap') && !event.target.closest('.warning')){   // * Клик на произвольную область
 			popap.classList.remove('active');
 			document.body.style.overflow = "visible";
 		}
 	});
 }
+
+//~=========================================================================================
+const blockImg = document.querySelector('.big__block');   // * Блок на всё окно
+const profileImg = document.querySelector('.profile__img-item');   // * Картинка
+const profile = document.querySelector('.profile__img');   // * Блок с картинкой до появления окна
+
+let copyProfileImg = blockImg.cloneNode();  // *  Создаю блок без "profile"
+let copyImg = profileImg.cloneNode();
+
+copyProfileImg.appendChild(copyImg);   // * Засовываю копию картинки в копию блока
+
+document.addEventListener("click", function(event){   // * Вешаю прослушку на документ
+	if(event.target.closest('.profile__img')){   // * Проверяю нажатие на окошко картинки профиля
+		copyProfileImg.classList.add('active');
+		
+		document.body.appendChild(copyProfileImg);   // * Добавляю созданный элемент в браузер
+
+		document.body.style.overflow = "hidden";
+	}
+
+	if(event.target.closest('.big__block') &&
+		!event.target.closest('.profile__img-item')){   // * Закрываю при нажатие на область вокруг картинки
+			copyProfileImg.classList.remove('active');
+			copyProfileImg.remove();   // * Удаляю элемент
+			document.body.style.overflow = "visible";
+	}
+});
