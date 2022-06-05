@@ -250,32 +250,31 @@ main {
 }
 
 /* ---- Секция с обсуждениями ---- */
-.discussins__section {
+.discussions__section {
     font-family: 'Noto Sans', sans-serif;
 
-    flex: 1 1 auto;
+    font-size: 16px;
 
-    display: flex;
-    flex-direction: column;
-    
+    flex: 1 1 auto;
+    display: inline-table;
+	flex-direction: column;
+
     overflow: hidden;
 }
 
-.discussins__sorting {
+.discussions__sorting {
     padding: 10px;
 }
 
-.discussins__topic {
+.discussions__topic {
     background-color: #FBDC5B;
-
-    min-height: 100%;
 
     overflow: hidden;
 
     padding: 30px;
 }
 
-.discussins__name {
+.discussions__name {
     background-color: #FFB48F;
 
     border-radius: 10px 10px 0 0;
@@ -284,7 +283,7 @@ main {
     overflow: hidden;
 }
 
-.discussins__content {
+.discussions__content {
     background-color: #A64AC9;
 
     min-height: 120px;
@@ -298,38 +297,53 @@ main {
     overflow: hidden;
 }
 
-/* тест обсуждений */
-.discussins__topic2 {
-    background-color: #FBDC5B;
+@media (max-width: 850px) {
+	.discussions__section {
+		margin: 0;
+	}
 
-    min-height: 100%;
+    .discussions__description {
+		font-size: 10px;
 
-    overflow: hidden;
+		min-height: 80px;
+	}    
 
-    padding: 30px;
+    .discussions__date {
+		font-size: 10px;
+
+		min-height: 80px;
+	}
+
+    .discussions__image img {
+		width: 80px;
+        height: 80px;
+	}
 }
 
-.discussins__name2 {
-    background-color: #FFB48F;
+@media (max-width: 700px) {
+	.discussions__section {
+		display: block;
+	}
 
-    border-radius: 10px 10px 0 0;
-    padding: 15px;
+	.discussions__topic {
+		min-height: 100px;
+	}
 
-    overflow: hidden;
-}
+	.discussions__name {
+		margin: 0 0 10px 0;
+	}
 
-.discussins__content2 {
-    background-color: #A64AC9;
+	.discussions__description {
+		font-size: 8px;
 
-    min-height: 120px;
-    border-radius: 0 0 10px 10px;
-    padding: 15px;
+		min-height: 80px;
+	}
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    .discussions__date {
+		font-size: 8px;
 
-    overflow: hidden;
+		min-height: 80px;
+	}
 }
 
 /* ---- Подвал ---- */
