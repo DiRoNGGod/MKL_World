@@ -49,3 +49,20 @@ profileNav.addEventListener("click", function(event){   // * События кл
 });
 
 //~====================================================================================
+const popap = document.querySelector('.popap');
+
+function showDelete() {
+	popap.classList.add('active');
+	document.body.style.overflow = "hidden";
+
+	document.addEventListener("click", function(event){
+		if(event.target.closest('.warning__close') || event.target.closest('#warning__no')) {
+			popap.classList.remove('active');
+			document.body.style.overflow = "visible";
+		}
+		if(event.target.closest('.popap') && !event.target.closest('.warning')){
+			popap.classList.remove('active');
+			document.body.style.overflow = "visible";
+		}
+	});
+}
