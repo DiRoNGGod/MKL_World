@@ -232,7 +232,7 @@ main {
     width: 250px;
 }
 
-.subscription__aside h1 {
+.subscription__heading {
     font-size: 18px;
     text-align: center;
 
@@ -252,6 +252,22 @@ main {
 @media (max-width: 850px) {
     .subscription__aside {
     max-width: 200px;
+    }
+}
+
+@media (max-width: 670px) {
+    .subscription__aside {
+    max-width: 150px;
+    }
+
+    .subscription__ul li {
+        font-size: 13px;
+    }
+
+    .subscription__heading {
+        font-size: 14px;
+
+        justify-content: center;
     }
 }
 
@@ -309,15 +325,17 @@ main {
 	}
 
     .discussions__description {
-		font-size: 10px;
+		font-size: 12px;
 
-		min-height: 85px;
+		min-width: 85px;
+        align-items: center;
 	}    
 
     .discussions__date {
 		font-size: 10px;
 
-		min-height: 85px;
+		min-width: 85px;
+        align-items: center;
 	}
 
     .discussions__image img {
@@ -332,24 +350,66 @@ main {
 	}
 
 	.discussions__topic {
-		min-height: 100px;
-	}
-
-	.discussions__name {
-		margin: 0 0 10px 0;
+		min-width: 100px;
 	}
 
 	.discussions__description {
-		font-size: 8px;
+		font-size: 10px;
 
-		min-height: 80px;
+		min-width: 80px;
+        align-items: center;
 	}
 
     .discussions__date {
 		font-size: 8px;
 
-		min-height: 80px;
+		min-width: 80px;
+        align-items: center;
 	}
+}
+
+@media (max-width: 670px) {
+    .discussions__description {
+        font-size: 10px;
+
+        align-items: center;
+        min-width: 75px;
+    }
+
+    .discussions__date {
+        font-size: 8px;
+
+        align-items: center;
+        min-width: 75px;
+    }
+
+    .discussions__image img {
+		width: 70px;
+        height: 70px;
+	}
+
+}
+
+@media (max-width: 550px) {
+    .discussions__description {
+        font-size: 8px;
+
+        align-items: center;
+        min-width: 70px;
+    }
+
+    .discussions__date {
+        font-size: 6px;
+
+        align-items: center;
+        min-width: 70px;
+    }
+
+    .discussions__image img {
+		width: 60px;
+        height: 60px;
+	}
+
 }
 
 /* ---- Подвал ---- */
