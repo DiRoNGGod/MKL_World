@@ -150,15 +150,32 @@ main {
 }
 
 /* ---- Логотип в шапке ---- */
+.header__logo {
+    display: inline-block;
+
+	overflow: hidden;
+
+	width: 90px;
+	height: 57px;
+
+	transition: 0.2s linear;
+}
+
 .header__logo img {
-    width: 90px;
-    max-height: 57px;
+    width: 100%;
+	height: 100%;
+
+    object-fit: cover;
 }
 
 .header__logo a img {
     object-fit: cover;
 
     transition: 0.2s linear;
+}
+
+.header__logo:hover {
+	padding-left: 5px;
 }
 
 /* ---- Навигация ---- */
@@ -199,8 +216,8 @@ main {
 .header__account a {
     margin-left: 30px;
 
-    height: 24px;
-    width: 24px;
+    max-height: 24px;
+    max-width: 24px;
 
     display: inline-block;
 }
@@ -218,6 +235,8 @@ main {
     filter: invert(1);
 
     cursor: pointer;
+
+    padding-right: 5px;
 }
 
 .header__account img {
@@ -275,6 +294,8 @@ main {
 .discussions__section {
     font-family: 'Noto Sans', sans-serif;
 
+    background-color: #FBDC5B;
+
     font-size: 16px;
 
     flex: 1 1 auto;
@@ -286,14 +307,21 @@ main {
 
 .discussions__sorting {
     padding: 10px;
+
+    background-color: #F5E6CC;
 }
 
 .discussions__topic {
-    background-color: #FBDC5B;
-
     overflow: hidden;
 
     padding: 30px;
+}
+
+.discussions__topic:hover {
+    -webkit-filter: drop-shadow(3px 3px 2px #17E9E0);
+    filter: drop-shadow(3px 3px 2px #17E9E0);
+
+    z-index: 1;
 }
 
 .discussions__name {
@@ -439,8 +467,8 @@ main {
 /* ---- Кнопка наверх ---- */
 .button__up {
     position: fixed;
-    bottom: 80px;
-    right: 80px;
+    bottom: 60px;
+    right: 60px;
 
     width: 30px;
     height: 30px;
@@ -457,6 +485,8 @@ main {
     opacity: 0.5;
 
     transition: 0.3s linear;
+
+    z-index: 1;
 }
 
 .button__up:hover {
