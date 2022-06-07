@@ -135,9 +135,9 @@ main {
 
 /* ---- Шапка ---- */
 .header {
-    background-color: #C177DD;
+    background-color: rgba(166, 74, 201, 0.65);
 
-    height: 100px;
+    min-height: 100px;
 }
 
 .header__contant {
@@ -331,6 +331,14 @@ main {
     padding: 15px;
 
     overflow: hidden;
+
+    text-decoration: none;
+
+    display: block;
+}
+
+.discussions__name a:hover {
+    color: #fff;
 }
 
 .discussions__content {
@@ -345,6 +353,27 @@ main {
     align-items: center;
 
     overflow: hidden;
+}
+
+@media (max-width: 900px) {
+	.discussions__section {
+		margin: 0;
+	}
+
+    .discussions__description {
+		min-width: 90px;
+        align-items: center;
+	}    
+
+    .discussions__date {
+		min-width: 90px;
+        align-items: center;
+	}
+
+    .discussions__image img {
+		width: 85px;
+        height: 85px;
+	}
 }
 
 @media (max-width: 850px) {
@@ -444,7 +473,7 @@ main {
 .footer {
     background-color: #A64AC9;
 
-    height: 100px;
+   min-height: 100px;
 }
 
 .footer__contant {
