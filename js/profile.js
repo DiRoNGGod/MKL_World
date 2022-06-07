@@ -94,3 +94,32 @@ document.addEventListener("click", function(event){   // * Вешаю просл
 			document.body.style.overflow = "visible";
 	}
 });
+
+//~==============================================================================
+
+const userInfo = document.querySelectorAll('.info__value');
+const userEdit = document.querySelector('.edit__user-info');
+const userInput = document.querySelectorAll('.user__input');
+const userComplete = document.querySelector('.edit__complete');
+
+document.addEventListener("click", function(event){
+	if(event.target.closest('.edit__user-info')){
+		userInfo.forEach(element => {
+			element.classList.remove('active');
+		});
+		userInput.forEach(element => {
+			element.classList.add('active');
+		});
+		userComplete.classList.add('active');
+	}
+
+	if(event.target.closest('.edit__complete')){
+		userInfo.forEach(element => {
+			element.classList.add('active');
+		});
+		userInput.forEach(element => {
+			element.classList.remove('active');
+		});
+		userComplete.classList.remove('active');
+	}
+});

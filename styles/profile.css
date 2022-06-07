@@ -363,12 +363,15 @@ section {
 	font-weight: 600;
 }
 
+.info__row_ta {
+	display: flex;
+	flex-direction: column;
+}
+
 .info__item {
 }
 
 .info__item-status {
-	display: block;
-	
 	font-weight: 300;
 	font-style: italic;
 
@@ -525,6 +528,71 @@ section {
 	color: #A64AC9;
 
 	cursor: pointer;
+}
+
+.info__value.active {
+	display: inline-block;
+}
+.info__value {
+	display: none;
+}
+
+.user__input {
+	display: none;
+}
+.user__input.active {
+	display: inline-block;
+
+	min-height: 25px;
+	font-size: 16px;
+	font-weight: 500;
+
+	padding: 6px 10px 6px 20px;
+
+	border: 2px solid #E4A281;
+
+	border-radius: 5px;
+
+	transition: 0.2s linear;
+}
+.user__input:hover {
+	border: 2px solid #A64AC9;
+}
+.user__input:focus{
+	box-shadow: 4px 4px 8px #A64AC9;
+}
+
+.user__comment {
+	height: 120px;
+	width: 100%;
+
+	resize: none;
+}
+
+.edit__complete {
+	display: none;
+}
+.edit__complete.active {
+	display: block;
+
+	margin-top: 40px;
+
+	text-align: center;
+
+	width: 150px;
+
+	padding: 5px 10px;
+
+	background-color: #A64AC9;
+
+	border-radius: 10px;
+
+	transition: 0.2s linear;
+}
+.edit__complete:hover {
+	cursor: pointer;
+
+	background-color: #9c28ca;
 }
 
 .edit__delete {

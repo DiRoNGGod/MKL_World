@@ -76,19 +76,19 @@
 							<div class="profile__info-user info">
 								<li class="info__row">
 									<span class="info__item">Дата рождения:</span>
-									<span class="info__item">02.02.2003</span>
+									<span class="info__item info__value active">02.02.2003</span>
 								</li>
 								<li class="info__row">
 									<span class="info__item">Пол:</span>
-									<span class="info__item">Женский</span>
+									<span class="info__item info__value active">Женский</span>
 								</li>
 								<li class="info__row">
 									<span class="info__item">Настоящее имя:</span>
-									<span class="info__item">Любовь</span>
+									<span class="info__item info__value active">Любовь</span>
 								</li>
-								<li class="info__row">
+								<li class="info__row info__row_ta">
 									<span class="info__item">О себе:</span>
-									<span class="info__item info__item-status">"Пользователь что-то пишет о себе"</span>
+									<span class="info__item info__item-status info__value active">"Пользователь что-то пишет о себе"</span>
 								</li>
 							</div>
 
@@ -161,25 +161,38 @@
 									</div>
 								</div>
 								<p class="edit__text">Сменить фотографию профиля</p>
-								<p class="edit__text">Изменить данные профиля</p>
+								<p class="edit__text edit__user-info">Изменить данные профиля</p>
 							</div>
 
 							<div class="profile__info-user info">
 								<li class="info__row">
 									<span class="info__item">Дата рождения:</span>
-									<span class="info__item">02.02.2003</span>
+									<span class="info__item info__value active">02.02.2003</span>
+									<input type="date" name="userDate" class="user__input user__date" tabindex="1">
 								</li>
 								<li class="info__row">
 									<span class="info__item">Пол:</span>
-									<span class="info__item">Женский</span>
+									<span class="info__item info__value active">Женский</span>
+									<select name="userSex" class="user__input user__select" tabindex="2">
+										<option hidden >Пол</option>
+										<option value="male">Мужской</option>
+										<option value="female">Женский</option>
+									</select>
 								</li>
 								<li class="info__row">
 									<span class="info__item">Настоящее имя:</span>
-									<span class="info__item">Любовь</span>
+									<span class="info__item info__value active">Любовь</span>
+									<input type="text" name="userName" class="user__input user__name" tabindex="3">
+								</li>
+								<li class="info__row info__row_ta">
+									<span class="info__item">О себе:</span>
+									<span class="info__item info__item-status info__value active">"Пользователь что-то пишет о себе"</span>
+									<textarea name="userComment" class="user__input user__comment" tabindex="4"></textarea>
 								</li>
 								<li class="info__row">
-									<span class="info__item">О себе:</span>
-									<span class="info__item info__item-status">"Пользователь что-то пишет о себе"</span>
+									<div class="edit__complete">
+										Сохранить
+									</div>
 								</li>
 							</div>
 
