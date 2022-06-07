@@ -569,6 +569,13 @@ section {
 	resize: none;
 }
 
+.edit__user-info {
+	display: none;
+}
+.edit__user-info.active {
+	display: block;
+}
+
 .edit__complete {
 	display: none;
 }

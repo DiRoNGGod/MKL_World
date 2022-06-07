@@ -97,29 +97,34 @@ document.addEventListener("click", function(event){   // * Вешаю просл
 
 //~==============================================================================
 
-const userInfo = document.querySelectorAll('.info__value');
-const userEdit = document.querySelector('.edit__user-info');
+const userInfo = document.querySelectorAll('.info__value');   // * Коллекция знчений профиля
 const userInput = document.querySelectorAll('.user__input');
+
+const userEdit = document.querySelector('.edit__user-info');   // * Кнопки начало и конца редактирования
 const userComplete = document.querySelector('.edit__complete');
 
 document.addEventListener("click", function(event){
-	if(event.target.closest('.edit__user-info')){
+	if(event.target.closest('.edit__user-info')){   // * Проверка нажатия на изменение профиля
 		userInfo.forEach(element => {
 			element.classList.remove('active');
 		});
 		userInput.forEach(element => {
 			element.classList.add('active');
 		});
-		userComplete.classList.add('active');
+
+		userComplete.classList.add('active');   // * Убираю и добавляю нужные кнопки
+		userEdit.classList.remove('active');
 	}
 
-	if(event.target.closest('.edit__complete')){
+	if(event.target.closest('.edit__complete')){   // * Проверка нажатия на сохранение изменений профиля
 		userInfo.forEach(element => {
 			element.classList.add('active');
 		});
 		userInput.forEach(element => {
 			element.classList.remove('active');
 		});
-		userComplete.classList.remove('active');
+
+		userComplete.classList.remove('active');   // * Убираю и добавляю нужные кнопки
+		userEdit.classList.add('active');
 	}
 });
