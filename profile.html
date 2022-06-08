@@ -164,25 +164,25 @@
 								<p class="edit__text edit__user-info active">Изменить данные профиля</p>
 							</div>
 
-							<div class="profile__info-user info">
+							<form action="" method="get" class="profile__info-user info">
 								<li class="info__row">
 									<span class="info__item">Дата рождения:</span>
 									<span class="info__item info__value active">02.02.2003</span>
-									<input type="date" name="userDate" class="user__input user__date" tabindex="1">
+									<input type="date" required name="userDate" class="user__input user__date" tabindex="1">
 								</li>
 								<li class="info__row">
 									<span class="info__item">Пол:</span>
 									<span class="info__item info__value active">Женский</span>
-									<select name="userSex" class="user__input user__select" tabindex="2">
+									<select name="userSex" required class="user__input user__select" tabindex="2">
 										<option hidden >Пол</option>
-										<option value="male">Мужской</option>
-										<option value="female">Женский</option>
+										<option value="Мужской">Мужской</option>
+										<option value="Женский">Женский</option>
 									</select>
 								</li>
 								<li class="info__row">
 									<span class="info__item">Настоящее имя:</span>
 									<span class="info__item info__value active">Любовь</span>
-									<input type="text" name="userName" class="user__input user__name" tabindex="3">
+									<input type="text" required name="userName" class="user__input user__name" tabindex="3">
 								</li>
 								<li class="info__row info__row_ta">
 									<span class="info__item">О себе:</span>
@@ -194,7 +194,7 @@
 										Сохранить
 									</div>
 								</li>
-							</div>
+							</form>
 
 							<div class="profile__info-reg info">
 								<li class="info__row">

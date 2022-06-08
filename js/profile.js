@@ -103,13 +103,26 @@ const userInput = document.querySelectorAll('.user__input');
 const userEdit = document.querySelector('.edit__user-info');   // * Кнопки начало и конца редактирования
 const userComplete = document.querySelector('.edit__complete');
 
+let value = [];   // * Переменная хранящая значение в полях
+
 document.addEventListener("click", function(event){
+	let count = 0;   // * Переменная номера элемента
+
 	if(event.target.closest('.edit__user-info')){   // * Проверка нажатия на изменение профиля
 		userInfo.forEach(element => {
 			element.classList.remove('active');
 		});
-		userInput.forEach(element => {
+		userInput.forEach(element => {   // * Перебираю все поля ввода
 			element.classList.add('active');
+
+			if(count !== 3){   // * Получаю значения атрибута value
+				element.setAttribute('value', userInfo[count].textContent);
+			}
+			else {   // * Получаю значения с тексареа 
+				element.innerHTML = userInfo[count].textContent.replaceAll("\"", "");
+			}
+
+			count++;   // * Прибавляю счётчик
 		});
 
 		userComplete.classList.add('active');   // * Убираю и добавляю нужные кнопки
@@ -117,14 +130,37 @@ document.addEventListener("click", function(event){
 	}
 
 	if(event.target.closest('.edit__complete')){   // * Проверка нажатия на сохранение изменений профиля
-		userInfo.forEach(element => {
-			element.classList.add('active');
-		});
-		userInput.forEach(element => {
+		userInput.forEach(element => {   // * Перебираю поля ввода
+			value[count] = element.value.replaceAll('-', '.');   // * Заменяю все тире на точки
+
+			if(value[count] === "Пол" || value[count] === ""){   // * Проверяю наличие записи поля
+				value[count] = "Не выбрано";
+			}
+
+			if(count === 3) {   // * Вставка кавычек в статус
+				value[count] = `"${value[count]}"`;
+			}
+
 			element.classList.remove('active');
+
+			count++;
+		});
+
+		userInfo.forEach(element => {   // * Перебираю поля значений
+			if(count === 4) {   // * обнуляю счёткик по достижению числа 4
+				count = 0;
+			}
+
+			element.classList.add('active');
+
+			element.innerHTML = value[count];   // * Наполняю тег значениями полей
+
+			count++;
 		});
 
 		userComplete.classList.remove('active');   // * Убираю и добавляю нужные кнопки
 		userEdit.classList.add('active');
+
+		value.length = 0;   // * Обнуляю массив значений
 	}
 });
