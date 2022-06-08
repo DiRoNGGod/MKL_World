@@ -13,7 +13,7 @@
     <!-- Заголовок страницы в бразузере -->
     <title>MKL WORLD</title>
     <!-- Подключение каскадных таблиц стилей, css -->
-    <link rel="stylesheet" href="styles/home.css" type="text/css">
+    <link rel="stylesheet" href="styles/discussions.css" type="text/css">
     <!-- Подключение шрифтов через google fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&display=swap"
@@ -33,10 +33,10 @@
         </div>
         <!-- Шапка сайта -->
         <header class="header">
-            <div class="header__contant conteiner">
-                <div class="header__logo">
-                    <a href="#"><img src="images/лого.png" alt="Логотип"></a>
-                </div>
+            <div class="header__content conteiner">
+                <a href="#" class="header__logo">
+                    <img src="images/лого.png" alt="Логотип">
+                </a>
                 <nav class="header__nav">
                     <a href="">
                         <li>Главная</li>
@@ -48,8 +48,8 @@
                         <li>Вики</li>
                     </a>
                 </nav>
-                <div class="header__account">
-                    <a href="authorization.html" target="_blank"><img src="images/user.png" alt="Аккаунт"></a>
+                <div class="header__profile">
+                    <a href="authorization.html"><img src="images/user.png" alt="Аккаунт"></a>
                 </div>
             </div>
         </header>
@@ -97,11 +97,29 @@
 
         </main>
         <footer class="footer">
-            <div class="footer__contant conteiner">
-                <h1>© Copyright 2022 MKL WORLD</h1>
-                <div class="footer__social">
-                    <h1>Мы в социальных сетях</h1>
-                </div>
+            <div class="footer__content container">
+                <p class="copy">
+                    © Copyright 2022 MKL WORLD
+                </p>
+
+                <nav class="footer__nav">
+                    <p class="footer__text">
+                        Мы в социальных сетях
+                    </p>
+
+                    <div class="footer__social social">
+                        <a href="https://vk.com" target="_blank" class="social__item">
+                            <img src="images/icon/vk.png" alt="vk">
+                        </a>
+                        <a  href="https://telegram.org" target="_blank" class="social__item">
+                            <img src="images/icon/telegram.png" alt="telegram">
+                        </a>
+                        <a href="https://youtube.com" target="_blank" class="social__item">
+                            <img src="images/icon/youtube.png" alt="youtube">
+                        </a>
+                    </div>
+                </nav>
+
                 <a href="#" class="footer__button button">
                     Админ-панель
                 </a>
