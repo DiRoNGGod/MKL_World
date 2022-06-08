@@ -131,12 +131,15 @@ document.addEventListener("click", function(event){
 
 	if(event.target.closest('.edit__complete')){   // * Проверка нажатия на сохранение изменений профиля
 		userInput.forEach(element => {   // * Перебираю поля ввода
-			value[count] = element.value.replaceAll('-', '.');   // * Заменяю все тире на точки
+			value[count] = element.value;   // * Заменяю все тире на точки
 
 			if(value[count] === "Пол" || value[count] === ""){   // * Проверяю наличие записи поля
 				value[count] = userInfo[count].textContent;
 			}
 
+			if(count === 0) {   // * Переворачиваю строку даты
+				value[count] = element.value.split('-').reverse().join('.');
+			}
 			if(count === 3) {   // * Вставка кавычек в статус
 				value[count] = `"${value[count]}"`;
 			}
