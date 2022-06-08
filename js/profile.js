@@ -134,7 +134,7 @@ document.addEventListener("click", function(event){
 			value[count] = element.value.replaceAll('-', '.');   // * Заменяю все тире на точки
 
 			if(value[count] === "Пол" || value[count] === ""){   // * Проверяю наличие записи поля
-				value[count] = "Не выбрано";
+				value[count] = userInfo[count].textContent;
 			}
 
 			if(count === 3) {   // * Вставка кавычек в статус
