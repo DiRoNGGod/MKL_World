@@ -85,6 +85,8 @@ body {
     line-height: 1.2;
 
     background-color: #F5E6CC;
+
+    align-items: center;
 }
 
 /* ---------------------- */
@@ -95,10 +97,8 @@ body {
 
     display: flex;
     flex: 1 1 auto;
-}
 
-.main__close img {
-    align-items: flex-start;
+    align-self: center;
 }
 
 .main__register {
@@ -110,13 +110,28 @@ body {
     max-width: 300px;
     max-height: 700px;
 
-    align-items: center;
-
     overflow: hidden;
 
-    border-radius: 15px;
+    border-radius: 10px;
 
     padding: 30px;
+
+    align-items: center;
+}
+
+.main__close {
+    position: relative;
+}
+
+.main__close img {
+    position: absolute;
+
+    margin-top: -21px;
+    margin-left: -141px;
+}
+
+.label__register {
+    text-align: center;
 }
 
 .main__line {
@@ -135,12 +150,9 @@ body {
     text-decoration: underline, dashed;
 }
 /* ---- Форма "вход" ---- */
-.main__arrow img {
-    align-items: flex-start;
-}
-
 .main__entrance {
-    display: flex;
+    display: none;
+
     flex-direction: column;
 
     background-color: #FFB48F;
@@ -174,12 +186,8 @@ body {
 }
 
 /* ---- Форма "восстановление" ---- */
-.main__arrow img {
-    align-items: flex-start;
-}
-
 .main__recovery {
-    display: flex;
+    display: none;
     flex-direction: column;
 
     background-color: #FFB48F;
