@@ -131,17 +131,26 @@ document.addEventListener("click", function(event){
 
 	if(event.target.closest('.edit__complete')){   // * Проверка нажатия на сохранение изменений профиля
 		userInput.forEach(element => {   // * Перебираю поля ввода
-			value[count] = element.value;   // * Заменяю все тире на точки
+			if(element.value !== "") {
+				value[count] = element.value;   // * Получаю значение с поля
 
-			if(value[count] === "Пол" || value[count] === ""){   // * Проверяю наличие записи поля
-				value[count] = userInfo[count].textContent;
-			}
+				if(count === 1){   // * Переворачиваю строку даты
+					value[count] = element.value.split('-').reverse().join('.');
+				}
 
-			if(count === 0) {   // * Переворачиваю строку даты
-				value[count] = element.value.split('-').reverse().join('.');
+				if(element.value === "Пол") {
+					value[count] = "Не выбрано";
+				}
+
+				if(count === 3  && value[count] === ""){
+					value[count] = "";
+				}
+				else if(count === 3  && value[count] !== ""){   // * Вставка кавычек в статус если есть текст
+					value[count] = `"${value[count]}"`;
+				}
 			}
-			if(count === 3) {   // * Вставка кавычек в статус
-				value[count] = `"${value[count]}"`;
+			else {
+				value[count] = element.getAttribute('value');   // * Получаю значения с атрибутов если поле пустое
 			}
 
 			element.classList.remove('active');
