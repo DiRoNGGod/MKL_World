@@ -19,7 +19,7 @@ function removeClass() {   // * Функция обнуления классов
 	});
 }
 
-profileNav.addEventListener("click", function(event){   // * События клика на кнопки родителя
+profileNav.addEventListener("mousedown", function(event){   // * События клика на кнопки родителя
 	if(!event.target.classList.contains('profile__login')){   // * Проверка нажатия на логин пользователя
 		removeClass();   // * Вызов функции обнуления классов
 
