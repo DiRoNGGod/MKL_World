@@ -57,29 +57,35 @@
             <div class="main__arrow">
                 <img src="images/arrow.png" width="15" height="15" alt="Закрыть">
             </div>
-            <label>Зарегистрироваться</label>
+            <label class="label__entrance">Зарегистрироваться</label>
             <div class="main__line"></div>
             <form class="main__forms">
-                <label>Логин</label>
-                <input type="text" required>
-                <label>Пароль</label> <span><a href="">Забыли пароль?</a></span>
-                <input type="password" required>
+                <div class="main__forms_login">
+                    <input type="text" id="name" required class="input-login">
+                    <label for="name" class="login">Логин</label>
+                </div>
+                <div class="main__forms_password">
+                    <input type="password" id="password" required class="input-password">
+                    <label for="password" class="pass">Пароль</label>
+                </div>
             </form>
-            <button>Войти</button>
-            <a href="">Нет аккаунта? Зарегистрируйтесь прямо сейчас</a>
+            <button class="button__entrance">Войти</button>
+            <a href="" class="hint">Нет аккаунта? Зарегистрируйтесь прямо сейчас</a>
         </div>
 
         <div class="main__recovery">
             <div class="main__arrow">
                 <img src="images/arrow.png" width="15" height="15" alt="Закрыть">
             </div>
-            <label>Зарегистрироваться</label>
+            <label class="label__recovery">Зарегистрироваться</label>
             <div class="main__line"></div>
             <form class="main__forms">
-                <label>E-mail</label>
-                <input type="email" required>
+                <div class="main__forms_mail">
+                    <input type="email" id="mail" required class="input-mail">
+                    <label for="mail" class="email">E-mail</label>
+                </div>
             </form>
-            <button>Получить пароль</button>
+            <button class="button__recovery">Получить пароль</button>
         </div>
     </main>
 </body>

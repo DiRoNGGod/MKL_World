@@ -69,10 +69,6 @@ button::-moz-focus-inner {
     border: 0;
 }
 
-ul li {
-    list-style: none;
-}
-
 img {
     vertical-align: top;
 }
@@ -304,27 +300,44 @@ body {
 
 /* ---- Форма "вход" ---- */
 .main__entrance {
-    display: none;
+    display: flex;
 
     flex-direction: column;
 
     background-color: #FFB48F;
 
-    max-width: 300px;
-    max-height: 700px;
-
-    align-items: center;
+    width: 300px;
+    max-height: 800px;
 
     overflow: hidden;
 
-    border-radius: 15px;
+    border-radius: 10px;
 
     padding: 30px;
+
+    align-items: center;
+}
+
+.main__arrow {
+    position: relative;
+}
+
+.main__arrow img {
+    position: absolute;
+
+    margin-top: -21px;
+    margin-left: -141px;
+}
+
+.label__entrance {
+    text-align: center;
+
+    font-size: 20px;
 }
 
 .main__line {
     height: 2px;
-    width: 220px;
+    max-width: 220px;
 
     background-color: #999999;
 }
@@ -332,30 +345,161 @@ body {
 .main__forms {
     display: flex;
     flex-direction: column;
+
+    padding-top: 10px;
 }
 
-/* ---- Форма "восстановление" ---- */
+/* Окно ввода логина */
+.main__forms_login {
+    position: relative;
+
+    margin-top: 20px;
+}
+
+.login {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    transform: translate(10px, 10px);
+    transition: transform .25s;
+    transform-origin: left;
+
+    font-size: 15px;
+}
+
+.input-login {
+    padding: 10px;
+
+    border: none;
+    border-radius: 10px;
+
+    font: inherit;
+    font-size: 15px;
+    color: #000;
+
+    background-color: #F5E6CC;
+}
+
+.main__forms_login:focus-within .login {
+    transform:
+    translate(0, -20px) scale(.8);
+
+    color: #000;
+    font-size: 15px;
+}
+
+/* Окно ввода пароля и его подтверждение */
+.main__forms_password {
+    position: relative;
+
+    margin-top: 20px;
+}
+
+.pass {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    transform: translate(10px, 10px);
+    transition: transform .25s;
+    transform-origin: left;
+
+    font-size: 15px;
+}
+
+.input-password {
+    padding: 10px;
+
+    border: none;
+    border-radius: 10px;
+
+    font: inherit;
+    font-size: 15px;
+    color: #000;
+
+    background-color: #F5E6CC;
+}
+
+.main__forms_password:focus-within .pass {
+    transform:
+    translate(0, -20px) scale(.8);
+
+    color: #000;
+    font-size: 15px;
+}
+
+.button__entrance {
+    margin-top: 20px;
+
+    background-color: #A64AC9;
+    color: #fff;
+    font-size: 15px;
+
+    border-radius: 10px;
+    border: none;
+
+    height: 40px;
+    width: 220px;
+}
+
+.button__entrance:hover {
+    background-color: #682184;
+}
+
+.button__entrance:active {
+    box-shadow: 2px 2px 2px #000;
+}
+
+.hint {
+    margin-top: 10px;
+
+    font-size: 12px;
+    text-decoration: none;
+    color: #2862F7;
+    border-bottom: 1px dashed #2862F7;
+}
+
+/* ---- Форма "восстановление пароля" ---- */
 .main__recovery {
     display: none;
+
     flex-direction: column;
 
     background-color: #FFB48F;
 
-    max-width: 300px;
-    max-height: 700px;
-
-    align-items: center;
+    width: 300px;
+    max-height: 800px;
 
     overflow: hidden;
 
-    border-radius: 15px;
+    border-radius: 10px;
 
     padding: 30px;
+
+    align-items: center;
+}
+
+.main__arrow {
+    position: relative;
+}
+
+.main__arrow img {
+    position: absolute;
+
+    margin-top: -21px;
+    margin-left: -141px;
+}
+
+.label__recovery {
+    text-align: center;
+
+    font-size: 20px;
 }
 
 .main__line {
     height: 2px;
-    width: 220px;
+    max-width: 220px;
 
     background-color: #999999;
 }
@@ -363,4 +507,76 @@ body {
 .main__forms {
     display: flex;
     flex-direction: column;
+
+    padding-top: 10px;
+}
+
+/* Окно ввода почты */
+.main__forms_mail {
+    position: relative;
+
+    margin-top: 20px;
+}
+
+.email {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    transform: translate(10px, 10px);
+    transition: transform .25s;
+    transform-origin: left;
+
+    font-size: 15px;
+}
+
+.input-mail {
+    padding: 10px;
+
+    border: none;
+    border-radius: 10px;
+
+    font: inherit;
+    font-size: 15px;
+    color: #000;
+
+    background-color: #F5E6CC;
+}
+
+.main__forms_mail:focus-within .email {
+    transform:
+    translate(0, -20px) scale(.8);
+
+    color: #000;
+    font-size: 15px;
+}
+
+.button__recovery {
+    margin-top: 20px;
+
+    background-color: #A64AC9;
+    color: #fff;
+    font-size: 15px;
+
+    border-radius: 10px;
+    border: none;
+
+    height: 40px;
+    width: 220px;
+}
+
+.button__recovery:hover {
+    background-color: #682184;
+}
+
+.button__recovery:active {
+    box-shadow: 2px 2px 2px #000;
+}
+
+.hint {
+    margin-top: 10px;
+
+    font-size: 12px;
+    text-decoration: none;
+    color: #2862F7;
 }
