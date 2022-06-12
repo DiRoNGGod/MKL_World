@@ -32,17 +32,25 @@
             <label class="label__register">Зарегистрироваться</label>
             <div class="main__line"></div>
             <form class="main__forms">
-                <label>Логин</label>
-                <input type="text" required>
-                <label>E-mail</label>
-                <input type="email" required>
-                <label>Пароль</label>
-                <input type="password" required>
-                <label>Подтвердите пароль</label>
-                <input type="password" required>
+                <div class="main__forms_login">
+                    <input type="text" id="name" required class="input-login">
+                    <label for="name" class="login">Логин</label>
+                </div>
+                <div class="main__forms_mail">
+                    <input type="email" id="mail" required class="input-mail">
+                    <label for="mail" class="email">E-mail</label>
+                </div>
+                <div class="main__forms_password">
+                    <input type="password" id="password" required class="input-password">
+                    <label for="password" class="pass">Пароль</label>
+                </div>
+                <div class="main__forms_password">
+                    <input type="password" id="password" required class="input-password">
+                    <label for="password" class="pass">Подтвердите пароль</label>
+                </div>
             </form>
-            <button>Зарегистрироваться</button>
-            <a href="">Есть аккаунт? Зайдите прямо сейчас</a>
+            <button class="register">Зарегистрироваться</button>
+            <a href="" class="hint">Есть аккаунт? Зайдите прямо сейчас</a>
         </div>
 
         <div class="main__entrance">

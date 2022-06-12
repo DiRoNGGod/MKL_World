@@ -87,28 +87,29 @@ body {
     background-color: #F5E6CC;
 
     align-items: center;
+
+    flex: 1 1 auto;
 }
 
 /* ---------------------- */
 
 /* ---- Форма "зарегистрироваться" ---- */
-.main { 
-    justify-content: center;
-
+.main {
     display: flex;
-    flex: 1 1 auto;
 
-    align-self: center;
+    align-items: center;
+    justify-content: center;
 }
 
+/* ---- Форма регистрации ---- */
 .main__register {
     display: flex;
     flex-direction: column;
 
     background-color: #FFB48F;
 
-    max-width: 300px;
-    max-height: 700px;
+    width: 300px;
+    max-height: 800px;
 
     overflow: hidden;
 
@@ -132,11 +133,13 @@ body {
 
 .label__register {
     text-align: center;
+
+    font-size: 20px;
 }
 
 .main__line {
     height: 2px;
-    width: 180px;
+    max-width: 220px;
 
     background-color: #999999;
 }
@@ -144,11 +147,161 @@ body {
 .main__forms {
     display: flex;
     flex-direction: column;
+
+    padding-top: 10px;
 }
 
-.main__register a {
-    text-decoration: underline, dashed;
+/* Окно ввода логина */
+.main__forms_login {
+    position: relative;
+
+    margin-top: 20px;
 }
+
+.login {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    transform: translate(10px, 10px);
+    transition: transform .25s;
+    transform-origin: left;
+
+    font-size: 15px;
+}
+
+.input-login {
+    padding: 10px;
+
+    border: none;
+    border-radius: 10px;
+
+    font: inherit;
+    font-size: 15px;
+    color: #000;
+
+    background-color: #F5E6CC;
+}
+
+.main__forms_login:focus-within .login {
+    transform:
+    translate(0, -20px) scale(.8);
+
+    color: #000;
+    font-size: 15px;
+}
+
+/* Окно ввода почты */
+.main__forms_mail {
+    position: relative;
+
+    margin-top: 20px;
+}
+
+.email {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    transform: translate(10px, 10px);
+    transition: transform .25s;
+    transform-origin: left;
+
+    font-size: 15px;
+}
+
+.input-mail {
+    padding: 10px;
+
+    border: none;
+    border-radius: 10px;
+
+    font: inherit;
+    font-size: 15px;
+    color: #000;
+
+    background-color: #F5E6CC;
+}
+
+.main__forms_mail:focus-within .email {
+    transform:
+    translate(0, -20px) scale(.8);
+
+    color: #000;
+    font-size: 15px;
+}
+
+/* Окно ввода пароля и его подтверждение */
+.main__forms_password {
+    position: relative;
+
+    margin-top: 20px;
+}
+
+.pass {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    transform: translate(10px, 10px);
+    transition: transform .25s;
+    transform-origin: left;
+
+    font-size: 15px;
+}
+
+.input-password {
+    padding: 10px;
+
+    border: none;
+    border-radius: 10px;
+
+    font: inherit;
+    font-size: 15px;
+    color: #000;
+
+    background-color: #F5E6CC;
+}
+
+.main__forms_password:focus-within .pass {
+    transform:
+    translate(0, -20px) scale(.8);
+
+    color: #000;
+    font-size: 15px;
+}
+
+.register {
+    margin-top: 20px;
+
+    background-color: #A64AC9;
+    color: #fff;
+    font-size: 15px;
+
+    border-radius: 10px;
+    border: none;
+
+    height: 40px;
+    width: 220px;
+}
+
+.register:hover {
+    background-color: #682184;
+}
+
+.register:active {
+    box-shadow: 2px 2px 2px #000;
+}
+
+.hint {
+    margin-top: 10px;
+
+    font-size: 12px;
+    text-decoration: none;
+    color: #2862F7;
+    border-bottom: 1px dashed #2862F7;
+}
+
 /* ---- Форма "вход" ---- */
 .main__entrance {
     display: none;
@@ -171,7 +324,7 @@ body {
 
 .main__line {
     height: 2px;
-    width: 180px;
+    width: 220px;
 
     background-color: #999999;
 }
@@ -179,10 +332,6 @@ body {
 .main__forms {
     display: flex;
     flex-direction: column;
-}
-
-.main__register a {
-    text-decoration: underline, dashed;
 }
 
 /* ---- Форма "восстановление" ---- */
@@ -206,7 +355,7 @@ body {
 
 .main__line {
     height: 2px;
-    width: 180px;
+    width: 220px;
 
     background-color: #999999;
 }
@@ -214,8 +363,4 @@ body {
 .main__forms {
     display: flex;
     flex-direction: column;
-}
-
-.main__register a {
-    text-decoration: underline, dashed;
 }
