@@ -27,7 +27,7 @@
     <main class="main">
         <div class="main__register" id="d1">
             <div class="main__close">
-                <img src="images/close.png" width="15" height="15" alt="Закрыть">
+                <a href="index.html"><img src="images/close.png" width="15" height="15" alt="Закрыть"></a>
             </div>
             <label class="label__register">Зарегистрироваться</label>
             <form class="main__forms">
@@ -49,12 +49,12 @@
                 </div>
             </form>
             <button class="register">Зарегистрироваться</button>
-            <a href="" class="hint" onclick="showDv('2')">Есть аккаунт? Зайдите прямо сейчас</a></button>
+            <a href="" class="hint" onclick="showDv('2'); return false">Есть аккаунт? Зайдите прямо сейчас</a></button>
         </div>
 
         <div class="main__entrance" id="d2">
             <div class="main__arrow">
-                <img src="images/arrow.png" width="15" height="15" alt="Закрыть">
+                <a href="" onclick="showDv('1'); return false"><img src="images/arrow.png" width="15" height="15" alt="Закрыть"></a>
             </div>
             <label class="label__entrance">Войти</label>
             <form class="main__forms">
@@ -66,17 +66,17 @@
                     <input type="password" id="password" required class="input-password">
                     <label for="password" class="pass">Пароль</label> 
                     <div class="main__recovery_pass">
-                        <a href="" class="hint__recovery" onclick="showDv('3')">Забыли пароль?</a>
+                        <a href="" class="hint__recovery" onclick="showDv('3'); return false">Забыли пароль?</a>
                     </div>
                 </div>
             </form>
             <button class="button__entrance">Войти</button>
-            <a href="" class="hint" onclick="showDv('1')">Нет аккаунта? Зарегистрируйтесь прямо сейчас</a>
+            <a href="" class="hint" onclick="showDv('1'); return false">Нет аккаунта? Зарегистрируйтесь прямо сейчас</a>
         </div>
 
         <div class="main__recovery" id="d3">
             <div class="main__arrow">
-                <img src="images/arrow.png" width="15" height="15" alt="Закрыть">
+                <a href="" onclick="showDv('2'); return false"><img src="images/arrow.png" width="15" height="15" alt="Закрыть"></a>
             </div>
             <label class="label__recovery">Восстановление</label>
             <form class="main__forms">
