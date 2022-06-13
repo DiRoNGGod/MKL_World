@@ -495,6 +495,7 @@ body {
 }
 
 .input-mail:focus ~ .maiil,
+.input-mail:not(:placeholder-shown) ~ .maiil,
 .input-mail:valid ~ .maiil {
     font-size: 15px;
     transform: translateY(-20px);
