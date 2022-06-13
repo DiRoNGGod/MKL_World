@@ -29,7 +29,7 @@
             <div class="main__close">
                 <a href="index.html"><img src="images/close.png" width="15" height="15" alt="Закрыть"></a>
             </div>
-            <label class="label__register">Зарегистрироваться</label>
+            <label class="label">Зарегистрироваться</label>
             <form class="main__forms">
                 <div class="main__forms_login">
                     <input type="text" id="name" required class="input-login">
@@ -37,7 +37,7 @@
                 </div>
                 <div class="main__forms_mail">
                     <input type="email" id="mail" required class="input-mail">
-                    <label for="mail" class="email">E-mail</label>
+                    <label for="mail" class="maiil">E-mail</label>
                 </div>
                 <div class="main__forms_password">
                     <input type="password" id="password" required class="input-password">
@@ -48,15 +48,16 @@
                     <label for="password" class="pass">Подтвердите пароль</label>
                 </div>
             </form>
-            <button class="register">Зарегистрироваться</button>
+            <button class="button">Зарегистрироваться</button>
             <a href="" class="hint" onclick="showDv('2'); return false">Есть аккаунт? Зайдите прямо сейчас</a></button>
         </div>
 
         <div class="main__entrance" id="d2">
             <div class="main__arrow">
-                <a href="" onclick="showDv('1'); return false"><img src="images/arrow.png" width="15" height="15" alt="Закрыть"></a>
+                <a href="" onclick="showDv('1'); return false"><img src="images/arrow.png" width="15" height="15"
+                        alt="Закрыть"></a>
             </div>
-            <label class="label__entrance">Войти</label>
+            <label class="label">Войти</label>
             <form class="main__forms">
                 <div class="main__forms_login">
                     <input type="text" id="name" required class="input-login">
@@ -64,28 +65,29 @@
                 </div>
                 <div class="main__forms_password">
                     <input type="password" id="password" required class="input-password">
-                    <label for="password" class="pass">Пароль</label> 
+                    <label for="password" class="pass">Пароль</label>
                     <div class="main__recovery_pass">
-                        <a href="" class="hint__recovery" onclick="showDv('3'); return false">Забыли пароль?</a>
+                        <a href="" class="hint" onclick="showDv('3'); return false">Забыли пароль?</a>
                     </div>
                 </div>
             </form>
-            <button class="button__entrance">Войти</button>
+            <button class="button">Войти</button>
             <a href="" class="hint" onclick="showDv('1'); return false">Нет аккаунта? Зарегистрируйтесь прямо сейчас</a>
         </div>
 
         <div class="main__recovery" id="d3">
             <div class="main__arrow">
-                <a href="" onclick="showDv('2'); return false"><img src="images/arrow.png" width="15" height="15" alt="Закрыть"></a>
+                <a href="" onclick="showDv('2'); return false"><img src="images/arrow.png" width="15" height="15"
+                        alt="Закрыть"></a>
             </div>
-            <label class="label__recovery">Восстановление</label>
+            <label class="label">Восстановление</label>
             <form class="main__forms">
                 <div class="main__forms_mail">
                     <input type="email" id="mail" required class="input-mail">
-                    <label for="mail" class="email">E-mail</label>
+                    <label for="mail" class="maiil">E-mail</label>
                 </div>
             </form>
-            <button class="button__recovery">Получить пароль</button>
+            <button class="button">Получить пароль</button>
         </div>
     </main>
     <script src="js/authorization.js"></script> <!-- Подключение JavaScript -->

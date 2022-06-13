@@ -100,6 +100,7 @@ body {
 #d1 {
     display: flex;
 }
+
 .main__register {
     display: flex;
     flex-direction: column;
@@ -129,16 +130,6 @@ body {
     margin-left: -141px;
 }
 
-.label__register {
-    text-align: center;
-
-    font-size: 20px;
-
-    text-decoration: none;
-    border-bottom: 1px solid #999999;
-    width: 220px;
-}
-
 .main__forms {
     display: flex;
     flex-direction: column;
@@ -162,6 +153,8 @@ body {
     transition: transform .25s;
     transform-origin: left;
 
+    pointer-events: none;
+
     font-size: 15px;
 }
 
@@ -178,9 +171,14 @@ body {
     background-color: #F5E6CC;
 }
 
+.input-login:focus ~ .login,
+.input-login:valid ~ .login {
+    font-size: 15px;
+    transform: translateY(-20px);
+}
+
 .main__forms_login:focus-within .login {
-    transform:
-    translate(0, -20px) scale(.8);
+    transform: translate(0, -20px) scale(.8);
 
     color: #000;
     font-size: 15px;
@@ -193,7 +191,7 @@ body {
     margin-top: 20px;
 }
 
-.email {
+.maiil {
     position: absolute;
     top: 0;
     left: 0;
@@ -201,6 +199,8 @@ body {
     transform: translate(10px, 10px);
     transition: transform .25s;
     transform-origin: left;
+
+    pointer-events: none;
 
     font-size: 15px;
 }
@@ -218,9 +218,14 @@ body {
     background-color: #F5E6CC;
 }
 
-.main__forms_mail:focus-within .email {
-    transform:
-    translate(0, -20px) scale(.8);
+.input-mail:focus ~ .maiil,
+.input-mail:valid ~ .maiil {
+    font-size: 15px;
+    transform: translateY(-20px);
+}
+
+.main__forms_mail:focus-within .maiil {
+    transform: translate(0, -20px) scale(.8);
 
     color: #000;
     font-size: 15px;
@@ -242,6 +247,8 @@ body {
     transition: transform .25s;
     transform-origin: left;
 
+    pointer-events: none;
+
     font-size: 15px;
 }
 
@@ -258,43 +265,17 @@ body {
     background-color: #F5E6CC;
 }
 
+.input-password:focus ~ .pass,
+.input-password:valid ~ .paas {
+    font-size: 15px;
+    transform: translateY(-20px);
+}
+
 .main__forms_password:focus-within .pass {
-    transform:
-    translate(0, -20px) scale(.8);
+    transform: translate(0, -20px) scale(.8);
 
     color: #000;
     font-size: 15px;
-}
-
-.register {
-    margin-top: 20px;
-
-    background-color: #A64AC9;
-    color: #fff;
-    font-size: 15px;
-
-    border-radius: 10px;
-    border: none;
-
-    height: 40px;
-    width: 220px;
-}
-
-.register:hover {
-    background-color: #682184;
-}
-
-.register:active {
-    box-shadow: 2px 2px 2px #000;
-}
-
-.hint {
-    margin-top: 10px;
-
-    font-size: 10px;
-    text-decoration: none;
-    color: #2862F7;
-    border-bottom: 1px dashed #2862F7;
 }
 
 /* ---- Форма "вход" ---- */
@@ -332,16 +313,6 @@ body {
     margin-left: -141px;
 }
 
-.label__entrance {
-    text-align: center;
-
-    font-size: 20px;
-
-    text-decoration: none;
-    border-bottom: 1px solid #999999;
-    width: 220px;
-}
-
 .main__forms {
     display: flex;
     flex-direction: column;
@@ -365,6 +336,8 @@ body {
     transition: transform .25s;
     transform-origin: left;
 
+    pointer-events: none;
+
     font-size: 15px;
 }
 
@@ -381,9 +354,14 @@ body {
     background-color: #F5E6CC;
 }
 
+.input-login:focus ~ .login,
+.input-login:valid ~ .login {
+    font-size: 15px;
+    transform: translateY(-20px);
+}
+
 .main__forms_login:focus-within .login {
-    transform:
-    translate(0, -20px) scale(.8);
+    transform: translate(0, -20px) scale(.8);
 
     color: #000;
     font-size: 15px;
@@ -405,6 +383,8 @@ body {
     transition: transform .25s;
     transform-origin: left;
 
+    pointer-events: none;
+
     font-size: 15px;
 }
 
@@ -421,60 +401,28 @@ body {
     background-color: #F5E6CC;
 }
 
+.input-password:focus ~ .pass,
+.input-password:valid ~ .pass {
+    font-size: 15px;
+    transform: translateY(-20px);
+}
+
 .main__forms_password:focus-within .pass {
-    transform:
-    translate(0, -20px) scale(.8);
+    transform: translate(0, -20px) scale(.8);
 
     color: #000;
     font-size: 15px;
-}
-
-.button__entrance {
-    margin-top: 20px;
-
-    background-color: #A64AC9;
-    color: #fff;
-    font-size: 15px;
-
-    border-radius: 10px;
-    border: none;
-
-    height: 40px;
-    width: 220px;
-}
-
-.button__entrance:hover {
-    background-color: #682184;
-}
-
-.button__entrance:active {
-    box-shadow: 2px 2px 2px #000;
-}
-
-.hint {
-    margin-top: 10px;
-
-    font-size: 10px;
-    text-decoration: none;
-    color: #2862F7;
-    border-bottom: 1px dashed #2862F7;
 }
 
 .main__recovery_pass {
     padding-left: 10px;
 }
 
-.hint__recovery {
-    font-size: 10px;
-
-    text-decoration: none;
-    color: #2862F7;
-    border-bottom: 1px dashed #2862F7;
-}
 /* ---- Форма "восстановление пароля" ---- */
 #d3 {
     display: none;
 }
+
 .main__recovery {
     display: none;
 
@@ -505,16 +453,6 @@ body {
     margin-left: -141px;
 }
 
-.label__recovery {
-    text-align: center;
-
-    font-size: 20px;
-
-    text-decoration: none;
-    border-bottom: 1px solid #999999;
-    width: 220px;
-}
-
 .main__forms {
     display: flex;
     flex-direction: column;
@@ -529,7 +467,7 @@ body {
     margin-top: 20px;
 }
 
-.email {
+.maiil {
     position: absolute;
     top: 0;
     left: 0;
@@ -537,6 +475,8 @@ body {
     transform: translate(10px, 10px);
     transition: transform .25s;
     transform-origin: left;
+
+    pointer-events: none;
 
     font-size: 15px;
 }
@@ -554,15 +494,21 @@ body {
     background-color: #F5E6CC;
 }
 
-.main__forms_mail:focus-within .email {
-    transform:
-    translate(0, -20px) scale(.8);
+.input-mail:focus ~ .maiil,
+.input-mail:valid ~ .maiil {
+    font-size: 15px;
+    transform: translateY(-20px);
+}
+
+.main__forms_mail:focus-within .maiil {
+    transform: translate(0, -20px) scale(.8);
 
     color: #000;
     font-size: 15px;
 }
 
-.button__recovery {
+/* ---- Кнопка для всех 3 форм ---- */
+.button {
     margin-top: 20px;
 
     background-color: #A64AC9;
@@ -576,10 +522,31 @@ body {
     width: 220px;
 }
 
-.button__recovery:hover {
+.button:hover {
     background-color: #682184;
 }
 
-.button__recovery:active {
+.button:active {
     box-shadow: 2px 2px 2px #000;
+}
+
+/* ---- Ссылка ---- */
+.hint {
+    margin-top: 10px;
+
+    font-size: 10px;
+    text-decoration: none;
+    color: #2862F7;
+    border-bottom: 1px dashed #2862F7;
+}
+
+/* ---- Label-заголовки ---- */
+.label {
+    text-align: center;
+
+    font-size: 20px;
+
+    text-decoration: none;
+    border-bottom: 1px solid #999999;
+    width: 220px;
 }
