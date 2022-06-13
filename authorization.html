@@ -25,7 +25,7 @@
 
 <body>
     <main class="main">
-        <div class="main__register">
+        <div class="main__register" id="d1">
             <div class="main__close">
                 <img src="images/close.png" width="15" height="15" alt="Закрыть">
             </div>
@@ -49,10 +49,10 @@
                 </div>
             </form>
             <button class="register">Зарегистрироваться</button>
-            <a href="" class="hint">Есть аккаунт? Зайдите прямо сейчас</a>
+            <a href="" class="hint" onclick="showDv('2')">Есть аккаунт? Зайдите прямо сейчас</a></button>
         </div>
 
-        <div class="main__entrance">
+        <div class="main__entrance" id="d2">
             <div class="main__arrow">
                 <img src="images/arrow.png" width="15" height="15" alt="Закрыть">
             </div>
@@ -66,15 +66,15 @@
                     <input type="password" id="password" required class="input-password">
                     <label for="password" class="pass">Пароль</label> 
                     <div class="main__recovery_pass">
-                        <a href="" class="hint__recovery">Забыли пароль?</a>
+                        <a href="" class="hint__recovery" onclick="showDv('3')">Забыли пароль?</a>
                     </div>
                 </div>
             </form>
             <button class="button__entrance">Войти</button>
-            <a href="" class="hint">Нет аккаунта? Зарегистрируйтесь прямо сейчас</a>
+            <a href="" class="hint" onclick="showDv('1')">Нет аккаунта? Зарегистрируйтесь прямо сейчас</a>
         </div>
 
-        <div class="main__recovery">
+        <div class="main__recovery" id="d3">
             <div class="main__arrow">
                 <img src="images/arrow.png" width="15" height="15" alt="Закрыть">
             </div>
@@ -88,6 +88,7 @@
             <button class="button__recovery">Получить пароль</button>
         </div>
     </main>
+    <script src="js/authorization.js"></script> <!-- Подключение JavaScript -->
 </body>
 
 </html>

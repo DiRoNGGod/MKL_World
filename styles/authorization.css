@@ -89,7 +89,6 @@ body {
 
 /* ---------------------- */
 
-/* ---- Форма "зарегистрироваться" ---- */
 .main {
     display: flex;
 
@@ -98,6 +97,9 @@ body {
 }
 
 /* ---- Форма регистрации ---- */
+#d1 {
+    display: flex;
+}
 .main__register {
     display: flex;
     flex-direction: column;
@@ -296,8 +298,12 @@ body {
 }
 
 /* ---- Форма "вход" ---- */
+#d2 {
+    display: none;
+}
+
 .main__entrance {
-    display: flex;
+    display: none;
 
     flex-direction: column;
 
@@ -466,8 +472,11 @@ body {
     border-bottom: 1px dashed #2862F7;
 }
 /* ---- Форма "восстановление пароля" ---- */
+#d3 {
+    display: none;
+}
 .main__recovery {
-    display: flex;
+    display: none;
 
     flex-direction: column;
 
