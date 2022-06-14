@@ -48,9 +48,14 @@
                         <li>Вики</li>
                     </a>
                 </nav>
-                <div class="header__profile">
-                    <a href="authorization.html"><img src="images/user.png" alt="Аккаунт"></a>
-                </div>
+                <div class="dropdown">
+                    <input type="image" onclick="myFunction()" class="dropbtn" src="images/user.png" alt="Аккаунт">
+                    <div id="myDropdown" class="dropdown-content">
+                      <a href="profile.html">Профиль</a>
+                      <a href="authorization.html">Вход</a>
+                      <a href="#">Админ-панель</a>
+                    </div>
+                  </div>
             </div>
         </header>
         <main class="main">
@@ -152,7 +157,7 @@
                     </div>
                 </div>
             </section>
-
+            <script src="js/index.js"></script>
         </main>
         <footer class="footer">
             <div class="footer__content container">
@@ -169,7 +174,7 @@
                         <a href="https://vk.com" target="_blank" class="social__item">
                             <img src="images/icon/vk.png" alt="vk">
                         </a>
-                        <a  href="https://telegram.org" target="_blank" class="social__item">
+                        <a href="https://telegram.org" target="_blank" class="social__item">
                             <img src="images/icon/telegram.png" alt="telegram">
                         </a>
                         <a href="https://youtube.com" target="_blank" class="social__item">
