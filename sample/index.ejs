@@ -1,0 +1,145 @@
+<!-- Сообщаем браузеру, как стоит обрабатывать эту страницу -->
+<!DOCTYPE html>
+<!-- Оболочка документа, указываю язык содержимого -->
+<html lang="ru">
+<!-- Контейнер для других важных данных (не отображается) -->
+
+<head>
+    <!-- Кодировка старницы -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Настройка адаптивности страницы -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Заголовок страницы в бразузере -->
+    <title>MKL WORLD | <%= title %></title>
+    <link rel="stylesheet" href="header.css"> <!-- ~ Подключение CSS шапка -->
+	<link rel="stylesheet" href="home.css"> <!-- ~ Подключение CSS -->
+	<link rel="stylesheet" href="footer.css"> <!-- ~ Подключение CSS подвал -->
+    <!-- Подключение шрифтов через google fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <!-- Подключение иконки на страницу -->
+    <link rel="icon" href="images/лого.ico">
+</head>
+<!-- Отображаемое тело страницы -->
+
+<body>
+    <div class="wrapper">
+        <!-- Кнопка наверх -->
+        <div class="button__up">
+            <a href="#">
+                <img src="up-arrow.png" width="30" height="30" alt="Кнопка наверх">
+            </a>
+        </div>
+        <!-- Шапка сайта -->
+        <%- include("header/header-index.ejs")  %>   <!--* Подключение шапки -->
+		
+        <main class="main">
+            <!-- Секция подписок -->
+            <aside class="aside subscription__aside">
+                <div class="subscription__heading">
+                    Обновление обсуждений
+                </div>
+                <div class="subscription__ul">
+                    <ul>
+                        <a href="/">
+                            <li>Тема 1</li>
+                        </a>
+                        <a href="/">
+                            <li>Тема 2</li>
+                        </a>
+                        <a href="/">
+                            <li>Тема 3</li>
+                        </a>
+                        <a href="/">
+                            <li>Тема 4</li>
+                        </a>
+                        <a href="/">
+                            <li>Тема 5</li>
+                        </a>
+                    </ul>
+                </div>
+            </aside>
+            <!-- Секция обсуждений по сортировке -->
+            <section class="section discussions__section">
+                <div class="discussions__sorting">
+                    Сортировка по
+                </div>
+                <div class="discussions__topic">
+                    <div class="discussions__name">
+                        <a href="discussions.html">Тема обсуждения</a>
+                    </div>
+                    <div class="discussions__content">
+                        <div class="discussions__image">
+                            <img src="b-1.png" width="100" height="100" alt="Фото профиля">
+                        </div>
+                        <div class="discussions__description">
+                            Описание обсуждения
+                        </div>
+                        <div class="discussions__date">
+                            |Дата создания обсуждения|
+                        </div>
+                    </div>
+                </div>
+
+                <div class="discussions__topic">
+                    <div class="discussions__name">
+                        <a href="discussions.html">Тема обсуждения</a>
+                    </div>
+                    <div class="discussions__content">
+                        <div class="discussions__image">
+                            <img src="b-1.png" width="100" height="100" alt="Фото профиля">
+                        </div>
+                        <div class="discussions__description">
+                            Описание обсуждения
+                        </div>
+                        <div class="discussions__date">
+                            |Дата создания обсуждения|
+                        </div>
+                    </div>
+                </div>
+
+                <div class="discussions__topic">
+                    <div class="discussions__name">
+                        <a href="/discussions">Тема обсуждения</a>
+                    </div>
+                    <div class="discussions__content">
+                        <div class="discussions__image">
+                            <img src="b-1.png" width="100" height="100" alt="Фото профиля">
+                        </div>
+                        <div class="discussions__description">
+                            Описание обсуждения
+                        </div>
+                        <div class="discussions__date">
+                            |Дата создания обсуждения|
+                        </div>
+                    </div>
+                </div>
+
+                <div class="discussions__topic">
+                    <div class="discussions__name">
+                        <a href="/discussions">Тема обсуждения</a>
+                    </div>
+                    <div class="discussions__content">
+                        <div class="discussions__image">
+                            <img src="b-1.png" width="100" height="100" alt="Фото профиля">
+                        </div>
+                        <div class="discussions__description">
+                            Описание обсуждения
+                        </div>
+                        <div class="discussions__date">
+                            |Дата создания обсуждения|
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <%- include("footer/footer.ejs")  %>   <!--* Подключение подвала -->
+    </div>
+
+	<script src="index.js"></script>
+</body>
+
+</html>

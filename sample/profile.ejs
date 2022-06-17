@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+	<head>
+		<meta charset="UTF-8"> <!-- ~ Кодировка страницы -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> <!-- ~ Адаптивность / Запрет масштабирования -->
+		<!-- ~ <meta name="robots" content="none"> / Запрет индексации страницы -->
+		<!-- <link rel="icon" href="favicon.ico"> -->
+		<title>MKL World | <%= title %></title>
+		<link rel="preconnect" href="https://fonts.googleapis.com"> <!-- ~ Ускорение загрузки шрифта -->
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet"> <!-- ~ Подключение шрифта -->
+		<link rel="stylesheet" href="header.css"> <!-- ~ Подключение CSS шапка -->
+		<link rel="stylesheet" href="profile.css"> <!-- ~ Подключение CSS -->
+		<link rel="stylesheet" href="footer.css"> <!-- ~ Подключение CSS подвал -->
+	</head>
+
+	<!-- !---------------------Тело страницы---------------------------->
+	<body>
+
+		<!-- !------------------Оболочка страницы------------------------->
+		<div class="wrapper">
+			<!-- !------------------Шапка страницы------------------------->
+			<%- include("header/header.ejs")  %>   <!--* Подключение шапки -->
+
+			<!-- !------------------Основа страницы------------------------->
+			<main class="main">
+				<!-- !---------Полоска навигации------------ -->
+				<section class="way__section">
+					<div class="way__content">
+						<a href="/home" class="way__link">
+							Главная
+						</a>
+
+						<span> > </span>
+
+						<a href="/profile" class="way__link">
+							Профиль
+						</a>
+					</div>
+				</section>
+
+				<section class="profile__section">
+					<div class="profile__content container">
+						<!-- !----Навигация профиля---- -->
+						<nav class="profile__nav nav">
+							<div class="nav__content">
+								<div class="profile__login">Имя пользователя</div>
+								<div id="info" class="nav__item active">Информация</div>
+								<div id="discus" class="nav__item">Обсуждения</div>
+								<div id="edit" class="nav__item">Редактирование</div>
+							</div>
+						</nav>
+
+						<!-- !----Основная область профиля 'Информация'----- -->
+						<section class="profile__info active profile">
+							<div class="big__block">
+								<div class="profile__img">   <!-- ^ Картинка проиля -->
+									<img class="profile__img-item" src="test-ava.jpg" alt="Avatarka">
+								</div>
+							</div>
+
+							<div class="profile__info-user info">   <!-- ^ Информация пользователя -->
+								<li class="info__row">
+									<span class="info__item">Настоящее имя:</span>
+									<span class="info__item info__value active">Любовь</span>
+								</li>
+								<li class="info__row">
+									<span class="info__item">Дата рождения:</span>
+									<span class="info__item info__value active">02.02.2003</span>
+								</li>
+								<li class="info__row">
+									<span class="info__item">Пол:</span>
+									<span class="info__item info__value active">Женский</span>
+								</li>
+								<li class="info__row info__row_ta">
+									<span class="info__item">О себе:</span>
+									<span class="info__item info__item-status info__value active">"Пользователь что-то пишет о себе"</span>
+								</li>
+							</div>
+
+							<div class="profile__info-reg info">   <!-- ^ Постоянная информация пользователя -->
+								<li class="info__row">
+									<span class="info__item">Последняя активность:</span>
+									<span class="info__item">Сейчас онлайн</span>
+								</li>
+								<li class="info__row">
+									<span class="info__item">Регистрация:</span>
+									<span class="info__item">01.06.2022</span>
+								</li>
+							</div>
+						</section>
+
+						<!-- !----Основная область профиля 'Обсуждения'----- -->
+						<section class="profile__discussions profile">
+							<div class="big__block">
+								<div class="profile__img">   <!-- ^ Картинка профиля -->
+									<img class="profile__img-item" src="test-ava.jpg" alt="Avatarka">
+								</div>
+							</div>
+
+							<div class="discussions__column">
+								<div class="discussions__item">   <!-- ^ Элемент обсуждения -->
+									<div class="discussions__header">
+										<span class="discussions__name">
+											Тема обсуждения
+										</span>
+
+										<span class="discussions__date">
+											|Дата создания обсуждения|
+										</span>
+									</div>
+									
+
+									<div class="discussions__description">
+										<span>
+											Описание обсуждения
+										</span>
+									</div>
+								</div>
+
+								<div class="discussions__item">
+									<div class="discussions__header">
+										<span class="discussions__name">
+											Тема обсуждения
+										</span>
+
+										<span class="discussions__date">
+											|Дата создания обсуждения|
+										</span>
+									</div>
+
+									<div class="discussions__description">
+										<span>
+											Описание обсуждения
+										</span>
+									</div>
+								</div>
+							</div>
+						</section>
+
+						<!-- !----Основная область профиля 'Редактирование'----- -->
+						<section class="profile__edit profile">
+							<div class="profile__left">
+								<div class="big__block">
+									<div class="profile__img">   <!-- ^ Картинка профиля -->
+										<img class="profile__img-item" src="test-ava.jpg" alt="Avatarka">
+									</div>
+								</div>
+								<!-- ^ Кнопки изменения информации профиля -->
+								<p class="edit__text">Сменить фотографию профиля</p>
+								<p class="edit__text edit__user-info active">Изменить данные профиля</p>
+							</div>
+
+							<form action="" method="get" class="profile__info-user info">   <!-- ^ Форма для отправки информации на сервер -->
+								<li class="info__row">
+									<span class="info__item">Настоящее имя:</span>
+									<span class="info__item info__value active">Любовь</span>
+									<input type="text" required name="userName" class="user__input user__name" tabindex="1">
+								</li>
+								<li class="info__row">
+									<span class="info__item">Дата рождения:</span>
+									<span class="info__item info__value active">02.02.2003</span>
+									<input type="date" required name="userDate" class="user__input user__date" tabindex="2">
+								</li>
+								<li class="info__row">
+									<span class="info__item">Пол:</span>
+									<span class="info__item info__value active">Женский</span>
+									<select name="userSex" required class="user__input user__select" tabindex="3">
+										<option hidden >Пол</option>
+										<option value="Мужской">Мужской</option>
+										<option value="Женский">Женский</option>
+									</select>
+								</li>
+								<li class="info__row info__row_ta">
+									<span class="info__item">О себе:</span>
+									<span class="info__item info__item-status info__value active">"Пользователь что-то пишет о себе"</span>
+									<textarea name="userComment" class="user__input user__comment" tabindex="4"></textarea>
+								</li>
+								<li class="info__row">   <!-- ^ Кнопка сохранить -->
+									<div class="edit__complete">
+										Сохранить
+									</div>
+								</li>
+							</form>
+
+							<div class="profile__info-reg info">
+								<li class="info__row">
+									<span class="info__item">Последняя активность:</span>
+									<span class="info__item">Сейчас онлайн</span>
+								</li>
+								<li class="info__row">
+									<span class="info__item">Регистрация:</span>
+									<span class="info__item">01.06.2022</span>
+								</li>
+							</div>
+
+							<p class="edit__delete" onclick="showDelete()">   <!-- ^ Кнопка удаления аккаунта -->
+								Удалить аккаунт
+							</p>
+
+							<!-- !-------Окно предупреждения удаления аккаунта-------- -->
+							<div class="popap">
+								<div class="profile__warning warning">
+									<div class="warning__body">
+										<div class="warning__close"></div>
+	
+										<div class="warning__title">
+											<p>Мы будем по Вам скучать</p>
+											<p>Вы уверены, что хотите этого?</p>
+										</div>
+	
+										<div class="warning__answer">
+											<span id="warning__yes">ДА</span>
+											<span id="warning__no">НЕТ</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+				</section>
+			</main>
+
+			<!-- !------------------Подвал страницы------------------------->
+			<%- include("footer/footer.ejs")  %>   <!--* Подключение подвала -->
+		</div>
+		
+		<script src="profile.js"></script> <!-- ~ Подключение JavaScript -->
+	</body>
+
+</html>

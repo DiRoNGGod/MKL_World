@@ -1,0 +1,132 @@
+<!-- Сообщаем браузеру, как стоит обрабатывать эту страницу -->
+<!DOCTYPE html>
+<!-- Оболочка документа, указываю язык содержимого -->
+<html lang="ru">
+<!-- Контейнер для других важных данных (не отображается) -->
+
+<head>
+    <!-- Кодировка старницы -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Настройка адаптивности страницы -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Заголовок страницы в бразузере -->
+    <title>MKL WORLD</title>
+    <link rel="stylesheet" href="styles/header/header.css"> <!-- ~ Подключение CSS шапка -->
+	<link rel="stylesheet" href="styles/discussions.css"> <!-- ~ Подключение CSS -->
+	<link rel="stylesheet" href="styles/footer/footer.css"> <!-- ~ Подключение CSS подвал -->
+    <!-- Подключение шрифтов через google fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <!-- Подключение иконки на страницу -->
+        <link rel="icon" href="images/лого.ico">
+</head>
+<!-- Отображаемое тело страницы -->
+
+<body>
+    <div class="wrapper">
+        <!-- Кнопка наверх -->
+        <div class="button__up">
+            <a href="#">
+                <img src="images/up-arrow.png" width="30" height="30" alt="Кнопка наверх">
+            </a>
+        </div>
+        <!-- Шапка сайта -->
+        <header class="header">
+            <div class="header__content conteiner">
+                <a href="#" class="header__logo">
+                    <img src="images/лого.png" alt="Логотип">
+                </a>
+                <nav class="header__nav">
+                    <a href="">
+                        <li>Главная</li>
+                    </a>
+                    <a href="">
+                        <li>Галерея</li>
+                    </a>
+                    <a href="">
+                        <li>Вики</li>
+                    </a>
+                </nav>
+                <div class="header__profile">
+                    <a href="authorization.html"><img src="images/user.png" alt="Аккаунт"></a>
+                </div>
+            </div>
+        </header>
+        <main class="main">
+            <!-- Секция линия навигации -->
+            <section class="section way__section">
+                <div class="way__content">
+                    <a href="index.html">
+                        Главная
+                    </a>
+                    <span> > </span>
+                    <a href="profile.html">
+                        Профиль
+                    </a>
+                </div>
+            </section>
+            <!-- Секция обсуждений -->
+            <section class="section discussins__section">
+                <div class="discussins__topic">
+                    <div class="discussins__name">
+                        <h1>Тема обсуждения</h1>
+                    </div>
+                    <div class="discussins__content">
+                        <div class="discussins__image">
+                            <img src="/images/b-1.png" width="100" height="100" alt="Фото профиля">
+                        </div>
+                        <h1>Описание обсуждения</h1>
+                        <p>Дата создания обсуждения</p>
+                    </div>
+                </div>
+                
+                <div class="discussins__topic2">
+                    <div class="discussins__name2">
+                        <h1>Тема обсуждения</h1>
+                    </div>
+                    <div class="discussins__content2">
+                        <div class="discussins__image2">
+                            <img src="images/b-1.png" width="100" height="100" alt="Фото профиля">
+                        </div>
+                        <h1>Описание обсуждения</h1>
+                        <p>Дата создания обсуждения</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+        <footer class="footer">
+            <div class="footer__content container">
+                <p class="copy">
+                    © Copyright 2022 MKL WORLD
+                </p>
+
+                <nav class="footer__nav">
+                    <p class="footer__text">
+                        Мы в социальных сетях
+                    </p>
+
+                    <div class="footer__social social">
+                        <a href="https://vk.com" target="_blank" class="social__item">
+                            <img src="images/icon/vk.png" alt="vk">
+                        </a>
+                        <a  href="https://telegram.org" target="_blank" class="social__item">
+                            <img src="images/icon/telegram.png" alt="telegram">
+                        </a>
+                        <a href="https://youtube.com" target="_blank" class="social__item">
+                            <img src="images/icon/youtube.png" alt="youtube">
+                        </a>
+                    </div>
+                </nav>
+
+                <a href="#" class="footer__button button">
+                    Админ-панель
+                </a>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

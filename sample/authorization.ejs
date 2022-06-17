@@ -1,0 +1,96 @@
+<!-- Сообщаем браузеру, как стоит обрабатывать эту страницу -->
+<!DOCTYPE html>
+<!-- Оболочка документа, указываю язык содержимого -->
+<html lang="ru">
+<!-- Контейнер для других важных данных (не отображается) -->
+
+<head>
+    <!-- Кодировка старницы -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Настройка адаптивности страницы -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Заголовок страницы в бразузере -->
+    <title>MKL WORLD | <%= title %></title>
+    <!-- Подключение каскадных таблиц стилей, css -->
+    <link rel="stylesheet" href="authorization.css" type="text/css">
+    <!-- Подключение шрифтов через google fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <!-- Подключение иконки на страницу -->
+    <link rel="icon" href="logo.ico">
+</head>
+<!-- Отображаемое тело страницы -->
+
+<body>
+    <main class="main">
+        <div class="main__register" id="d1">
+            <div class="main__close">
+                <a href="/home"><img src="close.png" width="15" height="15" alt="Закрыть"></a>
+            </div>
+            <label class="label">Зарегистрироваться</label>
+            <form class="main__forms">
+                <div class="main__forms_login">
+                    <input type="text" id="name" required class="input-login">
+                    <label for="name" class="login">Логин</label>
+                </div>
+                <div class="main__forms_mail">
+                    <input type="email" id="mail" placeholder=" " required class="input-mail">
+                    <label for="mail" class="maiil">E-mail</label>
+                </div>
+                <div class="main__forms_password">
+                    <input type="password" id="password" required class="input-password">
+                    <label for="password" class="pass">Пароль</label>
+                </div>
+                <div class="main__forms_password">
+                    <input type="password" id="password" required class="input-password">
+                    <label for="password" class="pass">Подтвердите пароль</label>
+                </div>
+            </form>
+            <button class="button">Зарегистрироваться</button>
+            <a href="" class="hint" onclick="showDv('2'); return false">Есть аккаунт? Зайдите прямо сейчас</a></button>
+        </div>
+
+        <div class="main__entrance" id="d2">
+            <div class="main__arrow">
+                <a href="" onclick="showDv('1'); return false"><img src="arrow.png" width="15" height="15"
+                        alt="Закрыть"></a>
+            </div>
+            <label class="label">Войти</label>
+            <form class="main__forms">
+                <div class="main__forms_login">
+                    <input type="text" id="name" required class="input-login">
+                    <label for="name" class="login">Логин</label>
+                </div>
+                <div class="main__forms_password">
+                    <input type="password" id="password" required class="input-password">
+                    <label for="password" class="pass">Пароль</label>
+                    <div class="main__recovery_pass">
+                        <a href="" class="hint" onclick="showDv('3'); return false">Забыли пароль?</a>
+                    </div>
+                </div>
+            </form>
+            <button class="button">Войти</button>
+            <a href="" class="hint" onclick="showDv('1'); return false">Нет аккаунта? Зарегистрируйтесь прямо сейчас</a>
+        </div>
+
+        <div class="main__recovery" id="d3">
+            <div class="main__arrow">
+                <a href="" onclick="showDv('2'); return false"><img src="arrow.png" width="15" height="15"
+                        alt="Закрыть"></a>
+            </div>
+            <label class="label">Восстановление</label>
+            <form class="main__forms">
+                <div class="main__forms_mail">
+                    <input type="email" id="mail" placeholder=" " required class="input-mail">
+                    <label for="mail" class="maiil">E-mail</label>
+                </div>
+            </form>
+            <button class="button">Получить пароль</button>
+        </div>
+    </main>
+    <script src="authorization.js"></script> <!-- Подключение JavaScript -->
+</body>
+
+</html>

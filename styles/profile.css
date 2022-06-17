@@ -77,125 +77,28 @@ section {
 	padding: 50px 0;
 }
 
-/* !--------------Общие классы-------------- */
-.button {
-	display: inline-block;
-
-	min-width: 120px;
-	height: 45px;
-
-	padding: 5px 10px;
-
-	background-color: #17E9E0;
-
-	border-radius: 12px;
-
-	font-size: 17px;
-	line-height: 35px;
-	text-align: center;
-}
-.button:hover {
-	cursor: pointer;
-}
-
+/* !---------------------------------------- */
 .profile {
 	display: flex;
 	flex-wrap: wrap;
 }
-
-.info {
-}
-.info > *:not(:last-child) {
-	margin-bottom: 25px;
+.profile > *:nth-child(2){
+	flex: 0 0 33%;
 }
 
-/* !---------------------------------------- */
-
-/* !-----------Шапка-----------*/
-.header {
-	min-height: 100px;
-
-	padding: 5px 0;
-
-	background-color: rgba(166, 74, 201, 0.65);;
-
-	display: flex;
-	align-items: center;
+@media (max-width: 1100px) {
+	.profile > *:nth-child(2){
+		flex: 0 0 300px;
+	}
 }
 
-.header__content {
-	width: 100%;
-
-	display: grid;
-	grid-template: 100px / 1fr auto 1fr;
-	align-items: center;
-
-	gap: 0 10px;
-}
-
-.header__logo {
-	display: inline-block;
-
-	overflow: hidden;
-
-	width: 90px;
-	height: 57px;
-
-	transition: 0.2s linear;
-}
-.header__logo:hover {
-	padding-left: 5px;
-}
-.header__logo img {
-	width: 100%;
-	height: 100%;
-
-	object-fit: cover;
-}
-
-.header__title {
-	font-size: 50px;
-	font-weight: 500;
-	text-transform: uppercase;
-
-	transition: 0.2s linear;
-}
-.header__title:hover {
-	letter-spacing: 4px;
-}
-
+/* !--------------------------- */
 .header__profile {
 	display: none;
-
-	justify-self: end;
-
-	width: 36px;
-	height: 36px;
-}
-.header__profile:hover {
-	cursor: pointer;
-}
-.header__profile img {
-	width: 100%;
-	height: 100%;
-
-	object-fit: cover;
 }
 
-@media (max-width: 700px) {
-	.header__content {
-		display: block;
-		text-align: center;
-	}
+/* !-----------Шапка-----------*/
 
-	.header__content > *:not(:last-child) {
-		margin-bottom: 40px;
-	}
-
-	.header__title {
-		font-size: 36px;
-	}
-}
 
 /* !----------Основа----------*/
 .main {
@@ -394,13 +297,15 @@ section {
 .profile__discussions {
 	display: none;
 }
+.profile__discussions > *:nth-child(2) {
+	flex: 1 1 auto;
+}
+
 .profile__discussions.active {
 	display: flex;
 }
 
 .discussions__column {
-	flex: 1 1 auto;
-
 	display: flex;
 	flex-direction: column;
 
@@ -771,95 +676,3 @@ section {
 	}
 }
 /* !---------Подвал-----------*/
-.footer {
-	background-color: #A64AC9;
-
-	min-height: 100px;
-
-	display: flex;
-	align-items: center;
-}
-
-.footer__content {
-	width: 100%;
-
-	padding: 30px 10px;
-
-	display: grid;
-	grid-template: 100px / 1fr auto 1fr;
-	align-items: center;
-
-	gap: 0 10px;
-}
-
-.copy {
-
-}
-
-.footer__nav {
-	text-align: center;
-}
-
-.footer__text {
-	margin-bottom: 10px;
-}
-
-.footer__social {
-
-}
-.footer__social > *:not(:last-child) {
-	margin-right: 40px;
-}
-
-
-.social__item {
-	display: inline-block;
-
-	width: 59px;
-	height: 59px;
-
-	opacity: 0.6;
-
-	transition: 0.2s linear;
-}
-.social__item:hover {
-	opacity: 1;
-}
-.social__item img {
-	width: 100%;
-	height: 100%;
-
-	object-fit: cover;
-}
-
-.footer__button {
-	display: none;
-
-	justify-self: end;
-}
-
-@media (max-width: 700px) {
-	.footer {
-		font-size: 14px;
-	}
-
-	.footer__content {
-		display: flex;
-		flex-direction: column-reverse;
-		justify-content: end;
-
-		padding: 10px 5px;
-	}
-	.footer__content > *:not(:first-child) {
-		margin-bottom: 40px;
-	}
-
-	.footer__social > *:not(:last-child) {
-		margin-right: 10px;
-	}
-
-	.social__item {
-		width: 36px;
-		height: 36px;
-	}
-}
