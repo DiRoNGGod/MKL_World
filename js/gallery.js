@@ -1,5 +1,49 @@
 "use strict"
 
+const sliderHeadAll = document.querySelectorAll('.slider__head');
+
+sliderHeadAll[0].addEventListener("mousedown", function(event){   // * События клика на кнопку
+	sliderHeadAll[0].classList.toggle('active');
+	sliderHeadAll[0].nextElementSibling.classList.toggle('active');
+});
+
+sliderHeadAll[1].addEventListener("mousedown", function(event){   // * События клика на кнопку
+	sliderHeadAll[1].classList.toggle('active');
+	sliderHeadAll[1].nextElementSibling.classList.toggle('active');
+});
+
+sliderHeadAll[2].addEventListener("mousedown", function(event){   // * События клика на кнопку
+	sliderHeadAll[2].classList.toggle('active');
+	sliderHeadAll[2].nextElementSibling.classList.toggle('active');
+});
+
+sliderHeadAll[3].addEventListener("mousedown", function(event){   // * События клика на кнопку
+	sliderHeadAll[3].classList.toggle('active');
+	sliderHeadAll[3].nextElementSibling.classList.toggle('active');
+});
+
+sliderHeadAll[4].addEventListener("mousedown", function(event){   // * События клика на кнопку
+	sliderHeadAll[4].classList.toggle('active');
+	sliderHeadAll[4].nextElementSibling.classList.toggle('active');
+});
+
+sliderHeadAll[5].addEventListener("mousedown", function(event){   // * События клика на кнопку
+	sliderHeadAll[5].classList.toggle('active');
+	sliderHeadAll[5].nextElementSibling.classList.toggle('active');
+});
+
+sliderHeadAll[6].addEventListener("mousedown", function(event){   // * События клика на кнопку
+	sliderHeadAll[6].classList.toggle('active');
+	sliderHeadAll[6].nextElementSibling.classList.toggle('active');
+});
+
+sliderHeadAll[7].addEventListener("mousedown", function(event){   // * События клика на кнопку
+	sliderHeadAll[7].classList.toggle('active');
+	sliderHeadAll[7].nextElementSibling.classList.toggle('active');
+});
+
+// !=================================================
+
 let count = 0;   // ^ Счётчик слайдера
 
 const btn = document.querySelectorAll('.btn');
