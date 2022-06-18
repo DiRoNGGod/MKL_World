@@ -86,4 +86,130 @@ section {
 	flex: 1 1 auto
 }
 
+.content {
+}
+
+.slider__head {
+	width: 100%;
+	height: 60px;
+
+	background-color: #17E9E0;
+
+	border-radius: 15px 15px 0 0;
+
+	margin: 0 auto 30px auto;
+	padding: 5px 20px;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.slider__text {
+}
+
+.slider__item {
+	width: 60%;
+
+	margin: 25px auto;
+
+	border-radius: 5px;
+
+	position: relative;
+}
+
+.slider__body {
+	border: 2px #17E9E0 solid;
+
+	background-color: #17E9E0;
+
+	position: relative;
+
+	padding: 0 0 60% 0;
+}
+
+.slider__body img {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	width: 100%;
+	height: 100%;
+
+	object-fit: cover;
+
+	opacity: 0;
+
+	transition: opacity 1s ease;
+}
+.slider__body img.show {
+	opacity: 1;
+}
+
+.slider__dot {
+	height: 30px;
+	width: 100%;
+
+	padding: 5px 0;
+
+	display: flex;
+	justify-content: center;
+}
+.slider__dot > *:not(:last-child) {
+	margin-right: 5px;
+}
+
+.dot__item {
+	width: 20px;
+	height: 20px;
+
+	border-radius: 50%;
+
+	background-color: rgba(166, 74, 201);
+
+	opacity: 0.5;
+
+	transition: 0.2s linear;
+}
+.dot__item:hover {
+	cursor: pointer;
+	opacity: 0.75;
+}
+.dot__item.active {
+	opacity: 1;
+}
+
+/* ! Кнопки слайдера */
+.btn {
+	width: 30px;
+	height: 30px;
+
+	position: absolute;
+	top: 50%;
+
+	transform: translate(0, -50%);
+
+	opacity: 0.7;
+
+	transition: 0.2s linear;
+}
+.btn:hover {
+	opacity: 1;
+
+	cursor: pointer;
+}
+.btn__next {
+	right: -40px;
+}
+
+.btn__prev {
+	left: -40px;
+}
+
+.btn img {
+	height: 100%;
+	width: 100%;
+
+	object-fit: cover;
+}
+
 /* !---------Подвал-----------*/
