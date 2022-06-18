@@ -45,42 +45,51 @@ a {
 }
 
 /* ---- Секция с обсуждениями ---- */
-.discussins__section {
+.discussions__section {
     font-family: 'Noto Sans', sans-serif;
 
+    font-size: 16px;
+
     flex: 1 1 auto;
-
-    display: flex;
+    display: inline-table;
     flex-direction: column;
-    
+
     overflow: hidden;
 }
 
-.discussins__sorting {
-    padding: 10px;
-}
-
-.discussins__topic {
-    background-color: #DC87FC;
-
-    min-height: 100%;
-
+.discussions__topic {
     overflow: hidden;
 
     padding: 30px;
 }
 
-.discussins__name {
-    background-color: #FFB48F;
+.discussions__topic:hover {
+    cursor: pointer;
+    -webkit-filter: drop-shadow(3px 3px 2px #17E9E0);
+    filter: drop-shadow(3px 3px 2px #17E9E0);
+
+    z-index: 1;
+}
+
+.discussions__name {
+    background-color: rgb(255, 180, 143);
 
     border-radius: 10px 10px 0 0;
     padding: 15px;
 
     overflow: hidden;
+
+    text-decoration: none;
+
+    display: block;
 }
 
-.discussins__content {
-    background-color: #A64AC9;
+.discussions__name a:hover {
+    color: #fff;
+}
+
+.discussions__content {
+    background-color: rgb(166, 74, 201, 0.5);
 
     min-height: 120px;
     border-radius: 0 0 10px 10px;
@@ -93,37 +102,118 @@ a {
     overflow: hidden;
 }
 
-.discussins__topic2 {
-    background-color: #FBDC5B;
+@media (max-width: 900px) {
+    .discussions__section {
+        margin: 0;
+    }
 
-    min-height: 100%;
+    .discussions__description {
+        min-width: 90px;
+        align-items: center;
+    }
 
-    overflow: hidden;
+    .discussions__date {
+        min-width: 90px;
+        align-items: center;
+    }
 
-    padding: 30px;
+    .discussions__image img {
+        width: 85px;
+        height: 85px;
+    }
 }
 
-.discussins__name2 {
-    background-color: #FFB48F;
+@media (max-width: 850px) {
+    .discussions__section {
+        margin: 0;
+    }
 
-    border-radius: 10px 10px 0 0;
-    padding: 15px;
+    .discussions__description {
+        font-size: 12px;
 
-    overflow: hidden;
+        min-width: 85px;
+        align-items: center;
+    }
+
+    .discussions__date {
+        font-size: 10px;
+
+        min-width: 85px;
+        align-items: center;
+    }
+
+    .discussions__image img {
+        width: 80px;
+        height: 80px;
+    }
 }
 
-.discussins__content2 {
-    background-color: #A64AC9;
+@media (max-width: 700px) {
+    .discussions__section {
+        display: block;
+    }
 
-    min-height: 120px;
-    border-radius: 0 0 10px 10px;
-    padding: 15px;
+    .discussions__topic {
+        min-width: 100px;
+    }
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    .discussions__description {
+        font-size: 10px;
 
-    overflow: hidden;
+        min-width: 80px;
+        align-items: center;
+    }
+
+    .discussions__date {
+        font-size: 8px;
+
+        min-width: 80px;
+        align-items: center;
+    }
+}
+
+@media (max-width: 670px) {
+    .discussions__description {
+        font-size: 10px;
+
+        align-items: center;
+        min-width: 75px;
+    }
+
+    .discussions__date {
+        font-size: 8px;
+
+        align-items: center;
+        min-width: 75px;
+    }
+
+    .discussions__image img {
+        width: 70px;
+        height: 70px;
+    }
+
+}
+
+@media (max-width: 550px) {
+    .discussions__description {
+        font-size: 8px;
+
+        align-items: center;
+        min-width: 70px;
+    }
+
+    .discussions__date {
+        font-size: 6px;
+
+        align-items: center;
+        min-width: 70px;
+    }
+
+    .discussions__image img {
+        width: 60px;
+        height: 60px;
+    }
+
 }
 
 /* ---- Подвал ---- */
