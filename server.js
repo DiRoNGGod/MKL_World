@@ -46,7 +46,8 @@ app.get('/discussions', (req, res) => {
 });
 
 app.get('/gallery', (req, res) => {
-	const title = "Галлерея";
+	const title = "Галерея";
+	console.log(createPath('gallery'))
 	res.render(createPath('gallery'), {title});
 });
 
