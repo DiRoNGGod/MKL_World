@@ -38,17 +38,8 @@
 		
         <main class="main">
             <!-- Секция линия навигации -->
-            <section class="way__section">
-                <div class="way__content">
-                    <a href="/home" class="way__link">
-                        Главная
-                    </a>
-                    <span> > </span>
-                    <a href="/profile" class="way__link">
-                        Тема обсуждений
-                    </a>
-                </div>
-            </section>
+            <%- include("header/way.ejs")  %>   <!--* Подключение пути -->
+			
             <!-- Секция обсуждений -->
             <section class="section discussins__section">
                 <div class="discussins__topic">
@@ -57,7 +48,7 @@
                     </div>
                     <div class="discussins__content">
                         <div class="discussins__image">
-                            <img src="/images/b-1.png" width="100" height="100" alt="Фото профиля">
+                            <img src="/b-1.png" width="100" height="100" alt="Фото профиля">
                         </div>
                         <h1>Описание обсуждения</h1>
                         <p>Дата создания обсуждения</p>

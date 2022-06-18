@@ -32,6 +32,7 @@ app.get('/home', (req, res) => {
 
 app.get('/profile', (req, res) => {
 	const title = "Профиль";
+	res.render(createPath('way'), {title});
 	res.render(createPath('profile'), {title});
 });
 
@@ -42,11 +43,13 @@ app.get('/reg', (req, res) => {
 
 app.get('/discussions', (req, res) => {
 	const title = "Обсуждение";
+	res.render(createPath('way'), {title});
 	res.render(createPath('discussions'), {title});
 });
 
 app.get('/gallery', (req, res) => {
 	const title = "Галерея";
+	res.render(createPath('way'), {title});
 	res.render(createPath('gallery'), {title});
 });
 
