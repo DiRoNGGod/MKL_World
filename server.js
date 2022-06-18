@@ -1,58 +1,58 @@
-const http = require('http');
-const fs = require('fs');
-const path = require('path');
+const express = require('express');   // ^ Подключаю express 
+const path = require('path');   // ^ Для работы с путями
 
-const PORT = 3000;
+const app = express();
 
-const server = http.createServer((request, response) => {
-	response.setHeader("Content-Type", "text/html");
+app.set('view engine', 'ejs');   // ^ Подключаю шаблонизатор
 
-	const createPath = (page) => path.resolve(__dirname, `${page}.html`);
+const PORT = 3000;   // ^ Порт 
 
-	console.log(path.resolve(__dirname));
+const createPath = (page) => path.resolve(__dirname, 'sample', `${page}.ejs`);   // ^ Функция создания полного пути до html файла
 
-	let basePath = "";
-
-	switch (request.url) {
-		case "/":
-			basePath = createPath("index");
-			response.statusCode = 200;
-			break;
-		case "/profile":
-			basePath = createPath("profile");
-			response.statusCode = 200;
-			break;
-		case "/reg":
-			basePath = createPath("authorization");
-			response.statusCode = 200;
-			break;
-		case "/gallery":
-			basePath = createPath("gallery");
-			response.statusCode = 200;
-			break;
-		default:
-			basePath = createPath("error");
-			response.statusCode = 404;
-			break;
-	}
-
-	fs.readFile(basePath, (err, data) => {
-		if(err) {
-			response.statusCode = 500;
-			response.end();
-		}
-		else {
-			response.write(data);
-			response.end();
-		}
-	});
+app.listen(PORT, (error) => {   // ^ Включаю прослушку порта
+	error ? console.log(error) : console.log(`Прослушка на ${PORT} порту`);
 });
 
-server.listen(PORT, (error) => {
-	if(error) {
-		console.log(error);
-	}
-	else {
-		console.log("Прослушиваю сервер");
-	}
+app.use(express.static('styles'));   // ^ Общедоступная папка
+app.use(express.static('images'));   // ^ Общедоступная папка
+app.use(express.static('js'));   // ^ Общедоступная папка
+
+app.get('/', (req, res) => {
+	const title = "Home";
+	res.render(createPath('index'), {title});
+});
+app.get('/index', (req, res) => {
+	const title = "Home";
+	res.render(createPath('index'), {title});
+});
+app.get('/home', (req, res) => {
+	const title = "Home";
+	res.render(createPath('index'), {title});
+});
+
+app.get('/profile', (req, res) => {
+	const title = "Профиль";
+	res.render(createPath('profile'), {title});
+});
+
+app.get('/reg', (req, res) => {
+	const title = "Вход";
+	res.render(createPath('authorization'), {title});
+});
+
+app.get('/discussions', (req, res) => {
+	const title = "Обсуждение";
+	res.render(createPath('discussions'), {title});
+});
+
+app.get('/gallery', (req, res) => {
+	const title = "Галлерея";
+	res.render(createPath('gallery'), {title});
+});
+
+app.use((req, res) => {
+	const title = "Ошибка";
+	res
+		.status(404)
+		.render(createPath('error'), {title});
 });

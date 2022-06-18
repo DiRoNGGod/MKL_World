@@ -1,0 +1,11 @@
+::-webkit-scrollbar {   /* ^ Ширина скролбара*/
+	width: 7px;
+}
+::-webkit-scrollbar-track {   /* ^ Цвет полосы скролбара*/
+	background: #57E9E0;
+}
+::-webkit-scrollbar-thumb {   /* ^ Ползунок скролбара*/
+	background: #A60AC9;
+
+	border-radius: 3px
+}

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+	<head>
+		<meta charset="UTF-8"> <!-- ~ Кодировка страницы -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> <!-- ~ Адаптивность / Запрет масштабирования -->
+		<!-- ~ <meta name="robots" content="none"> / Запрет индексации страницы -->
+		<!-- <link rel="icon" href="favicon.ico"> -->
+		<title>MKL World</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com"> <!-- ~ Ускорение загрузки шрифта -->
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet"> <!-- ~ Подключение шрифта -->
+		<link rel="stylesheet" href="styles/header/header.css"> <!-- ~ Подключение CSS шапка -->
+		<link rel="stylesheet" href="styles/gallery.css"> <!-- ~ Подключение CSS -->
+		<link rel="stylesheet" href="styles/footer/footer.css"> <!-- ~ Подключение CSS подвал -->
+	</head>
+
+	<!-- !---------------------Тело страницы---------------------------->
+	<body>
+
+		<!-- !------------------Оболочка страницы------------------------->
+		<div class="wrapper">
+			<!-- !------------------Шапка страницы------------------------->
+			<header class="header">
+
+			</header>
+			
+			<!-- !------------------Основа страницы------------------------->
+			<main class="main">
+				<div class="container content">
+					<div class="slider__item">
+						<div class="slider__head">
+							<p class="slider__text">Раздел галлереи</p>
+							<p class="slider__text">Общее количество фото</p>
+						</div>
+
+						<div class="slider__body slider__all">
+							<img src="images/gallery/bts-1.jpg" alt="BTS">
+							<img src="images/gallery/bts-2.jpg" alt="BTS">
+							<img src="images/gallery/bts-3.jpg" alt="BTS">
+							<img src="images/gallery/bts-4.jpg" alt="BTS">
+							<img src="images/gallery/bts-5.jpg" alt="BTS">
+						</div>
+
+						<div class="slider__dot slider__dot_all dot">
+							<span class="dot__item" onclick="currentSliderAll(0)"></span>
+							<span class="dot__item" onclick="currentSliderAll(1)"></span>
+							<span class="dot__item" onclick="currentSliderAll(2)"></span>
+							<span class="dot__item" onclick="currentSliderAll(3)"></span>
+							<span class="dot__item" onclick="currentSliderAll(4)"></span>
+						</div>
+
+						<div class="btn btn__next" onclick="slideNextAll(1)">
+							<img src="images/right-arrow.png" alt="">
+						</div>
+						<div class="btn btn__prev" onclick="slideNextAll(-1)">
+							<img src="images/left-arrow.png" alt="">
+						</div>
+					</div>
+
+					<div class="slider__item">
+						<div class="slider__head">
+							<p class="slider__text">Раздел галлереи</p>
+							<p class="slider__text">Общее количество фото</p>
+						</div>
+
+						<div class="slider__body slider__hope">
+							<img src="images/gallery/jhope-1.jpg" alt="BTS">
+							<img src="images/gallery/jhope-2.jpg" alt="BTS">
+							<img src="images/gallery/jhope-3.jpg" alt="BTS">
+							<img src="images/gallery/jhope-4.jpg" alt="BTS">
+							<img src="images/gallery/jhope-5.jpg" alt="BTS">
+						</div>
+
+						<div class="slider__dot slider__dot_hope dot">
+							<span class="dot__item" onclick="currentSliderHope(0)"></span>
+							<span class="dot__item" onclick="currentSliderHope(1)"></span>
+							<span class="dot__item" onclick="currentSliderHope(2)"></span>
+							<span class="dot__item" onclick="currentSliderHope(3)"></span>
+							<span class="dot__item" onclick="currentSliderHope(4)"></span>
+						</div>
+
+						<div class="btn btn__next" onclick="slideNextHope(1)">
+							<img src="images/right-arrow.png" alt="">
+						</div>
+						<div class="btn btn__prev" onclick="slideNextHope(-1)">
+							<img src="images/left-arrow.png" alt="">
+						</div>
+					</div>
+
+					<div class="slider__item">
+						<div class="slider__head">
+							<p class="slider__text">Раздел галлереи</p>
+							<p class="slider__text">Общее количество фото</p>
+						</div>
+
+						<div class="slider__body slider__jimin">
+							<img src="images/gallery/jimin-1.jpg" alt="BTS">
+							<img src="images/gallery/jimin-2.jpg" alt="BTS">
+							<img src="images/gallery/jimin-3.jpg" alt="BTS">
+							<img src="images/gallery/jimin-4.jpg" alt="BTS">
+							<img src="images/gallery/jimin-5.jpg" alt="BTS">
+						</div>
+
+						<div class="slider__dot slider__dot_jimin dot">
+							<span class="dot__item" onclick="currentSliderJimin(0)"></span>
+							<span class="dot__item" onclick="currentSliderJimin(1)"></span>
+							<span class="dot__item" onclick="currentSliderJimin(2)"></span>
+							<span class="dot__item" onclick="currentSliderJimin(3)"></span>
+							<span class="dot__item" onclick="currentSliderJimin(4)"></span>
+						</div>
+
+						<div class="btn btn__next" onclick="slideNextJimin(1)">
+							<img src="images/right-arrow.png" alt="">
+						</div>
+						<div class="btn btn__prev" onclick="slideNextJimin(-1)">
+							<img src="images/left-arrow.png" alt="">
+						</div>
+					</div>
+
+					<div class="slider__item">
+						<div class="slider__head">
+							<p class="slider__text">Раздел галлереи</p>
+							<p class="slider__text">Общее количество фото</p>
+						</div>
+
+						<div class="slider__body slider__jin">
+							<img src="images/gallery/jin-1.jpg" alt="BTS">
+							<img src="images/gallery/jin-2.jpg" alt="BTS">
+							<img src="images/gallery/jin-3.jpg" alt="BTS">
+							<img src="images/gallery/jin-4.jpg" alt="BTS">
+							<img src="images/gallery/jin-5.jpg" alt="BTS">
+						</div>
+
+						<div class="slider__dot slider__dot_jin dot">
+							<span class="dot__item" onclick="currentSliderJin(0)"></span>
+							<span class="dot__item" onclick="currentSliderJin(1)"></span>
+							<span class="dot__item" onclick="currentSliderJin(2)"></span>
+							<span class="dot__item" onclick="currentSliderJin(3)"></span>
+							<span class="dot__item" onclick="currentSliderJin(4)"></span>
+						</div>
+
+						<div class="btn btn__next" onclick="slideNextJin(1)">
+							<img src="images/right-arrow.png" alt="">
+						</div>
+						<div class="btn btn__prev" onclick="slideNextJin(-1)">
+							<img src="images/left-arrow.png" alt="">
+						</div>
+					</div>
+
+					<div class="slider__item">
+						<div class="slider__head">
+							<p class="slider__text">Раздел галлереи</p>
+							<p class="slider__text">Общее количество фото</p>
+						</div>
+
+						<div class="slider__body slider__jung">
+							<img src="images/gallery/jungkook-1.jpg" alt="BTS">
+							<img src="images/gallery/jungkook-2.jpg" alt="BTS">
+							<img src="images/gallery/jungkook-3.jpg" alt="BTS">
+							<img src="images/gallery/jungkook-4.jpg" alt="BTS">
+							<img src="images/gallery/jungkook-5.jpg" alt="BTS">
+						</div>
+
+						<div class="slider__dot slider__dot_jung dot">
+							<span class="dot__item" onclick="currentSliderJung(0)"></span>
+							<span class="dot__item" onclick="currentSliderJung(1)"></span>
+							<span class="dot__item" onclick="currentSliderJung(2)"></span>
+							<span class="dot__item" onclick="currentSliderJung(3)"></span>
+							<span class="dot__item" onclick="currentSliderJung(4)"></span>
+						</div>
+
+						<div class="btn btn__next" onclick="slideNextJung(1)">
+							<img src="images/right-arrow.png" alt="">
+						</div>
+						<div class="btn btn__prev" onclick="slideNextJung(-1)">
+							<img src="images/left-arrow.png" alt="">
+						</div>
+					</div>
+
+					<div class="slider__item">
+						<div class="slider__head">
+							<p class="slider__text">Раздел галлереи</p>
+							<p class="slider__text">Общее количество фото</p>
+						</div>
+
+						<div class="slider__body slider__namj">
+							<img src="images/gallery/namjoon-1.jpg" alt="BTS">
+							<img src="images/gallery/namjoon-2.jpg" alt="BTS">
+							<img src="images/gallery/namjoon-3.jpg" alt="BTS">
+							<img src="images/gallery/namjoon-4.jpg" alt="BTS">
+							<img src="images/gallery/namjoon-5.jpg" alt="BTS">
+						</div>
+
+						<div class="slider__dot slider__dot_namj dot">
+							<span class="dot__item" onclick="currentSliderNamj(0)"></span>
+							<span class="dot__item" onclick="currentSliderNamj(1)"></span>
+							<span class="dot__item" onclick="currentSliderNamj(2)"></span>
+							<span class="dot__item" onclick="currentSliderNamj(3)"></span>
+							<span class="dot__item" onclick="currentSliderNamj(4)"></span>
+						</div>
+
+						<div class="btn btn__next" onclick="slideNextNamj(1)">
+							<img src="images/right-arrow.png" alt="">
+						</div>
+						<div class="btn btn__prev" onclick="slideNextNamj(-1)">
+							<img src="images/left-arrow.png" alt="">
+						</div>
+					</div>
+
+					<div class="slider__item">
+						<div class="slider__head">
+							<p class="slider__text">Раздел галлереи</p>
+							<p class="slider__text">Общее количество фото</p>
+						</div>
+
+						<div class="slider__body slider__taeh">
+							<img src="images/gallery/taehyung-1.jpg" alt="BTS">
+							<img src="images/gallery/taehyung-2.jpg" alt="BTS">
+							<img src="images/gallery/taehyung-3.jpg" alt="BTS">
+							<img src="images/gallery/taehyung-4.jpg" alt="BTS">
+							<img src="images/gallery/taehyung-5.jpg" alt="BTS">
+						</div>
+
+						<div class="slider__dot slider__dot_taeh dot">
+							<span class="dot__item" onclick="currentSliderTaeh(0)"></span>
+							<span class="dot__item" onclick="currentSliderTaeh(1)"></span>
+							<span class="dot__item" onclick="currentSliderTaeh(2)"></span>
+							<span class="dot__item" onclick="currentSliderTaeh(3)"></span>
+							<span class="dot__item" onclick="currentSliderTaeh(4)"></span>
+						</div>
+
+						<div class="btn btn__next" onclick="slideNextTaeh(1)">
+							<img src="images/right-arrow.png" alt="">
+						</div>
+						<div class="btn btn__prev" onclick="slideNextTaeh(-1)">
+							<img src="images/left-arrow.png" alt="">
+						</div>
+					</div>
+
+					<div class="slider__item">
+						<div class="slider__head">
+							<p class="slider__text">Раздел галлереи</p>
+							<p class="slider__text">Общее количество фото</p>
+						</div>
+
+						<div class="slider__body slider__yoon">
+							<img src="images/gallery/yoongi-1.jpg" alt="BTS">
+							<img src="images/gallery/yoongi-2.jpg" alt="BTS">
+							<img src="images/gallery/yoongi-3.jpg" alt="BTS">
+							<img src="images/gallery/yoongi-4.jpg" alt="BTS">
+							<img src="images/gallery/yoongi-5.jpg" alt="BTS">
+						</div>
+
+						<div class="slider__dot slider__dot_yoon dot">
+							<span class="dot__item" onclick="currentSliderYoon(0)"></span>
+							<span class="dot__item" onclick="currentSliderYoon(1)"></span>
+							<span class="dot__item" onclick="currentSliderYoon(2)"></span>
+							<span class="dot__item" onclick="currentSliderYoon(3)"></span>
+							<span class="dot__item" onclick="currentSliderYoon(4)"></span>
+						</div>
+
+						<div class="btn btn__next" onclick="slideNextYoon(1)">
+							<img src="images/right-arrow.png" alt="">
+						</div>
+						<div class="btn btn__prev" onclick="slideNextYoon(-1)">
+							<img src="images/left-arrow.png" alt="">
+						</div>
+					</div>
+				</div>
+			</main>
+
+			<!-- !------------------Подвал страницы------------------------->
+			<footer class="footer">
+				
+			</footer>
+		</div>
+		
+		<script src="js/gallery.js"></script> <!-- ~ Подключение JavaScript -->
+	</body>
+
+</html>
