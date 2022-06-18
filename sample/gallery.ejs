@@ -9,6 +9,7 @@
 		<title>MKL World | <%= title %></title>
 		<link rel="preconnect" href="https://fonts.googleapis.com"> <!-- ~ Ускорение загрузки шрифта -->
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet"> <!-- ~ Подключение шрифта -->
+		<link rel="stylesheet" href="/zeroing.css"> <!-- ~ Подключение CSS обнуления -->
 		<link rel="stylesheet" href="/scroll-bar.css"> <!-- ~ Подключение CSS скролбара -->
 		<link rel="stylesheet" href="/header.css"> <!-- ~ Подключение CSS шапка -->
 		<link rel="stylesheet" href="/gallery.css"> <!-- ~ Подключение CSS -->
@@ -25,6 +26,20 @@
 			
 			<!-- !------------------Основа страницы------------------------->
 			<main class="main">
+				<section class="way__section">
+					<div class="way__content">
+						<a href="/home" class="way__link">
+							Главная
+						</a>
+
+						<span> > </span>
+
+						<a href="/gallery" class="way__link">
+							Галерея
+						</a>
+					</div>
+				</section>
+
 				<div class="container content">
 					<div class="slider__item">
 						<a href="#all" class="slider__head slider__head_all">

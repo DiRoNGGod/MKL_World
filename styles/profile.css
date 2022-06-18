@@ -108,21 +108,7 @@ section {
 }
 
 /* !----------Навигация страницы--------- */
-.way__section {
-	padding: 25px 40px;
 
-	background-color: rgba(252, 205, 4, 0.5);
-}
-
-.way__content {
-}
-
-.way__link {
-	transition: 0.2s linear;
-}
-.way__link:hover {
-	font-weight: 500;
-}
 
 /* !----------Профиль--------------- */
 
