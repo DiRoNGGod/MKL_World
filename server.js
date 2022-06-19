@@ -11,12 +11,9 @@ const db = new sqlite.Database(path.resolve(__dirname, "database", "forum.db"), 
 	}
 });
 
-const authRouter = require('/authRouter');
-
 const app = express();
 
 app.set('view engine', 'ejs');   // ^ Подключаю шаблонизатор
-app.use("/auth", authRouter);
 
 const PORT = 3000;   // ^ Порт 
 
