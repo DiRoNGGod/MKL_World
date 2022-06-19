@@ -31,7 +31,7 @@
 	font-weight: 700;
 }
 
-.button {
+.button_error {
 	font-size: 36px;
 
 	padding: 15px 25px;
@@ -42,7 +42,7 @@
 
 	transition: 0.2s linear;
 }
-.button:hover {
+.button_error:hover {
 	cursor: pointer;
 
 	background-color: #9945bb;
@@ -58,7 +58,7 @@
 		font-size: 160px;
 	}
 
-	.button {
+	.button_error {
 		font-size: 30px;
 	
 		padding: 10px 15px;
@@ -73,7 +73,7 @@
 		font-size: 120px;
 	}
 
-	.button {
+	.button_error {
 		font-size: 24px;
 	
 		padding: 5px 10px;

@@ -1,5 +1,15 @@
 const express = require('express');   // ^ Подключаю express 
 const path = require('path');   // ^ Для работы с путями
+// const sqlite = require('sqlite3');
+
+// const db = new sqlite.Database(path.resolve(__dirname, "database", "forum.db"), err =>{
+// 	if(err) {
+// 		console.log(err);
+// 	}
+// 	else {
+// 		console.log("Подключение к БД успешно!")
+// 	}
+// });
 
 const app = express();
 
@@ -19,7 +29,8 @@ app.use(express.static('js'));   // ^ Общедоступная папка
 
 app.get('/', (req, res) => {
 	const title = "Home";
-	res.render(createPath('index'), {title});
+	const fileName = "/home.css";
+	res.render(createPath('index'), {title, fileName});
 });
 app.get('/index', (req, res) => {
 	const title = "Home";
@@ -32,7 +43,6 @@ app.get('/home', (req, res) => {
 
 app.get('/profile', (req, res) => {
 	const title = "Профиль";
-	res.render(createPath('way'), {title});
 	res.render(createPath('profile'), {title});
 });
 
@@ -43,13 +53,11 @@ app.get('/reg', (req, res) => {
 
 app.get('/discussions', (req, res) => {
 	const title = "Обсуждение";
-	res.render(createPath('way'), {title});
 	res.render(createPath('discussions'), {title});
 });
 
 app.get('/gallery', (req, res) => {
 	const title = "Галерея";
-	res.render(createPath('way'), {title});
 	res.render(createPath('gallery'), {title});
 });
 

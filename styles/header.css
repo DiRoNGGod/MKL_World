@@ -52,6 +52,8 @@
 	align-items: center;
 
 	gap: 0 10px;
+
+	overflow: visible;
 }
 
 .header__logo {
