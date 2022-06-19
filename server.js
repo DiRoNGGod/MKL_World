@@ -1,19 +1,22 @@
 const express = require('express');   // ^ Подключаю express 
 const path = require('path');   // ^ Для работы с путями
-// const sqlite = require('sqlite3');
+const sqlite = require('sqlite3');
 
-// const db = new sqlite.Database(path.resolve(__dirname, "database", "forum.db"), err =>{
-// 	if(err) {
-// 		console.log(err);
-// 	}
-// 	else {
-// 		console.log("Подключение к БД успешно!")
-// 	}
-// });
+const db = new sqlite.Database(path.resolve(__dirname, "database", "forum.db"), err =>{
+	if(err) {
+		console.log(err);
+	}
+	else {
+		console.log("Подключение к БД успешно!")
+	}
+});
+
+const authRouter = require('/authRouter');
 
 const app = express();
 
 app.set('view engine', 'ejs');   // ^ Подключаю шаблонизатор
+app.use("/auth", authRouter);
 
 const PORT = 3000;   // ^ Порт 
 
@@ -59,6 +62,11 @@ app.get('/discussions', (req, res) => {
 app.get('/gallery', (req, res) => {
 	const title = "Галерея";
 	res.render(createPath('gallery'), {title});
+});
+
+app.get('/wiki', (req, res) => {
+	const title = "Википедия";
+	res.render(createPath('wiki'), {title});
 });
 
 app.use((req, res) => {
