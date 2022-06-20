@@ -6,7 +6,7 @@
 
 <head>
     <%- include("header/head.ejs") %>
-    <link rel="stylesheet" href="/discussions.css">   <!-- ~ Подключение основных стилей -->
+        <link rel="stylesheet" href="/discussions.css"> <!-- ~ Подключение основных стилей -->
 </head>
 <!-- Отображаемое тело страницы -->
 
@@ -19,44 +19,126 @@
             </a>
         </div>
         <!-- Шапка сайта -->
-		<%- include("header/header.ejs")  %>   <!--* Подключение шапки -->
-		
-        <main class="main">
-            <!-- Секция линия навигации -->
-            <%- include("header/way.ejs")  %>   <!--* Подключение пути -->
-			
-            <!-- Секция обсуждений -->
-            <section class="section discussions__section">
-                <div class="discussions__topic">
-                    <div class="discussions__name">
-                        Тема обсуждения
-                    </div>
-<<<<<<< Updated upstream
-                    <div class="discussins__content">
-                        <div class="discussins__image">
-                            <img src="/b-1.png" width="100" height="100" alt="Фото профиля">
-=======
-                    <div class="discussions__status">
-                        Статус обсуждения: закрыто/открыто
-                    </div>
-                    <div class="discussions__content">
-                        <div class="discussions__image">
-                            <img src="/b-1.png" width="100" height="100" alt="Фото профиля">
-                        </div>
-                        <div class="discussions__description">
-                            Описание обсуждения
-                        </div>
-                        <div class="discussions__date">
-                            |Дата создания обсуждения|
->>>>>>> Stashed changes
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <%- include("header/header.ejs") %>
+            <!--* Подключение шапки -->
 
-        </main>
+            <main class="main">
+                <!-- Секция линия навигации -->
+                <%- include("header/way.ejs") %>
+                    <!--* Подключение пути -->
 
-        <%- include("footer/footer.ejs")  %>   <!--* Подключение подвала -->
+                    <!-- Секция обсуждений -->
+                    <section class="section discussions__section">
+                        <div class="discussions__topic">
+                            <div class="discussions__header">
+                                <div class="discussions__name">
+                                    Тема обсуждения
+                                </div>
+                                <div class="discussions__status">
+                                    Статус обсуждения: закрыто/открыто
+                                </div>
+                            </div>
+                            <div class="discussions__content">
+                                <div class="discussions__image">
+                                    <img src="/b-1.png" width="100" height="100" alt="Фото профиля">
+                                    <p class="discussions__nikname">Никнейм пользователя</p>
+                                </div>
+                                <div class="discussions__description">
+                                    Описание обсуждения
+                                </div>
+                                <div class="discussions__date">
+                                    |Дата создания обсуждения|
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="section discussions__section">
+                        <div class="discussions__topic">
+                            <div class="discussions__head">
+                                <div class="discussions__title">
+                                    #1
+                                </div>
+                                <div class="discussions__time">
+                                    |Дата ответа|
+                                </div>
+                            </div>
+                            <div class="discussions__contentt">
+                                <div class="discussions__images">
+                                    <img src="/b-1.png" width="100" height="100" alt="Фото профиля">
+                                    <p class="discussions__nikname">Никнейм пользователя</p>
+                                </div>
+                                <div class="discussions__comment">
+                                    комментарий другого пользователя
+                                </div>
+                                <div class="discussions__answer">
+                                    <a href="">Ответить</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="section discussions__section">
+                        <div class="discussions__topic">
+                            <div class="discussions__head">
+                                <div class="discussions__title">
+                                    #2
+                                </div>
+                                <div class="discussions__time">
+                                    |Дата ответа|
+                                </div>
+                            </div>
+                            <div class="discussions__contentt">
+                                <div class="discussions__images">
+                                    <img src="/b-1.png" width="100" height="100" alt="Фото профиля">
+                                    <p class="discussions__nikname">Никнейм пользователя</p>
+                                </div>
+                                <div class="discussions__comment">
+                                    комментарий другого пользователя
+                                </div>
+                                <div class="discussions__answer">
+                                    <a href="">Ответить</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="section discussions__section">
+                        <div class="discussions__topic">
+                            <div class="discussions__head">
+                                <div class="discussions__title">
+                                    #3
+                                </div>
+                                <div class="discussions__time">
+                                    |Дата ответа|
+                                </div>
+                            </div>
+                            <div class="discussions__conttent">
+                                <div class="discussions__images">
+                                    <img src="/b-1.png" width="100" height="100" alt="Фото профиля">
+                                    <p class="discussions__nikname">Никнейм пользователя</p>
+                                </div>
+                                <div class="discussions__comment">
+                                    комментарий другого пользователя
+                                </div>
+                                <div class="discussions__answer">
+                                    <a href="">Ответить</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="section answer__section">
+                        <div class="answer__window">
+                            <div class="answer__comment">
+                                Введите ваш ответ
+                            </div>
+                            <form class="answer__forms">
+                                    <input type="text" placeholder="Введите ваше сообщение" class="answer__input">
+                                    <button formnovalidate type="submit" class="answer__button">Отправить</button>
+                            </form>
+                        </div>
+                    </section>
+            </main>
+
+            <%- include("footer/footer.ejs") %>
+                <!--* Подключение подвала -->
     </div>
 </body>
 
