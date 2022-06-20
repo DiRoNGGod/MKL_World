@@ -1,6 +1,9 @@
+const { response } = require('express');
 const express = require('express');   // ^ Подключаю express 
+const { request } = require('http');
 const path = require('path');   // ^ Для работы с путями
 const sqlite = require('sqlite3');
+const bodyParser = require("body-parser");
 
 const db = new sqlite.Database(path.resolve(__dirname, "database", "forum.db"), err =>{
 	if(err) {
@@ -11,12 +14,9 @@ const db = new sqlite.Database(path.resolve(__dirname, "database", "forum.db"), 
 	}
 });
 
-const authRouter = require('/authRouter');
-
 const app = express();
 
 app.set('view engine', 'ejs');   // ^ Подключаю шаблонизатор
-app.use("/auth", authRouter);
 
 const PORT = 3000;   // ^ Порт 
 
@@ -29,11 +29,12 @@ app.listen(PORT, (error) => {   // ^ Включаю прослушку порт�
 app.use(express.static('styles'));   // ^ Общедоступная папка
 app.use(express.static('images'));   // ^ Общедоступная папка
 app.use(express.static('js'));   // ^ Общедоступная папка
+app.use(bodyParser.json());   // ^ Парсер json объекта
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
 	const title = "Home";
-	const fileName = "/home.css";
-	res.render(createPath('index'), {title, fileName});
+	res.render(createPath('index'), {title});
 });
 app.get('/index', (req, res) => {
 	const title = "Home";
@@ -46,6 +47,7 @@ app.get('/home', (req, res) => {
 
 app.get('/profile', (req, res) => {
 	const title = "Профиль";
+	res.render(createPath('way'), {title});
 	res.render(createPath('profile'), {title});
 });
 
@@ -56,18 +58,24 @@ app.get('/reg', (req, res) => {
 
 app.get('/discussions', (req, res) => {
 	const title = "Обсуждение";
+	res.render(createPath('way'), {title});
 	res.render(createPath('discussions'), {title});
 });
 
 app.get('/gallery', (req, res) => {
 	const title = "Галерея";
+	res.render(createPath('way'), {title});
 	res.render(createPath('gallery'), {title});
 });
 
-app.get('/wiki', (req, res) => {
-	const title = "Википедия";
-	res.render(createPath('wiki'), {title});
+app.post('/register', (request, response) => {
+	const {login, email, password} = request.body;
+
+	db
+	.all(`INSERT INTO users ("login", "email", "password") VALUES("${login}", "${email}", "${password}")`)
+	.close();
 });
+
 
 app.use((req, res) => {
 	const title = "Ошибка";
@@ -75,3 +83,11 @@ app.use((req, res) => {
 		.status(404)
 		.render(createPath('error'), {title});
 });
+
+
+
+/**
+ * Что
+ * Смотри, есть страница с формо регистрации, и надо как-то сохранить данные в БД
+ * Я в вк писать буду, команды долго выполняются....
+ */

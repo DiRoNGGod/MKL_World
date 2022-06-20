@@ -17,26 +17,22 @@
                 <a href="/home"><img src="/close.png" width="15" height="15" alt="Закрыть"></a>
             </div>
             <label class="label">Зарегистрироваться</label>
-            <form class="main__forms">
+            <form class="main__forms" id="register">
                 <div class="main__forms_login">
-                    <input type="text" id="name" required class="input-login">
+                    <input type="text" id="name" name="name" required class="input-login">
                     <label for="name" class="login">Логин</label>
                 </div>
                 <div class="main__forms_mail">
-                    <input type="email" id="mail" placeholder=" " required class="input-mail">
+                    <input type="email" id="mail" name="email" placeholder=" " required class="input-mail">
                     <label for="mail" class="maiil">E-mail</label>
                 </div>
                 <div class="main__forms_password">
-                    <input type="password" id="password" required class="input-password">
+                    <input type="password" id="password" name="password" required class="input-password">
                     <label for="password" class="pass">Пароль</label>
                 </div>
-                <div class="main__forms_password">
-                    <input type="password" id="password" required class="input-password">
-                    <label for="password" class="pass">Подтвердите пароль</label>
-                </div>
+                <button class="button">Зарегистрироваться</button>
             </form>
-            <button class="button">Зарегистрироваться</button>
-            <a href="" class="hint" onclick="showDv('2'); return false">Есть аккаунт? Зайдите прямо сейчас</a></button>
+            <a href="" class="hint" onclick="showDv('2'); return false">Есть аккаунт? Зайдите прямо сейчас</a>
         </div>
 
         <div class="main__entrance" id="d2">
@@ -50,7 +46,7 @@
                     <label for="name" class="login">Логин</label>
                 </div>
                 <div class="main__forms_password">
-                    <input type="password" id="password" required class="input-password">
+                    <input type="password"  required class="input-password">
                     <label for="password" class="pass">Пароль</label>
                     <div class="main__recovery_pass">
                         <a href="" class="hint" onclick="showDv('3'); return false">Забыли пароль?</a>
