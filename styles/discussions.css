@@ -35,10 +35,12 @@ a {
     font-size: 16px;
 
     flex: 1 1 auto;
-    display: inline-table;
+    display: flex;
     flex-direction: column;
 
     overflow: hidden;
+
+    align-items: center;
 }
 
 .discussions__topic {
@@ -47,36 +49,48 @@ a {
     padding: 30px;
 }
 
-.discussions__topic:hover {
-    cursor: pointer;
-    -webkit-filter: drop-shadow(3px 3px 2px #17E9E0);
-    filter: drop-shadow(3px 3px 2px #17E9E0);
+.discussions__header {
+    display: flex;
+    justify-content: space-between;
 
-    z-index: 1;
-}
-
-.discussions__name {
     background-color: rgb(255, 180, 143);
 
     border-radius: 10px 10px 0 0;
     padding: 15px;
 
     overflow: hidden;
+}
 
-    text-decoration: none;
+.discussions__name {
+    display: block;
+}
+
+.discussions__status {
+    font-size: 10px;
 
     display: block;
 }
 
-.discussions__name a:hover {
-    color: #fff;
+.discussions__image {
+
+    border-right: 1px solid #A64AC9;
+}
+
+.discussions__image img {
+    margin-left: 20px;
+    margin-right: 35px;
+}
+
+.discussions__nikname {
+    font-size: 12px;
 }
 
 .discussions__content {
     background-color: rgb(166, 74, 201, 0.5);
 
     min-height: 120px;
-    border-radius: 0 0 10px 10px;
+    min-width: 1200px;
+    
     padding: 15px;
 
     display: flex;
@@ -86,7 +100,13 @@ a {
     overflow: hidden;
 }
 
-@media (max-width: 900px) {
+.discussions__date {
+    font-size: 10px;
+
+    align-self: start;
+}
+
+/* @media (max-width: 900px) {
     .discussions__section {
         margin: 0;
     }
@@ -198,6 +218,202 @@ a {
         height: 60px;
     }
 
+} */
+
+/* ---- Комментарии ---- */
+.discussions__head {
+    display: flex;
+    justify-content: space-between;
+
+    background-color: #17E9E0;
+
+    padding: 10px;
+
+    overflow: hidden;
+}
+
+.discussions__title {
+    padding-left: 10px;
+}
+
+.discussions__time {
+    font-size: 10px;
+}
+
+.discussions__name {
+    display: block;
+}
+
+.discussions__status {
+    font-size: 10px;
+
+    display: block;
+}
+
+.discussions__images {
+    border-right: 1px solid #14B5AE;
+}
+
+.discussions__images img {
+    margin-left: 20px;
+    margin-right: 35px;
+}
+
+.discussions__nikname {
+    font-size: 12px;
+}
+
+.discussions__contentt {
+    background-color: rgb(23, 233, 224, 0.5);
+
+    min-height: 120px;
+    min-width: 1200px;
+    
+    padding: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    overflow: hidden;
+}
+
+.discussions__comment {
+    margin-right: 30px;
+}
+
+.discussions__conttent {
+    background-color: rgb(23, 233, 224, 0.5);
+
+    min-height: 120px;
+    min-width: 1200px;
+    border-radius: 0 0 10px 10px;
+    
+    padding: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    overflow: hidden;
+}
+
+/* ---- Форма ответа ---- */
+.answer__section {
+    font-family: 'Noto Sans', sans-serif;
+
+    font-size: 16px;
+
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    align-items: center;
+}
+
+.answer__window {
+    overflow: hidden;
+
+    padding: 30px;
+}
+
+.answer__comment {
+    display: flex;
+    justify-content: space-between;
+
+    background-color: rgb(255, 180, 143);
+
+    padding: 15px;
+
+    overflow: hidden;
+}
+
+.answer__forms {
+    background-color: rgb(166, 74, 201, 0.5);
+
+    min-height: 120px;
+    min-width: 1200px;
+    
+    padding: 15px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+.answer__input {
+    min-height: 120px;
+    min-width: 1050px;
+
+    padding: 10px;
+
+    border: none;
+    border-radius: 10px;
+
+    font: inherit;
+    font-size: 15px;
+    color: #000;
+
+    background-color: #F5E6CC;
+}
+
+.answer__input:active {
+    border: none;
+}
+
+/* ---- Кнопка ---- */
+.answer__button {
+    margin-top: 20px;
+
+    background-color: #A64AC9;
+    color: #fff;
+    font-size: 15px;
+
+    border-radius: 5px;
+    border: none;
+
+    height: 30px;
+    width: 90px;
+
+    align-items: center;
+}
+
+.answer__button:hover {
+    background-color: #682184;
+}
+
+.answer__button:active {
+    box-shadow: 2px 2px 2px #000;
+}
+
+/* ---- Статус обсуждения ---- */
+.status__discussions {
+    font-family: 'Noto Sans', sans-serif;
+
+    font-size: 16px;
+
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    align-items: center;
+}
+
+.status__discussions h1 {
+    border-radius: 10px;
+
+    background-color: #17E9E0;
+
+    min-width: 200px;
+    margin-bottom: 30px;
+    
+    text-align: center;
 }
 
 /* ---- Подвал ---- */
