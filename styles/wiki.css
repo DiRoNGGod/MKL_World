@@ -1,0 +1,194 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.2;
+
+    background-color: #F5E6CC;
+}
+
+a {
+    color: #000;
+}
+
+.main {
+	flex: 1 1 auto;
+
+	position: relative;
+}
+
+/* --------------------- */
+
+.wrapper {
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100%;
+}
+
+/* ---- Шапка ---- */
+
+/* ---- Навигация ---- */
+.wiki__button {
+    flex: 1 1 auto;
+
+	padding: 15px 0;
+
+	text-align: center;
+	font-size: 25px;
+
+	background-color: #17E9E0;
+
+	border-radius: 15px 15px 0 0;
+
+	user-select: none;   /* * Отключение возможности выделения текста */
+
+	transition: 0.2s linear;
+}
+
+.wiki__button:hover {
+	background-color: #1dfff4;
+
+	cursor: pointer;
+}
+
+.wiki__button.active {
+	background-color: #10A19B;
+}
+
+.wiki__button.active:hover {
+	background-color: #0c726f;
+}
+
+.wiki__section {
+	padding: 50px 0;
+}
+
+.wiki {
+	display: flex;
+	flex-wrap: wrap;
+}
+.wiki > *:nth-child(2){
+	flex: 0 0 33%;
+}
+
+.wiki__nav {
+	margin-bottom: 30px;
+}
+
+.nav__content {
+	display: flex;
+}
+
+.nav__item {
+	flex: 1 1 auto;
+
+	padding: 15px 0;
+
+	text-align: center;
+	font-size: 25px;
+
+    width: 300px;
+
+	background-color: #17E9E0;
+
+	border-radius: 15px 15px 0 0;
+
+	user-select: none;   /* * Отключение возможности выделения текста */
+
+	transition: 0.2s linear;
+}
+.nav__item:hover {
+	background-color: #1dfff4;
+
+	cursor: pointer;
+}
+.nav__item.active {
+	background-color: #10A19B;
+}
+.nav__item.active:hover {
+	background-color: #0c726f;
+}
+
+/* ---- Выпадающий список ---- */
+.wiki__button {
+    width: 300px;
+    height: 60px;
+
+    object-fit: cover;
+}
+
+.dropdown {
+    position: relative;
+    display: block;
+
+    justify-self: end;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    text-align: left;
+    margin-left: -130px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {
+    background-color: #ddd;
+    align-content: left;
+}
+
+.show {
+    display: block;
+}
+
+/* ---- Кнопка наверх ---- */
+.button__up {
+    position: fixed;
+    bottom: 60px;
+    right: 60px;
+
+    width: 30px;
+    height: 30px;
+
+    background-color: #FCDC55;
+    border-radius: 50%;
+
+    font-size: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0.5;
+
+    transition: 0.3s linear;
+
+    z-index: 1;
+}
+
+.button__up:hover {
+    color: #fff;
+
+    background-color: #FCCD04;
+
+    opacity: 1;
+
+    cursor: pointer;
+}
+
+.button__up a p {
+    padding: 30px 5px;
+
+}
