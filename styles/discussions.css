@@ -390,6 +390,32 @@ a {
     box-shadow: 2px 2px 2px #000;
 }
 
+/* ---- Статус обсуждения ---- */
+.status__discussions {
+    font-family: 'Noto Sans', sans-serif;
+
+    font-size: 16px;
+
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    align-items: center;
+}
+
+.status__discussions h1 {
+    border-radius: 10px;
+
+    background-color: #17E9E0;
+
+    min-width: 200px;
+    margin-bottom: 30px;
+    
+    text-align: center;
+}
+
 /* ---- Подвал ---- */
 
 /* ---- Кнопка наверх ---- */
