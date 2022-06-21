@@ -68,12 +68,12 @@ app.get('/gallery', (req, res) => {
 	res.render(createPath('gallery'), {title});
 });
 
-app.post('/register', (request, response) => {
-	const {login, email, password} = request.body;
+app.post('/register', (req, res) => {
+	const {login, email, password} = req.body;
 
-	db
-	.all(`INSERT INTO users ("login", "email", "password") VALUES("${login}", "${email}", "${password}")`)
-	.close();
+	console.log(login, email, password);
+
+	db.all(`INSERT INTO users ("login", "email", "password") VALUES("${login}", "${email}", "${password}")`);
 });
 
 
@@ -83,11 +83,3 @@ app.use((req, res) => {
 		.status(404)
 		.render(createPath('error'), {title});
 });
-
-
-
-/**
- * Что
- * Смотри, есть страница с формо регистрации, и надо как-то сохранить данные в БД
- * Я в вк писать буду, команды долго выполняются....
- */
