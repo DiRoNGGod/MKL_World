@@ -90,7 +90,6 @@ app.post('/register', (req, res) => {
 		db.all(`SELECT login, email FROM users`, (err, rows) => {   // ^ Перебор полей логина и майла
 			if (rows !== null) {   // ^ Если есть записи в БД, перебрать БД
 				rows.forEach(data => {
-<<<<<<< HEAD
 					if(data.login === login) {   // ^ Если существует логин
 						user = true;
 						res.status(401);
@@ -104,19 +103,6 @@ app.post('/register', (req, res) => {
 				});
 			} 
 			if(!user) {   // ^ Создаём пользователя
-=======
-					if (data.login === login) {   // ^ Если существует логин
-						console.log("Такой логин уже существует");
-						noUser = false;
-					}
-					else if (data.email === email) {   // ^ Если существует почта
-						console.log("Такая почта уже сцществует");
-						noUser = false;
-					}
-				});
-			}
-			if (noUser) {   // ^ Создаём пользователя
->>>>>>> 230c00d2b02b93b64eda5a927b16712416d926c4
 				db.all(`INSERT INTO users ("login", "email", "password", "date_registration") VALUES("${login}", "${email}", "${heshPassword}", "${date}")`);
 				res.status(200);
 				res.end();   // ^ Закрываем сервер
