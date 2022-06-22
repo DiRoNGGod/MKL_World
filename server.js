@@ -75,11 +75,47 @@ app.get('/wiki', (req, res) => {
 });
 
 app.post('/register', (req, res) => {
+	let noUser = true;
+
 	const {login, email, password} = req.body;
 
-	console.log(login + "\n" + email + "\n" + password);
+	// db.all(`SELECT login, email FROM users`, rows => {
+	// 	console.log(rows);
+	// 	if(rows !== null) {
+	// 		rows.forEach(data => {
+	// 			console.log(data);
+	// 			if(data === login) {
+	// 				console.log("Такой логин уже существует")
+	// 			}
+	// 			else if(data === email) {
+	// 				console.log("Такая почта уже зарегестрирована")
+	// 			}
+	// 			else {
+	// 				db.all(`INSERT INTO users ("login", "email", "password") VALUES("${login}", "${email}", "${password}")`);
+	// 			}
+	// 		});
+	// 	} else {
+	// 		db.all(`INSERT INTO users ("login", "email", "password") VALUES("${login}", "${email}", "${password}")`);
+	// 	}
+	// });
 
-	// db.all(`INSERT INTO users ("login", "email", "password") VALUES("${login}", "${email}", "${password}")`);
+	db.all(`SELECT login, email FROM users`, rows => {
+		console.log(rows);
+		rows.forEach(data => {
+			console.log(data);
+			if(data === login) {
+				console.log("Такой логин уже существует")
+			}
+			else if(data === email) {
+				console.log("Такая почта уже зарегестрирована")
+			}
+			else {
+				db.all(`INSERT INTO users ("login", "email", "password") VALUES("${login}", "${email}", "${password}")`);
+			}
+		});
+	});
+
+	db.all(`SELECT email FROM users WHERE login = "${email}"`)
 	res.end();
 });
 

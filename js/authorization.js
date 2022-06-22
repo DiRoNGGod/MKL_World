@@ -34,8 +34,7 @@ window.addEventListener("DOMContentLoaded", () => {
 				}),
 			}).then((res) => {
 				if (res.status >= 200 && res.status < 300) {
-					console.log("Я попал сюда");
-					document.location.href = "/profile";
+					// document.location.href = "/profile";
 				} else {
 					let error = new Error(res.statusText);
 					console.log(error);
