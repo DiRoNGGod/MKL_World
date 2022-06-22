@@ -5,6 +5,7 @@ const path = require('path');   // ^ Для работы с путями
 const sqlite = require('sqlite3');
 const bodyParser = require("body-parser");
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken'); // ~ Подключение пакета токена
 
 const db = new sqlite.Database(path.resolve(__dirname, "database", "forum.db"), err =>{
 	if(err) {
