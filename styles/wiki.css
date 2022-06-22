@@ -121,20 +121,16 @@ a {
 .dropdown {
     position: relative;
     display: block;
-
-    justify-self: end;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #f1f1f1;
-    min-width: 160px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     text-align: left;
-    margin-left: -130px;
 }
 
 .dropdown-content a {
@@ -146,11 +142,38 @@ a {
 
 .dropdown a:hover {
     background-color: #ddd;
-    align-content: left;
 }
 
 .show {
     display: block;
+}
+
+blockquote {
+    border: none;
+    margin-bottom: -30px;
+}
+
+blockquote h3 {
+    font-size: 30px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
+
+blockquote h3:before {
+    content: open-quote;
+    font-weight: bold;
+    font-size: 50px;
+    color: #17E9E0;
+    padding-right: 10px;
+}
+
+blockquote h3:after {
+    content: close-quote;
+    font-weight: bold;
+    font-size: 50px;
+    color: #17E9E0;
+    padding-left: 10px;
 }
 
 /* ---- Кнопка наверх ---- */
