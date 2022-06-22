@@ -4,6 +4,7 @@ const { request } = require('http');
 const path = require('path');   // ^ Для работы с путями
 const sqlite = require('sqlite3');
 const bodyParser = require("body-parser");
+const bcrypt = require('bcrypt');
 
 const db = new sqlite.Database(path.resolve(__dirname, "database", "forum.db"), err =>{
 	if(err) {
@@ -75,48 +76,36 @@ app.get('/wiki', (req, res) => {
 });
 
 app.post('/register', (req, res) => {
-	let noUser = true;
+	let noUser = true;   // ^ Есть ли пользователь
 
-	const {login, email, password} = req.body;
+	const {login, email, password, date} = req.body;
 
-	// db.all(`SELECT login, email FROM users`, rows => {
-	// 	console.log(rows);
-	// 	if(rows !== null) {
-	// 		rows.forEach(data => {
-	// 			console.log(data);
-	// 			if(data === login) {
-	// 				console.log("Такой логин уже существует")
-	// 			}
-	// 			else if(data === email) {
-	// 				console.log("Такая почта уже зарегестрирована")
-	// 			}
-	// 			else {
-	// 				db.all(`INSERT INTO users ("login", "email", "password") VALUES("${login}", "${email}", "${password}")`);
-	// 			}
-	// 		});
-	// 	} else {
-	// 		db.all(`INSERT INTO users ("login", "email", "password") VALUES("${login}", "${email}", "${password}")`);
-	// 	}
-	// });
+	const salt = 7;   // ^ Соль
+	let heshPassword;
 
-	db.all(`SELECT login, email FROM users`, rows => {
-		console.log(rows);
-		rows.forEach(data => {
-			console.log(data);
-			if(data === login) {
-				console.log("Такой логин уже существует")
-			}
-			else if(data === email) {
-				console.log("Такая почта уже зарегестрирована")
-			}
-			else {
-				db.all(`INSERT INTO users ("login", "email", "password") VALUES("${login}", "${email}", "${password}")`);
+	bcrypt.hash(password, salt, (error, hash) => {   // ^ Хэшируем пароль
+		heshPassword = hash;
+
+		db.all(`SELECT login, email FROM users`, (err, rows) => {   // ^ Перебор полей логина и майла
+			if(rows !== null) {   // ^ Если есть записи в БД, перебрать БД
+				rows.forEach(data => {
+					if(data.login === login) {   // ^ Если существует логин
+						console.log("Такой логин уже существует");
+						noUser = false;
+					}
+					else if(data.email === email) {   // ^ Если существует почта
+						console.log("Такая почта уже сцществует");
+						noUser = false;
+					}
+				});
+			} 
+			if(noUser) {   // ^ Создаём пользователя
+				db.all(`INSERT INTO users ("login", "email", "password", "date_registration") VALUES("${login}", "${email}", "${heshPassword}", "${date}")`);
 			}
 		});
 	});
 
-	db.all(`SELECT email FROM users WHERE login = "${email}"`)
-	res.end();
+	res.end();   // ^ Закрываем сервер
 });
 
 

@@ -19,15 +19,15 @@
             <label class="label">Зарегистрироваться</label>
             <form class="main__forms" id="register">
                 <div class="main__forms_login">
-                    <input type="text" id="name" name="name" required class="input-login">
+                    <input type="text" id="name" name="name" placeholder=" " minlength="6" maxlength="20" required class="input-login">
                     <label for="name" class="login">Логин</label>
                 </div>
                 <div class="main__forms_mail">
-                    <input type="email" id="mail" name="email" placeholder=" " required class="input-mail">
+                    <input type="email" id="mail" name="email" placeholder=" " maxlength="30" required class="input-mail">
                     <label for="mail" class="maiil">E-mail</label>
                 </div>
                 <div class="main__forms_password">
-                    <input type="password" id="password" name="password" required class="input-password">
+                    <input type="password" id="password" placeholder=" " name="password" minlength="6" maxlength="30" required class="input-password">
                     <label for="password" class="pass">Пароль</label>
                 </div>
                 <button class="button">Зарегистрироваться</button>
@@ -42,11 +42,11 @@
             <label class="label">Войти</label>
             <form class="main__forms">
                 <div class="main__forms_login">
-                    <input type="text" id="name" required class="input-login">
+                    <input type="text" id="name" placeholder=" " required class="input-login">
                     <label for="name" class="login">Логин</label>
                 </div>
                 <div class="main__forms_password">
-                    <input type="password"  required class="input-password">
+                    <input type="password" placeholder=" "  required class="input-password">
                     <label for="password" class="pass">Пароль</label>
                     <div class="main__recovery_pass">
                         <a href="" class="hint" onclick="showDv('3'); return false">Забыли пароль?</a>

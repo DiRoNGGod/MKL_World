@@ -279,17 +279,45 @@ body {
     background-color: #F5E6CC;
 }
 
+/* 
 .input-login:focus ~ .login,
 .input-login:valid ~ .login {
     font-size: 15px;
     transform: translateY(-20px);
-}
+} 
 
 .main__forms_login:focus-within .login {
     transform: translate(0, -20px) scale(.8);
 
     color: #000;
     font-size: 15px;
+}
+*/
+
+input:invalid:not(:focus):not(:placeholder-shown) {
+	background-color: rgba(231, 6, 6, 0.623);
+}
+input:invalid:not(:focus):not(:placeholder-shown) ~ label {
+	font-size: 15px;
+    transform: translateY(-20px);
+}
+
+input:invalid:focus:not(:placeholder-shown) {
+	background-color: rgba(231, 6, 6, 0.623);
+}
+input:invalid:focus:not(:placeholder-shown) ~ label {
+	font-size: 15px;
+    transform: translateY(-20px);
+}
+
+input:valid:focus:not(:placeholder-shown),
+input:valid:not(:focus):not(:placeholder-shown){
+	background-color: rgba(6, 139, 6, 0.5);
+}
+input:valid:focus:not(:placeholder-shown) ~ label,
+input:valid:not(:focus):not(:placeholder-shown) ~ label {
+	font-size: 15px;
+    transform: translateY(-20px);
 }
 
 /* Окно ввода пароля и его подтверждение */
@@ -326,6 +354,7 @@ body {
     background-color: #F5E6CC;
 }
 
+/* 
 .input-password:focus ~ .pass,
 .input-password:valid ~ .pass {
     font-size: 15px;
@@ -337,7 +366,8 @@ body {
 
     color: #000;
     font-size: 15px;
-}
+} 
+*/
 
 .main__recovery_pass {
     padding-left: 10px;
@@ -419,6 +449,7 @@ body {
     background-color: #F5E6CC;
 }
 
+/* 
 .input-mail:focus ~ .maiil,
 .input-mail:not(:placeholder-shown) ~ .maiil,
 .input-mail:valid ~ .maiil {
@@ -431,7 +462,8 @@ body {
 
     color: #000;
     font-size: 15px;
-}
+} 
+*/
 
 /* ---- Кнопка для всех 3 форм ---- */
 .button {

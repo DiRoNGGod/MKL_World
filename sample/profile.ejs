@@ -24,7 +24,7 @@
 						<!-- !----Навигация профиля---- -->
 						<nav class="profile__nav nav">
 							<div class="nav__content">
-								<div class="profile__login">Имя пользователя</div>
+								<div class="profile__login">{login}</div>
 								<div id="info" class="nav__item active">Информация</div>
 								<div id="discus" class="nav__item">Обсуждения</div>
 								<div id="edit" class="nav__item">Редактирование</div>
@@ -42,30 +42,30 @@
 							<div class="profile__info-user info">   <!-- ^ Информация пользователя -->
 								<li class="info__row">
 									<span class="info__item">Настоящее имя:</span>
-									<span class="info__item info__value active">Любовь</span>
+									<span class="info__item info__value active">Не указано</span>
 								</li>
 								<li class="info__row">
 									<span class="info__item">Дата рождения:</span>
-									<span class="info__item info__value active">02.02.2003</span>
+									<span class="info__item info__value active">Не указано</span>
 								</li>
 								<li class="info__row">
 									<span class="info__item">Пол:</span>
-									<span class="info__item info__value active">Женский</span>
+									<span class="info__item info__value active">Не указано</span>
 								</li>
 								<li class="info__row info__row_ta">
 									<span class="info__item">О себе:</span>
-									<span class="info__item info__item-status info__value active">"Пользователь что-то пишет о себе"</span>
+									<span class="info__item info__item-status info__value active"></span>
 								</li>
 							</div>
 
 							<div class="profile__info-reg info">   <!-- ^ Постоянная информация пользователя -->
 								<li class="info__row">
 									<span class="info__item">Последняя активность:</span>
-									<span class="info__item">Сейчас онлайн</span>
+									<span class="info__item">Не указано</span>
 								</li>
 								<li class="info__row">
 									<span class="info__item">Регистрация:</span>
-									<span class="info__item">01.06.2022</span>
+									<span class="info__item">Не указано</span>
 								</li>
 							</div>
 						</section>
@@ -134,17 +134,17 @@
 							<form action="" method="get" class="profile__info-user info">   <!-- ^ Форма для отправки информации на сервер -->
 								<li class="info__row">
 									<span class="info__item">Настоящее имя:</span>
-									<span class="info__item info__value active">Любовь</span>
+									<span class="info__item info__value active">Не указано</span>
 									<input type="text" required name="userName" class="user__input user__name" tabindex="1">
 								</li>
 								<li class="info__row">
 									<span class="info__item">Дата рождения:</span>
-									<span class="info__item info__value active">02.02.2003</span>
+									<span class="info__item info__value active">Не указано</span>
 									<input type="date" required name="userDate" class="user__input user__date" tabindex="2">
 								</li>
 								<li class="info__row">
 									<span class="info__item">Пол:</span>
-									<span class="info__item info__value active">Женский</span>
+									<span class="info__item info__value active">Не указано</span>
 									<select name="userSex" required class="user__input user__select" tabindex="3">
 										<option hidden >Пол</option>
 										<option value="Мужской">Мужской</option>
@@ -153,7 +153,7 @@
 								</li>
 								<li class="info__row info__row_ta">
 									<span class="info__item">О себе:</span>
-									<span class="info__item info__item-status info__value active">"Пользователь что-то пишет о себе"</span>
+									<span class="info__item info__item-status info__value active"></span>
 									<textarea name="userComment" class="user__input user__comment" tabindex="4"></textarea>
 								</li>
 								<li class="info__row">   <!-- ^ Кнопка сохранить -->

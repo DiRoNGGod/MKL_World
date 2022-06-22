@@ -18,6 +18,7 @@ window.addEventListener("DOMContentLoaded", () => {
 			const login = event.target.name.value;
 			const email = event.target.email.value;
 			const password = event.target.password.value;
+			const date = new Date().toLocaleDateString();
 
 			// создаем пакет который подет на адрес /register методом post
 			fetch("/register", {
@@ -31,10 +32,11 @@ window.addEventListener("DOMContentLoaded", () => {
 					login: login,
 					email: email,
 					password: password,
+					date: date,
 				}),
 			}).then((res) => {
 				if (res.status >= 200 && res.status < 300) {
-					// document.location.href = "/profile";
+					document.location.href = "/profile";
 				} else {
 					let error = new Error(res.statusText);
 					console.log(error);
