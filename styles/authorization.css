@@ -14,11 +14,40 @@ body {
 
 .main {
     display: flex;
+	flex-direction: column;
 
     align-items: center;
     justify-content: center;
 
     height: 100vh;
+
+	position: relative;
+}
+
+/* ----- Окошко ошибки ------ */
+.confirm {
+	position: absolute;
+	top: 20%;
+
+	display: none;
+
+	font-size: 18px;
+
+	border: 2px solid rgb(7, 100, 4);
+	background-color: rgba(7, 100, 4, 0.4);
+
+	border-radius: 10px;
+
+	padding: 10px 15px;
+}
+.confirm.go {
+	display: inline-block;
+}
+.confirm.error {
+	display: inline-block;
+
+	border: 2px solid rgb(126, 5, 5);
+	background-color: rgba(126, 5, 5, 0.6);
 }
 
 /* ---- Форма регистрации ---- */
@@ -96,6 +125,7 @@ body {
     background-color: #F5E6CC;
 }
 
+/* 
 .input-login:focus ~ .login,
 .input-login:valid ~ .login {
     font-size: 15px;
@@ -107,7 +137,8 @@ body {
 
     color: #000;
     font-size: 15px;
-}
+} 
+*/
 
 /* Окно ввода почты */
 .main__forms_mail {
@@ -143,6 +174,7 @@ body {
     background-color: #F5E6CC;
 }
 
+/* 
 .input-mail:focus ~ .maiil,
 .input-mail:valid ~ .maiil {
     font-size: 15px;
@@ -154,7 +186,8 @@ body {
 
     color: #000;
     font-size: 15px;
-}
+} 
+*/
 
 /* Окно ввода пароля и его подтверждение */
 .main__forms_password {

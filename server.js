@@ -76,7 +76,7 @@ app.get('/wiki', (req, res) => {
 });
 
 app.post('/register', (req, res) => {
-	let noUser = true;   // ^ Есть ли пользователь
+	let user = false;   // ^ Есть ли пользователь
 
 	const {login, email, password, date} = req.body;
 
@@ -90,22 +90,24 @@ app.post('/register', (req, res) => {
 			if(rows !== null) {   // ^ Если есть записи в БД, перебрать БД
 				rows.forEach(data => {
 					if(data.login === login) {   // ^ Если существует логин
-						console.log("Такой логин уже существует");
-						noUser = false;
+						user = true;
+						res.status(401);
+						res.end();   // ^ Закрываем сервер
 					}
 					else if(data.email === email) {   // ^ Если существует почта
-						console.log("Такая почта уже сцществует");
-						noUser = false;
+						user = true;
+						res.status(402);
+						res.end();   // ^ Закрываем сервер
 					}
 				});
 			} 
-			if(noUser) {   // ^ Создаём пользователя
+			if(!user) {   // ^ Создаём пользователя
 				db.all(`INSERT INTO users ("login", "email", "password", "date_registration") VALUES("${login}", "${email}", "${heshPassword}", "${date}")`);
+				res.status(200);
+				res.end();   // ^ Закрываем сервер
 			}
 		});
 	});
-
-	res.end();   // ^ Закрываем сервер
 });
 
 
