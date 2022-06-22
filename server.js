@@ -68,12 +68,19 @@ app.get('/gallery', (req, res) => {
 	res.render(createPath('gallery'), {title});
 });
 
+app.get('/wiki', (req, res) => {
+	const title = "Википедия";
+	res.render(createPath('way'), {title});
+	res.render(createPath('wiki'), {title});
+});
+
 app.post('/register', (req, res) => {
 	const {login, email, password} = req.body;
 
-	console.log(login, email, password);
+	console.log(login + "\n" + email + "\n" + password);
 
-	db.all(`INSERT INTO users ("login", "email", "password") VALUES("${login}", "${email}", "${password}")`);
+	// db.all(`INSERT INTO users ("login", "email", "password") VALUES("${login}", "${email}", "${password}")`);
+	res.end();
 });
 
 
