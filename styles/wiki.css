@@ -148,6 +148,20 @@ a {
     display: block;
 }
 
+/* ---- Основной раздел ---- */
+.wiki__history {
+    display: block;
+    justify-content: center;
+    align-items: center;
+
+    text-align: justify;
+    line-height: 40px;
+    word-spacing: 10px;
+
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
 blockquote {
     border: none;
     margin-bottom: -30px;
