@@ -52,11 +52,11 @@ body {
 
 /* ---- Форма регистрации ---- */
 #d1 {
-    display: flex;
+    display: none;
 }
 
 .main__register {
-    display: flex;
+    display: none;
     flex-direction: column;
 
     background-color: #FFB48F;
@@ -238,11 +238,11 @@ body {
 
 /* ---- Форма "вход" ---- */
 #d2 {
-    display: none;
+    display: flex;
 }
 
 .main__entrance {
-    display: none;
+    display: flex;
 
     flex-direction: column;
 
