@@ -20,7 +20,9 @@ const app = express();
 
 app.set('view engine', 'ejs');   // ^ Подключаю шаблонизатор
 
-const PORT = 3000;   // ^ Порт 
+const PORT = process.env.PORT || 3000;   // ^ Порт 
+
+const salt = 7;   // ^ Соль
 
 const createPath = (page) => path.resolve(__dirname, 'sample', `${page}.ejs`);   // ^ Функция создания полного пути до html файла
 
@@ -81,7 +83,6 @@ app.post('/register', (req, res) => {
 
 	const { login, email, password, date } = req.body;
 
-	const salt = 7;   // ^ Соль
 	let heshPassword;
 
 	bcrypt.hash(password, salt, (error, hash) => {   // ^ Хэшируем пароль
@@ -90,12 +91,12 @@ app.post('/register', (req, res) => {
 		db.all(`SELECT login, email FROM users`, (err, rows) => {   // ^ Перебор полей логина и майла
 			if (rows !== null) {   // ^ Если есть записи в БД, перебрать БД
 				rows.forEach(data => {
-					if(data.login === login) {   // ^ Если существует логин
+					if(data.login.toLowerCase() === login.toLowerCase()) {   // ^ Если существует логин
 						user = true;
 						res.status(401);
 						res.end();   // ^ Закрываем сервер
 					}
-					else if(data.email === email) {   // ^ Если существует почта
+					else if(data.email.toLowerCase() === email.toLowerCase()) {   // ^ Если существует почта
 						user = true;
 						res.status(402);
 						res.end();   // ^ Закрываем сервер
@@ -108,6 +109,36 @@ app.post('/register', (req, res) => {
 				res.end();   // ^ Закрываем сервер
 			}
 		});
+	});
+});
+
+app.post('/auth', (req, res) => {
+	let user = false;   // ^ Есть ли пользователь
+
+	const { login, password} = req.body;   // ^ Получаю данные с полей
+
+	db.all(`SELECT login, password FROM users`, (err, rows) => {   // ^ Перебор полей логина и майла
+		rows.forEach(data => {   // ^ Перебираю БД
+			if(data.login.toLowerCase() === login.toLowerCase() ) {   // ^ Если нахожу совпадение с логином
+				user = true;   // ^ Переназначаю bool
+
+				bcrypt.compare(password, data.password, function(err, result) {   // ^ Расхэширую пароль
+					if(result) {   // ^ Если верный
+						res.status(200);
+						res.end();
+					} else {
+						res.status(409);
+						res.end();
+					}
+				});
+			}
+		});
+
+		console.log(user);
+		if(!user) {   // ^ Если пароль не был найден
+			res.status(401);
+			res.end();
+		}
 	});
 });
 

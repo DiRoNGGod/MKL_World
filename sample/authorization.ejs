@@ -27,7 +27,7 @@
                     <label for="name" class="login">Логин</label>
                 </div>
                 <div class="main__forms_mail">
-                    <input type="email" id="mail" name="email" placeholder=" " maxlength="30" required class="input-mail">
+                    <input type="email" id="mail" name="email" placeholder=" " maxlength="40" required class="input-mail">
                     <label for="mail" class="maiil">E-mail</label>
                 </div>
                 <div class="main__forms_password">
@@ -44,20 +44,21 @@
                 <a href="/home"><img src="/close.png" width="15" height="15" alt="Закрыть"></a>
             </div>
             <label class="label">Войти</label>
-            <form class="main__forms">
+            <form class="main__forms" method="post" id="auth">
                 <div class="main__forms_login">
-                    <input type="text" id="name" placeholder=" " required class="input-login">
+                    <input type="text" id="name" name="login" minlength="6" maxlength="20" placeholder=" " required class="input-login">
                     <label for="name" class="login">Логин</label>
                 </div>
                 <div class="main__forms_password">
-                    <input type="password" placeholder=" "  required class="input-password">
+                    <input type="password" name="password_auth" minlength="6" maxlength="30" placeholder=" "  required class="input-password">
                     <label for="password" class="pass">Пароль</label>
                     <div class="main__recovery_pass">
                         <a href="" class="hint" onclick="showDv('3'); return false">Забыли пароль?</a>
                     </div>
                 </div>
+
+				<button class="button">Войти</button>
             </form>
-            <button class="button">Войти</button>
             <a href="" class="hint" onclick="showDv('1'); return false">Нет аккаунта? Зарегистрируйтесь прямо сейчас</a>
         </div>
 
@@ -69,7 +70,7 @@
             <label class="label">Восстановление</label>
             <form class="main__forms">
                 <div class="main__forms_mail">
-                    <input type="email" id="mail" placeholder=" " required class="input-mail">
+                    <input type="email" id="mail_v" maxlength="40" placeholder=" " required class="input-mail">
                     <label for="mail" class="maiil">E-mail</label>
                 </div>
             </form>
