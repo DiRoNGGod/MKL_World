@@ -2,12 +2,12 @@ module.exports = {
     accessToken: {
         salt: "secret",
         expired: "1min",
-        type: "access",
+        type: "access",  // ~ используется при запросах к серверу
     },
     refreshToken: {
         salt: "secret",
         expired: "3min",
-        type: "refresh",
+        type: "refresh",  // ~ используется для обновления пары access и refresh токенов
     },
 };
 
