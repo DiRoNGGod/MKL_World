@@ -9,7 +9,7 @@ const jwt = require('jsonwebtoken'); // ~ Подключение пакета т
 const cors = require("cors");
 
 
-const db = new sqlite.Database(path.resolve(__dirname, "database", "forum.db"), err => {
+const db = new sqlite.Database(path.resolve(__dirname, "database", "Forum.db"), err => {
 	if (err) {
 		console.log(err);
 	}
@@ -33,6 +33,7 @@ app.listen(PORT, (error) => {   // ^ Включаю прослушку порт�
 });
 
 app.use(express.static('styles'));   // ^ Общедоступная папка
+app.use(express.static('sample'));   // ^ Общедоступная папка
 app.use(express.static('images'));   // ^ Общедоступная папка
 app.use(express.static('js'));   // ^ Общедоступная папка
 app.use(bodyParser.json());   // ^ Парсер json объекта
@@ -48,7 +49,21 @@ app.get('/index', (req, res) => {
 });
 app.get('/home', (req, res) => {
 	const title = "Home";
-	res.render(createPath('index'), { title });
+	const discussions = [];
+	db.all(`SELECT * FROM home_dis`, (err, rows) => {   // ^ Перебор полей логина и майла 
+		rows.forEach(data => {   // ^ Перебираю БД
+			if(rows !== null) {   // ^ Если есть записи в БД, перебрать БД
+				discussions.push({   // ^ Добавляю ноый объект в массив описаний
+					id: data.ID,
+					author: data.author,
+					date: data.date_public,
+					theme: data.theme,
+					discription: data.discription,
+				})
+			}
+		});
+		res.render(createPath('index'), { title, discussions });
+	});
 });
 
 app.get('/profile', (req, res) => {
@@ -62,10 +77,55 @@ app.get('/reg', (req, res) => {
 	res.render(createPath('authorization'), { title });
 });
 
-app.get('/discussions', (req, res) => {
+app.get('/discussions/:id', (req, res) => {
 	const title = "Обсуждение";
-	res.render(createPath('way'), { title });
-	res.render(createPath('discussions'), { title });
+	let id = req.params.id;   // ^ Получаю параметр id
+
+	const user_disc = [];
+
+	let discussions = {};
+	db.all(`SELECT * FROM home_dis`, (err, rows) => {   // ^ Перебор полей таблицы 
+		rows.forEach(data => {   // ^ Перебираю БД
+			if(data.ID == id) {   // ^ Если есть записи в БД, перебрать БД
+				discussions = {   // ^ Добавляю новый объект в массив описаний
+					author: data.author,
+					date: data.date_public,
+					theme: data.theme,
+					discription: data.discription,
+				}
+			}
+		});
+		db.all(`SELECT name FROM sqlite_master WHERE type='table' AND name='discussions_${id}'`, (err, rows) => {   // ^ Перебираю БД конкретной страницы
+			if(rows.length === 0) {   
+				db.all(   // ^ Создаю таблицу
+					`CREATE TABLE discussions_${id} (
+					ID INTEGER PRIMARY KEY UNIQUE NOT NULL,
+					date DATE NOT NULL,
+					user VARCHAR NOT NULL,
+					comment VARCHAR NOT NULL
+					)`
+				)
+
+				res.render(createPath('way'), { title });
+				res.render(createPath('discussions'), { title, discussions, user_disc });
+			} else {
+				db.all(`SELECT * FROM discussions_${id}`, (err, rows) => {
+					rows.forEach(data => {   // ^ Перебираю БД
+						if(rows !== null) {   // ^ Если есть записи в БД, перебрать БД
+							user_disc.push({   // ^ Добавляю ноый объект в массив описаний
+								id: data.ID,
+								date: data.date,
+								user_name: data.user,
+								comment: data.comment,
+							})
+						}
+					});
+					res.render(createPath('way'), { title });
+					res.render(createPath('discussions'), { title, discussions, user_disc });
+				});
+			}
+		});
+	});
 });
 
 app.get('/gallery', (req, res) => {
@@ -91,7 +151,7 @@ app.post('/register', (req, res) => {
 	bcrypt.hash(password, salt, (error, hash) => {   // ^ Хэшируем пароль
 		heshPassword = hash;
 
-		db.all(`SELECT login, email FROM users`, (err, rows) => {   // ^ Перебор полей логина и майла
+		db.all(`SELECT login, email FROM user`, (err, rows) => {   // ^ Перебор полей логина и майла
 			if (rows !== null) {   // ^ Если есть записи в БД, перебрать БД
 				rows.forEach(data => {
 					if(data.login === login) {   // ^ Если существует логин
@@ -107,13 +167,49 @@ app.post('/register', (req, res) => {
 				});
 			} 
 			if(!user) {   // ^ Создаём пользователя
-				db.all(`INSERT INTO users ("login", "email", "password", "date_registration") VALUES("${login}", "${email}", "${heshPassword}", "${date}")`);
+				db.all(`INSERT INTO user ("login", "email", "password", "date_reg") VALUES("${login}", "${email}", "${heshPassword}", "${date}")`);
 				res.status(200);
 				res.end();   // ^ Закрываем сервер
 			}
 		});
 	});
 });
+
+app.post('/auth', (req, res) => {
+	let user = false;   // ^ Есть ли пользователь
+
+	const { login, password} = req.body;   // ^ Получаю данные с полей
+
+	db.all(`SELECT login, password FROM user`, (err, rows) => {   // ^ Перебор полей логина и майла
+		rows.forEach(data => {   // ^ Перебираю БД
+			if(rows !== null) {   // ^ Если есть записи в БД, перебрать БД
+				if(data.login.toLowerCase() === login.toLowerCase() ) {   // ^ Если нахожу совпадение с логином
+					user = true;   // ^ Переназначаю bool
+	
+					bcrypt.compare(password, data.password, function(err, result) {   // ^ Расхэширую пароль
+						if(result) {   // ^ Если верный
+							res.status(200);
+							res.end();
+						} else {
+							res.status(409);
+							res.end();
+						}
+					});
+				}
+			} else {
+				res.status(401);
+				res.end();
+			}
+		});
+
+		console.log(user);
+		if(!user) {   // ^ Если пользователь не был найден
+			res.status(401);
+			res.end();
+		}
+	});
+});
+
 
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(bodyParser.json());

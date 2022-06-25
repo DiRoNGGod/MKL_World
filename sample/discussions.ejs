@@ -27,116 +27,73 @@
 			<%- include("header/way.ejs") %>   <!--* Подключение пути -->
 
 			<!-- Секция обсуждений -->
+			<% let {author, date, theme, discription} = discussions %>   <!-- ^ Если не пустой запускаю цикл -->
 			<section class="section discussions__section">
 				<div class="discussions__topic">
 					<div class="discussions__header">
-						<div class="discussions__name">
-							Тема обсуждения
-						</div>
-						<div class="discussions__status">
-							Статус обсуждения: закрыто/открыто
+						<span><%= theme %></span>
+						<div class="discussions__date">
+							<%= date %>
 						</div>
 					</div>
 					<div class="discussions__content">
 						<div class="discussions__image">
 							<img src="/b-1.png" width="100" height="100" alt="Фото профиля">
-							<p class="discussions__nikname">Никнейм пользователя</p>
+							<p><%= author %></p>
 						</div>
 						<div class="discussions__description">
-							Описание обсуждения
-						</div>
-						<div class="discussions__date">
-							|Дата создания обсуждения|
+							<%= discription %>
 						</div>
 					</div>
 				</div>
 			</section>
-			<section class="section discussions__section">
-				<div class="discussions__topic">
-					<div class="discussions__head">
-						<div class="discussions__title">
-							#1
+			
+			<% if(user_disc.length){ %>   <!-- ^ Проверяю длину массива с обсуждениями -->
+
+				<% user_disc.forEach(({id, date, user_name, comment}) => { %>   <!-- ^ Если не пустой запускаю цикл -->
+				
+					<section class="section discussions__section">
+						<div class="discussions__topic">
+							<div class="discussions__head">
+								<div class="discussions__title">
+									№<%= id %>
+								</div>
+								<div class="discussions__time">
+									<%= date %>
+								</div>
+							</div>
+							<div class="discussions__contentt">
+								<div class="discussions__images">
+									<img src="/b-1.png" width="100" height="100" alt="Фото профиля">
+									<p class="discussions__nikname"><%= user_name %></p>
+								</div>
+								<div class="discussions__comment">
+									<%= comment %>
+								</div>
+								<div class="discussions__answer">
+									<a href="">Ответить</a>
+								</div>
+							</div>
 						</div>
-						<div class="discussions__time">
-							|Дата ответа|
-						</div>
-					</div>
-					<div class="discussions__contentt">
-						<div class="discussions__images">
-							<img src="/b-1.png" width="100" height="100" alt="Фото профиля">
-							<p class="discussions__nikname">Никнейм пользователя</p>
-						</div>
-						<div class="discussions__comment">
-							комментарий другого пользователя
-						</div>
-						<div class="discussions__answer">
-							<a href="">Ответить</a>
-						</div>
-					</div>
-				</div>
-			</section>
-			<section class="section discussions__section">
-				<div class="discussions__topic">
-					<div class="discussions__head">
-						<div class="discussions__title">
-							#2
-						</div>
-						<div class="discussions__time">
-							|Дата ответа|
-						</div>
-					</div>
-					<div class="discussions__contentt">
-						<div class="discussions__images">
-							<img src="/b-1.png" width="100" height="100" alt="Фото профиля">
-							<p class="discussions__nikname">Никнейм пользователя</p>
-						</div>
-						<div class="discussions__comment">
-							комментарий другого пользователя
-						</div>
-						<div class="discussions__answer">
-							<a href="">Ответить</a>
-						</div>
-					</div>
-				</div>
-			</section>
-			<section class="section discussions__section">
-				<div class="discussions__topic">
-					<div class="discussions__head">
-						<div class="discussions__title">
-							#3
-						</div>
-						<div class="discussions__time">
-							|Дата ответа|
-						</div>
-					</div>
-					<div class="discussions__conttent">
-						<div class="discussions__images">
-							<img src="/b-1.png" width="100" height="100" alt="Фото профиля">
-							<p class="discussions__nikname">Никнейм пользователя</p>
-						</div>
-						<div class="discussions__comment">
-							комментарий другого пользователя
-						</div>
-						<div class="discussions__answer">
-							<a href="">Ответить</a>
-						</div>
-					</div>
-				</div>
-			</section>
+					</section>
+
+				<% }); %>
+
+				<% } %>
 			<section class="section answer__section">
 				<div class="answer__window">
 					<div class="answer__comment">
 						Введите ваш ответ
 					</div>
 					<form class="answer__forms">
-							<input type="text" placeholder="Введите ваше сообщение" class="answer__input">
+							<textarea placeholder="Введите ваше сообщение" class="answer__input"></textarea>
 							<button formnovalidate type="submit" class="answer__button">Отправить</button>
 					</form>
 				</div>
 			</section>
-			<section class="section status__discussions">
+			<!-- <section class="section status__discussions">
 				<h1>Тема закрыта/открыта</h1>
-			</section>
+			</section> -->
 		</main>
 
 		<%- include("footer/footer.ejs") %>
