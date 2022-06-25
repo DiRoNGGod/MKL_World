@@ -164,7 +164,7 @@ main {
     cursor: pointer;
     -webkit-filter: drop-shadow(3px 3px 2px #17E9E0);
     filter: drop-shadow(3px 3px 2px #17E9E0);
-	border: 3px dashed #17E9E0;
+	/* border: 3px dashed #17E9E0; */
 
     z-index: 1;
 }
