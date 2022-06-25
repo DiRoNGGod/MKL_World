@@ -30,7 +30,7 @@
                         <div class="wiki__content container">
                             <nav class="wiki__nav nav">
                                 <div class="nav__content">
-                                    <div class="wiki__members">
+                                    <div id="members" class="wiki__members">
                                         <button onclick="myFunction()" class="wiki__button">Участники</button>
                                         <div id="myDropdown" class="dropdown-content">
                                             <p id="">Ким Намджун</p>
@@ -46,9 +46,10 @@
                                     <div id="discography" class="nav__item">Дискография</div>
                                     <div id="awards" class="nav__item">Награды</div>
                                     <div id="social_network" class="nav__item">Социальные сети</div>
+                                </div>
                             </nav>
                         </div>
-                        <div class="wiki__history">
+                        <div class="wiki__history active">
                             <blockquote>
                                 <h3>1, 2, 3, bangtan! Приветствуем, с вами BTS!</h3>
                             </blockquote>
@@ -64,21 +65,42 @@
                             живут большие мечты.
                             <br>
                             <br>
-                            <img src="/wiki/garage.jpg" alt="Чимин в гараже">
-                            <img src="/wiki/jimin in the garage.jpg" alt="Гараж">
-                            <img src="/wiki/producers.jpg" alt="Продюсеры">
+                            <div class="slider__item">
+                                <div class="slider__main">
+                                    <div class="slider__wiki">
+                                        <img src="/wiki/garage.jpg" alt="Общий вид гаража">
+                                        <img src="/wiki/jimin in the garage.jpg" alt="Чимин">
+                                        <img src="/wiki/producers.jpg" alt="Продюсеры">
+                                    </div>
 
+                                    <div class="wiki__slider">
+                                        <span class="dot__item" onclick="currentSlider(0)"></span>
+                                        <span class="dot__item" onclick="currentSlider(1)"></span>
+                                        <span class="dot__item" onclick="currentSlider(2)"></span>
+                                    </div>
+
+                                    <div class="btn btn__next" onclick="slideNext(1)">
+                                        <img src="/right-arrow.png" alt="">
+                                    </div>
+                                    <div class="btn btn__prev" onclick="slideNext(-1)">
+                                        <img src="/left-arrow.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
                             <br>
-                            <br>
-                            Бан Ши Хёк — владелец и создатель компании BigHit entertainment, имел конкретное
+                            <p>Бан Ши Хёк</p> — владелец и создатель компании BigHit entertainment, имел конкретное
                             представление о назначении будущей группы. Название БТС расшифровывается с корейского
                             как BangTan Sonyeondan (Бантан Cонендан) или Bangtan Boys.
                             <br>
                             <br>
-                            На корейском: 방탄소년단, что переводится на русский как Пуленепробиваемые парни.
+                            <h1>Произношение</h1>
+                            <br>
+                            <i>На корейском:</i>
+                            <br>
+                            방탄소년단, что переводится на русский как Пуленепробиваемые парни.
                             <br>
                             <br>
-                            На английском:
+                            <i>На английском:</i>
                             <br>
                             Изначально на английский название BangTan Sonyeondan расшифровывалось как Bulletproof Boy
                             Scouts (Пуленепробиваемые бойскауты).
@@ -89,26 +111,25 @@
                                 выживанию в лесу, оказанию первой помощи, гражданским правам и обязанностям.
                             </cite>
                             <br>
-                            <br>
-                            На русском:
+                            <i>На русском:</i>
                             <br>
                             В русском языке фанаты называют группу не только БТС, но и Бантаны, Бантан бойс, Битиэс или
                             даже Бантосы.
                             <br>
                             <br>
-                            На японском:
+                            <i>На японском:</i>
                             <br>
                             防弾少年団 или Бодан сёнэндан.
                             <br>
                             <br>
-                            На китайском:
+                            <i>На китайском:</i>
                             <br>
                             防彈少年團 или Фандань шаоняньтуань.
                             <br>
                             <br>
-                            <h1>История</h1>
+                            <h1>Хронология</h1>
                             <br>
-                            2013 год
+                            <p>2013 год</p>
                             <br>
                             <br>
                             Июнь 2013 года. Группа готова заявить о себе. На их YouTube-канале выходит первый клип на
@@ -131,7 +152,7 @@
                             просто слова, бантаны действительно делают то, о чем говорят в своих текстах.
                             <br>
                             <br>
-                            2014 год
+                            <p>2014 год</p>
                             <br>
                             <br>
                             2014 год начался как нельзя лучше. 16 января парни получают награду «Новичок года». В конце
@@ -155,7 +176,7 @@
                             вызывает безответная любовь.
                             <br>
                             <br>
-                            2015 год
+                            <p>2015 год</p>
                             <br>
                             <br>
                             Апрель 2015 года — приближение камбэка, который был очень важен для группы. The Most
@@ -265,28 +286,49 @@
 
                         </div>
                         <div class="wiki__social">
-                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в instagram*</a>
-                            <a href="https://www.instagram.com/bighit_exhibition/">Их общий официальный аккаунт в instagram*</a>
-                            <a href="https://www.instagram.com/bts_love_myself/">Их общий официальный аккаунт в instagram*</a>
-                            <a href=" https://twitter.com/bts_twt">Этот аккаунт создан специально для мемберов. В нём они выкладывают свои фотографии, рекомендации к музыке, повседневные моменты своей жизни.</a>
+                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в
+                                instagram*</a>
+                            <a href="https://www.instagram.com/bighit_exhibition/">Их общий официальный аккаунт в
+                                instagram*</a>
+                            <a href="https://www.instagram.com/bts_love_myself/">Их общий официальный аккаунт в
+                                instagram*</a>
+                            <a href=" https://twitter.com/bts_twt">Этот аккаунт создан специально для мемберов. В нём
+                                они выкладывают свои фотографии, рекомендации к музыке, повседневные моменты своей
+                                жизни.</a>
                             <a href="https://www.youtube.com/user/ibighit">Их общий официальный аккаунт в instagram*</a>
-                            <a href="https://www.youtube.com/user/BANGTANTV">Их общий официальный аккаунт в instagram*</a>
-                            <a href="https://m.facebook.com/bangtan.official/?ref=content_filter">Их общий официальный аккаунт в instagram*</a>
+                            <a href="https://www.youtube.com/user/BANGTANTV">Их общий официальный аккаунт в
+                                instagram*</a>
+                            <a href="https://m.facebook.com/bangtan.official/?ref=content_filter">Их общий официальный
+                                аккаунт в instagram*</a>
                             <a href="http://channels.vlive.tv/FE619">Их общий официальный аккаунт в instagram*</a>
-                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в instagram*</a>
-                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в instagram*</a>
-                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в instagram*</a>
-                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в instagram*</a>
-                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в instagram*</a>
-                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в instagram*</a>
-                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в instagram*</a>
-                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в instagram*</a>
-                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в instagram*</a>
-                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в instagram*</a>
-                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в instagram*</a>
-                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в instagram*</a>
-                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в instagram*</a>
-                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в instagram*</a>
+                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в
+                                instagram*</a>
+                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в
+                                instagram*</a>
+                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в
+                                instagram*</a>
+                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в
+                                instagram*</a>
+                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в
+                                instagram*</a>
+                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в
+                                instagram*</a>
+                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в
+                                instagram*</a>
+                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в
+                                instagram*</a>
+                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в
+                                instagram*</a>
+                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в
+                                instagram*</a>
+                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в
+                                instagram*</a>
+                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в
+                                instagram*</a>
+                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в
+                                instagram*</a>
+                            <a href="https://www.instagram.com/bts.bighitofficial/">Их общий официальный аккаунт в
+                                instagram*</a>
                         </div>
                     </section>
                 </main>
