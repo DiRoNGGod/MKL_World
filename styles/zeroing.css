@@ -32,6 +32,8 @@ input,button,textarea {
 	font-family: inherit;
 }
 
+input, textarea {outline:none;}
+
 button {
 	cursor: pointer;
 }

@@ -152,13 +152,19 @@ main {
 .discussions__topic {
     overflow: hidden;
 
-    padding: 30px;
+	border: 3px dashed transparent;
+	border-radius: 10px;
+
+    margin: 30px;
+
+	transition: 0.2s linear;
 }
 
 .discussions__topic:hover {
     cursor: pointer;
     -webkit-filter: drop-shadow(3px 3px 2px #17E9E0);
     filter: drop-shadow(3px 3px 2px #17E9E0);
+	border: 3px dashed #17E9E0;
 
     z-index: 1;
 }
@@ -172,12 +178,14 @@ main {
     overflow: hidden;
 
     text-decoration: none;
+	text-transform: uppercase;
 
     display: block;
-}
 
-.discussions__name a:hover {
-    color: #fff;
+	display: flex;
+	justify-content: space-between;
+
+	transition: 0.2s linear;
 }
 
 .discussions__content {
@@ -187,11 +195,27 @@ main {
     border-radius: 0 0 10px 10px;
     padding: 15px;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+	grid-template: 1fr / 100px 1fr 100px;
 
     overflow: hidden;
+}
+
+.discussions__image {   /* ^ Добавил для вертикального выравнивания имени и фото */
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.discussions__image img {
+	margin-bottom: 10px;
+}
+
+.discussions__description {   /* ^ Отдельное выравние по центру элемента грид сетки)))) */
+	justify-self: center;
+	align-self: center;
+
+	margin-left: 50px;
 }
 
 @media (max-width: 900px) {
@@ -227,13 +251,6 @@ main {
         align-items: center;
     }
 
-    .discussions__date {
-        font-size: 10px;
-
-        min-width: 85px;
-        align-items: center;
-    }
-
     .discussions__image img {
         width: 80px;
         height: 80px;
@@ -241,6 +258,9 @@ main {
 }
 
 @media (max-width: 700px) {
+	.subscription__aside {
+		display: none;
+	}
     .discussions__section {
         display: block;
     }
@@ -255,13 +275,6 @@ main {
         min-width: 80px;
         align-items: center;
     }
-
-    .discussions__date {
-        font-size: 8px;
-
-        min-width: 80px;
-        align-items: center;
-    }
 }
 
 @media (max-width: 670px) {
@@ -272,18 +285,14 @@ main {
         min-width: 75px;
     }
 
-    .discussions__date {
-        font-size: 8px;
-
-        align-items: center;
-        min-width: 75px;
-    }
-
     .discussions__image img {
         width: 70px;
         height: 70px;
     }
 
+	.discussions__date {
+        font-size: 16px;
+    }
 }
 
 @media (max-width: 550px) {
@@ -295,10 +304,7 @@ main {
     }
 
     .discussions__date {
-        font-size: 6px;
-
-        align-items: center;
-        min-width: 70px;
+        font-size: 14px;
     }
 
     .discussions__image img {

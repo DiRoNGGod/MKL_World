@@ -61,6 +61,17 @@ a {
     overflow: hidden;
 }
 
+.discussions__content {
+    display: grid;
+	grid-template: 1fr / 160px 1fr 100px;
+
+    overflow: hidden;
+}
+.discussions__content > *:last-child {
+    align-self: center;
+	justify-self: center;
+}
+
 .discussions__name {
     display: block;
 }
@@ -72,13 +83,18 @@ a {
 }
 
 .discussions__image {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 
     border-right: 1px solid #A64AC9;
 }
 
+
 .discussions__image img {
     margin-left: 20px;
     margin-right: 35px;
+	margin-bottom: 10px;
 }
 
 .discussions__nikname {
@@ -93,15 +109,11 @@ a {
     
     padding: 15px;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
     overflow: hidden;
 }
 
 .discussions__date {
-    font-size: 10px;
+    font-size: 16px;
 
     align-self: start;
 }
@@ -237,7 +249,7 @@ a {
 }
 
 .discussions__time {
-    font-size: 10px;
+    font-size: 16px;
 }
 
 .discussions__name {
@@ -252,15 +264,21 @@ a {
 
 .discussions__images {
     border-right: 1px solid #14B5AE;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .discussions__images img {
     margin-left: 20px;
     margin-right: 35px;
+
+	margin-bottom: 10px;
 }
 
 .discussions__nikname {
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .discussions__contentt {
@@ -349,7 +367,7 @@ a {
     min-height: 120px;
     min-width: 1050px;
 
-    padding: 10px;
+    padding: 15px;
 
     border: none;
     border-radius: 10px;
@@ -358,11 +376,15 @@ a {
     font-size: 15px;
     color: #000;
 
-    background-color: #F5E6CC;
-}
+	border: 2px transparent solid;
 
-.answer__input:active {
-    border: none;
+    background-color: #F5E6CC;
+
+	transition: 0.2s linear;
+}
+.answer__input:focus,
+.answer__input:hover {
+    border: 2px #682184 solid;
 }
 
 /* ---- Кнопка ---- */
