@@ -42,17 +42,17 @@ window.addEventListener("DOMContentLoaded", () => {
 					document.querySelector('.confirm').classList.remove('error');   // ^ Удаля. окно с ошибкой
 					document.querySelector('.confirm').classList.add('go');   // ^ Добавляю зелёное окошко
 					document.querySelector('.confirm').innerHTML = 'Регистрация прошла успешнa!';
-					setTimeout( function(){
+					setTimeout(function () {
 						document.location.href = "/profile";   // ^ Через секунду отправляю пользователя в профиль
-					},1000);
-				} else if(res.status == 401) {   // ^ Если логин уже существует
+					}, 1000);
+				} else if (res.status == 401) {   // ^ Если логин уже существует
 					event.target.name.value = "";   // ^ Обнуляю логин
 					event.target.password.value = "";   // ^ Обнуляю пароль
 
 					document.querySelector('.confirm').classList.remove('go');   // ^ Удаляю зелёное окошко
 					document.querySelector('.confirm').innerHTML = 'Логин уже занят';
 					document.querySelector('.confirm').classList.add('error');   // ^ Добавляю окошко с ошибкой
-				} else if(res.status == 402) {   // ^ Если почта уже существует
+				} else if (res.status == 402) {   // ^ Если почта уже существует
 					event.target.email.value = "";   // ^ Обнуляю поле с почтой
 					event.target.password.value = "";   // ^ Обнуляю пароль
 
@@ -95,9 +95,9 @@ window.addEventListener("DOMContentLoaded", () => {
 					document.querySelector('.confirm').classList.remove('error');
 					document.querySelector('.confirm').classList.add('go');
 					document.querySelector('.confirm').innerHTML = 'Вход выполнен успешно!';
-					setTimeout( function(){
+					setTimeout(function () {
 						document.location.href = "/profile";   // ^ Перенести в профиль через секунду
-					},1000);
+					}, 1000);
 				} else if (res.status == 401) {   // ^ Если логин не найден в БД
 					event.target.login.value = "";   // ^ Обнуляю логин
 					event.target.password_auth.value = "";   // ^ Обнуляю пароль
@@ -122,3 +122,32 @@ window.addEventListener("DOMContentLoaded", () => {
 			});
 		})
 });
+
+// module.exports = (sequelize, Sequelize) => {
+// 	const User = sequelize.define("users", {
+// 		username: {
+// 			type: Sequelize.STRING
+// 		},
+// 		email: {
+// 			type: Sequelize.STRING
+// 		},
+// 		password: {
+// 			type: Sequelize.STRING
+// 		}
+// 	});
+// 	return User;
+// };
+
+// ~ плачу от сложности логики, но я почти на верном пути
+// function ensureAuthorized(req, res, next) {
+// 	var bearerToken;
+// 	var bearerHeader = req.headers["authorization"];
+// 	if (typeof bearerHeader !== 'undefined') {
+// 		var bearer = bearerHeader.split(" ");
+// 		bearerToken = bearer[1];
+// 		req.token = bearerToken;
+// 		next();
+// 	} else {
+// 		res.send(403);
+// 	}
+// }
