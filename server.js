@@ -52,7 +52,7 @@ app.get('/home', (req, res) => {
 	const discussions = [];
 	db.all(`SELECT * FROM home_dis`, (err, rows) => {   // ^ Перебор полей логина и майла 
 		rows.forEach(data => {   // ^ Перебираю БД
-			if(rows !== null) {   // ^ Если есть записи в БД, перебрать БД
+			if (rows !== null) {   // ^ Если есть записи в БД, перебрать БД
 				discussions.push({   // ^ Добавляю ноый объект в массив описаний
 					id: data.ID,
 					author: data.author,
@@ -86,7 +86,7 @@ app.get('/discussions/:id', (req, res) => {
 	let discussions = {};
 	db.all(`SELECT * FROM home_dis`, (err, rows) => {   // ^ Перебор полей таблицы 
 		rows.forEach(data => {   // ^ Перебираю БД
-			if(data.ID == id) {   // ^ Если есть записи в БД, перебрать БД
+			if (data.ID == id) {   // ^ Если есть записи в БД, перебрать БД
 				discussions = {   // ^ Добавляю новый объект в массив описаний
 					author: data.author,
 					date: data.date_public,
@@ -96,7 +96,7 @@ app.get('/discussions/:id', (req, res) => {
 			}
 		});
 		db.all(`SELECT name FROM sqlite_master WHERE type='table' AND name='discussions_${id}'`, (err, rows) => {   // ^ Перебираю БД конкретной страницы
-			if(rows.length === 0) {   
+			if (rows.length === 0) {
 				db.all(   // ^ Создаю таблицу
 					`CREATE TABLE discussions_${id} (
 					ID INTEGER PRIMARY KEY UNIQUE NOT NULL,
@@ -111,7 +111,7 @@ app.get('/discussions/:id', (req, res) => {
 			} else {
 				db.all(`SELECT * FROM discussions_${id}`, (err, rows) => {
 					rows.forEach(data => {   // ^ Перебираю БД
-						if(rows !== null) {   // ^ Если есть записи в БД, перебрать БД
+						if (rows !== null) {   // ^ Если есть записи в БД, перебрать БД
 							user_disc.push({   // ^ Добавляю ноый объект в массив описаний
 								id: data.ID,
 								date: data.date,
@@ -154,19 +154,19 @@ app.post('/register', (req, res) => {
 		db.all(`SELECT login, email FROM user`, (err, rows) => {   // ^ Перебор полей логина и майла
 			if (rows !== null) {   // ^ Если есть записи в БД, перебрать БД
 				rows.forEach(data => {
-					if(data.login === login) {   // ^ Если существует логин
+					if (data.login === login) {   // ^ Если существует логин
 						user = true;
 						res.status(401);
 						res.end();   // ^ Закрываем сервер
 					}
-					else if(data.email === email) {   // ^ Если существует почта
+					else if (data.email === email) {   // ^ Если существует почта
 						user = true;
 						res.status(402);
 						res.end();   // ^ Закрываем сервер
 					}
 				});
-			} 
-			if(!user) {   // ^ Создаём пользователя
+			}
+			if (!user) {   // ^ Создаём пользователя
 				db.all(`INSERT INTO user ("login", "email", "password", "date_reg") VALUES("${login}", "${email}", "${heshPassword}", "${date}")`);
 				res.status(200);
 				res.end();   // ^ Закрываем сервер
@@ -178,16 +178,16 @@ app.post('/register', (req, res) => {
 app.post('/auth', (req, res) => {
 	let user = false;   // ^ Есть ли пользователь
 
-	const { login, password} = req.body;   // ^ Получаю данные с полей
+	const { login, password } = req.body;   // ^ Получаю данные с полей
 
 	db.all(`SELECT login, password FROM user`, (err, rows) => {   // ^ Перебор полей логина и майла
 		rows.forEach(data => {   // ^ Перебираю БД
-			if(rows !== null) {   // ^ Если есть записи в БД, перебрать БД
-				if(data.login.toLowerCase() === login.toLowerCase() ) {   // ^ Если нахожу совпадение с логином
+			if (rows !== null) {   // ^ Если есть записи в БД, перебрать БД
+				if (data.login.toLowerCase() === login.toLowerCase()) {   // ^ Если нахожу совпадение с логином
 					user = true;   // ^ Переназначаю bool
-	
-					bcrypt.compare(password, data.password, function(err, result) {   // ^ Расхэширую пароль
-						if(result) {   // ^ Если верный
+
+					bcrypt.compare(password, data.password, function (err, result) {   // ^ Расхэширую пароль
+						if (result) {   // ^ Если верный
 							res.status(200);
 							res.end();
 						} else {
@@ -203,102 +203,12 @@ app.post('/auth', (req, res) => {
 		});
 
 		console.log(user);
-		if(!user) {   // ^ Если пользователь не был найден
+		if (!user) {   // ^ Если пользователь не был найден
 			res.status(401);
 			res.end();
 		}
 	});
 });
-
-
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
-// app.use(morgan("dev"));
-// app.use(function (req, res, next) {
-// 	res.setHeader('Access-Control-Allow-Origin', '*');
-// 	res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-// 	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
-// 	next();
-// });
-
-// app.post('/authorization', function(req, res) {
-//     User.findOne({email: req.body.email, password: req.body.password}, function(err, user) {
-//         if (err) {
-//             res.json({
-//                 type: false,
-//                 data: "Error occured: " + err
-//             });
-//         } else {
-//             if (user) {
-//                res.json({
-//                     type: true,
-//                     data: user,
-//                     token: user.token
-//                 }); 
-//             } else {
-//                 res.json({
-//                     type: false,
-//                     data: "Incorrect email/password"
-//                 });    
-//             }
-//         }
-//     });
-// });
-
-
-// app.post('/authorization', function(req, res) {
-//     User.findOne({email: req.body.email, password: req.body.password}, function(err, user) {
-//         if (err) {
-//             res.json({
-//                 type: false,
-//                 data: "Error occured: " + err
-//             });
-//         } else {
-//             if (user) {
-//                 res.json({
-//                     type: false,
-//                     data: "User already exists!"
-//                 });
-//             } else {
-//                 var userModel = new User();
-//                 userModel.email = req.body.email;
-//                 userModel.password = req.body.password;
-//                 userModel.save(function(err, user) {
-//                     user.token = jwt.sign(user, process.env.JWT_SECRET);
-//                     user.save(function(err, user1) {
-//                         res.json({
-//                             type: true,
-//                             data: user1,
-//                             token: user1.token
-//                         });
-//                     });
-//                 })
-//             }
-//         }
-//     });
-// });
-
-
-// pp.get('/authorization', ensureAuthorized, function(req, res) {
-//     User.findOne({token: req.token}, function(err, user) {
-//         if (err) {
-//             res.json({
-//                 type: false,
-//                 data: "Error occured: " + err
-//             });
-//         } else {
-//             res.json({
-//                 type: true,
-//                 data: user
-//             });
-//         }
-//     });
-// });
-
-// process.on('uncaughtException', function(err) {
-//     console.log(err);
-// });
-
 
 
 app.use((req, res) => {
@@ -307,3 +217,17 @@ app.use((req, res) => {
 		.status(404)
 		.render(createPath('error'), { title });
 });
+
+import isAuth from '../token/isAuth';
+import attachCurrentUser from '../token/attachCurrentUser';
+import ItemsModel from '../js/authorization';
+
+export default (app) => {
+	app.get('authorization', isAuth, attachCurrentUser, (req, res) => {
+		const user = req.currentUser;
+
+		const userItems = await ItemsModel.find({ owner: user._id });
+
+		return res.json(userItems).status(200);
+	})
+}
