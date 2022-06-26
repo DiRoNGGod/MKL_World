@@ -5,7 +5,7 @@ function myFunction() {
 }
 // Закрыть раскрывающийся список, если пользователь щелкнет за его пределами.
 window.onclick = function (event) {
-    if (!event.target.matches('.wiki__button')) {
+    if (!event.target.matches('.nav__item')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
         var i;
         for (i = 0; i < dropdowns.length; i++) {
@@ -80,7 +80,7 @@ function removeClass() {
 }
 
 wikiNav.addEventListener("mousedown", function (event) {
-    if(!event.target.classList.contains('wiki__history')){  
+    if(!event.target.classList.contains('wiki__discography')){  
 		removeClass();
 
         event.target.classList.add('active'); 
