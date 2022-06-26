@@ -5,8 +5,6 @@ const path = require('path');   // ^ Для работы с путями
 const sqlite = require('sqlite3');
 const bodyParser = require("body-parser");
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken'); // ~ Подключение пакета токена
-const cors = require("cors");
 
 
 const db = new sqlite.Database(path.resolve(__dirname, "database", "Forum.db"), err => {
@@ -23,8 +21,6 @@ const app = express();
 app.set('view engine', 'ejs');   // ^ Подключаю шаблонизатор
 
 const PORT = 3000;   // ^ Порт 
-
-const accessTokenSecret = 'youraccesstokensecret'; // ~  тут должен быть наш секретный ключ, как я поняла, можно придумать от балды
 
 const createPath = (page) => path.resolve(__dirname, 'sample', `${page}.ejs`);   // ^ Функция создания полного пути до html файла
 
@@ -217,17 +213,3 @@ app.use((req, res) => {
 		.status(404)
 		.render(createPath('error'), { title });
 });
-
-import isAuth from '../token/isAuth';
-import attachCurrentUser from '../token/attachCurrentUser';
-import ItemsModel from '../js/authorization';
-
-export default (app) => {
-	app.get('authorization', isAuth, attachCurrentUser, (req, res) => {
-		const user = req.currentUser;
-
-		const userItems = await ItemsModel.find({ owner: user._id });
-
-		return res.json(userItems).status(200);
-	})
-}
