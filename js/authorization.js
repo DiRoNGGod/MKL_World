@@ -123,31 +123,3 @@ window.addEventListener("DOMContentLoaded", () => {
 		})
 });
 
-// module.exports = (sequelize, Sequelize) => {
-// 	const User = sequelize.define("users", {
-// 		username: {
-// 			type: Sequelize.STRING
-// 		},
-// 		email: {
-// 			type: Sequelize.STRING
-// 		},
-// 		password: {
-// 			type: Sequelize.STRING
-// 		}
-// 	});
-// 	return User;
-// };
-
-// ~ плачу от сложности логики, но я почти на верном пути
-// function ensureAuthorized(req, res, next) {
-// 	var bearerToken;
-// 	var bearerHeader = req.headers["authorization"];
-// 	if (typeof bearerHeader !== 'undefined') {
-// 		var bearer = bearerHeader.split(" ");
-// 		bearerToken = bearer[1];
-// 		req.token = bearerToken;
-// 		next();
-// 	} else {
-// 		res.send(403);
-// 	}
-// }

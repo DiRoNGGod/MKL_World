@@ -29,7 +29,7 @@ a {
 /* ---- Шапка ---- */
 
 /* ---- Навигация ---- */
-.wiki__button {
+.nav__item {
     flex: 1 1 auto;
 
 	padding: 15px 0;
@@ -46,17 +46,17 @@ a {
 	transition: 0.2s linear;
 }
 
-.wiki__button:hover {
+.nav__item:hover {
 	background-color: #1dfff4;
 
 	cursor: pointer;
 }
 
-.wiki__button.active {
+.nav__item.active {
 	background-color: #10A19B;
 }
 
-.wiki__button.active:hover {
+.nav__item.active:hover {
 	background-color: #0c726f;
 }
 
@@ -133,14 +133,14 @@ a {
     text-align: center;
 }
 
-.dropdown-content p {
+.dropdown-content a {
     color: black;
     padding: 12px 77px;
     text-decoration: none;
     display: block;
 }
 
-.dropdown-content p:hover {
+.dropdown-content a:hover {
     background-color: #10A19B;
 }
 
@@ -332,15 +332,61 @@ cite {
 /* ---- Блок дискография ---- */
 .wiki__discography {
     display: none;
+    justify-content: center;
+    align-items: center;
+
+    text-align: justify;
+    line-height: 40px;
+    word-spacing: 10px;
+
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .wiki__discography.active {
 	display: block;
 }
 
+.wiki__albums {
+    padding-left: 40px;
+}
+
+.wiki__discography p {
+    background-color: #FCCD04;
+    display: inline;
+}
+
+.wiki__discography h1 {
+    display: block;
+
+    background-color: #17E9E0;
+
+    font-family: 'Noto Sans', sans-serif;
+    font-size: px;
+    font-weight: bold;
+
+    padding-left: 15px;
+
+    text-transform: uppercase;
+}
+
+.wiki__discography h2 {
+    background-color: rgba(166, 74, 201, 1);
+    display: inline;
+}
+
 /* ---- Блок награды ---- */
 .wiki__awards {
     display: none;
+    justify-content: center;
+    align-items: center;
+
+    text-align: justify;
+    line-height: 40px;
+    word-spacing: 10px;
+
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .wiki__awards.active {
@@ -350,11 +396,47 @@ cite {
 /* ---- Блок соц сети ---- */
 .wiki__social {
     display: none;
+    justify-content: center;
+    align-items: center;
+
+    text-align: justify;
+    line-height: 40px;
+    word-spacing: 10px;
+
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .wiki__social.active {
 	display: block;
 }
+
+/* ---- Намджун ---- */
+.wiki__namjoon {
+    display: block;
+    justify-content: center;
+    align-items: center;
+
+    text-align: justify;
+    line-height: 40px;
+    word-spacing: 10px;
+
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+/* ---- Джин ---- */
+
+/* ---- Юнги ---- */
+
+/* ---- Хосок ---- */
+
+/* ---- Чимин ---- */
+
+/* ---- Тэхён ---- */
+
+/* ---- Чонгук ---- */
+
 
 /* ---- Кнопка наверх ---- */
 .button__up {
