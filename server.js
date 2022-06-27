@@ -6,6 +6,7 @@ const sqlite = require('sqlite3');
 const bodyParser = require("body-parser");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken'); // ~ Подключение пакета токена
+const {jwtSecret} = require("./config.js");
 const cors = require("cors");
 
 
@@ -41,11 +42,39 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
 	const title = "Home";
-	res.render(createPath('index'), { title });
+	const discussions = [];
+	db.all(`SELECT * FROM home_dis`, (err, rows) => {   // ^ Перебор полей логина и майла 
+		rows.forEach(data => {   // ^ Перебираю БД
+			if(rows !== null) {   // ^ Если есть записи в БД, перебрать БД
+				discussions.push({   // ^ Добавляю ноый объект в массив описаний
+					id: data.ID,
+					author: data.author,
+					date: data.date_public,
+					theme: data.theme,
+					discription: data.discription,
+				})
+			}
+		});
+		res.render(createPath('index'), { title, discussions });
+	});
 });
 app.get('/index', (req, res) => {
 	const title = "Home";
-	res.render(createPath('index'), { title });
+	const discussions = [];
+	db.all(`SELECT * FROM home_dis`, (err, rows) => {   // ^ Перебор полей логина и майла 
+		rows.forEach(data => {   // ^ Перебираю БД
+			if(rows !== null) {   // ^ Если есть записи в БД, перебрать БД
+				discussions.push({   // ^ Добавляю ноый объект в массив описаний
+					id: data.ID,
+					author: data.author,
+					date: data.date_public,
+					theme: data.theme,
+					discription: data.discription,
+				})
+			}
+		});
+		res.render(createPath('index'), { title, discussions });
+	});
 });
 app.get('/home', (req, res) => {
 	const title = "Home";
@@ -64,12 +93,6 @@ app.get('/home', (req, res) => {
 		});
 		res.render(createPath('index'), { title, discussions });
 	});
-});
-
-app.get('/profile', (req, res) => {
-	const title = "Профиль";
-	res.render(createPath('way'), { title });
-	res.render(createPath('profile'), { title });
 });
 
 app.get('/reg', (req, res) => {
@@ -168,8 +191,10 @@ app.post('/register', (req, res) => {
 			} 
 			if(!user) {   // ^ Создаём пользователя
 				db.all(`INSERT INTO user ("login", "email", "password", "date_reg") VALUES("${login}", "${email}", "${heshPassword}", "${date}")`);
-				res.status(200);
-				res.end();   // ^ Закрываем сервер
+				
+				const token = jwt.sign(login, jwtSecret);
+				
+				res.json( {token} )
 			}
 		});
 	});
@@ -188,8 +213,9 @@ app.post('/auth', (req, res) => {
 	
 					bcrypt.compare(password, data.password, function(err, result) {   // ^ Расхэширую пароль
 						if(result) {   // ^ Если верный
-							res.status(200);
-							res.end();
+							const token = jwt.sign({login: login}, jwtSecret);
+
+							res.json( {token} )
 						} else {
 							res.status(409);
 							res.end();
@@ -202,11 +228,65 @@ app.post('/auth', (req, res) => {
 			}
 		});
 
-		console.log(user);
 		if(!user) {   // ^ Если пользователь не был найден
 			res.status(401);
 			res.end();
 		}
+	});
+});
+
+app.use((req, res, next) => {   // ^ Проверка токена
+	const authHeader = req.headers.authorization;
+	console.log(authHeader);
+
+	if(!authHeader) {
+		res.status(401).json({message: "Токен неверный!"})
+	}
+
+	const token = authHeader.replace('Bearer', '');
+	try {
+		jwt.verify(token, jwtSecret);
+	} catch(e) {
+		console.log("Токен написан неправильно")
+	}
+
+	next();
+});
+
+app.get('/profile', (req, res) => {
+	const title = "Профиль";
+	res.render(createPath('way'), { title });
+	res.render(createPath('profile'), { title });
+});
+
+app.get('/admin', (req, res) => {
+	const title = "Админ-панель";
+
+	const users = [];
+
+	db.all(`SELECT ID, email, login, name FROM user`, (err, rows) => {   // ^ Перебор полей логина и майла
+		rows.forEach(data => {   // ^ Перебираю БД
+			if(rows !== null) {   // ^ Если есть записи в БД, перебрать БД
+				users.push({   // ^ Добавляю ноый объект в массив описаний
+					id: data.ID,
+					email: data.email,
+					login: data.login,
+					name: data.name,
+				})
+			}
+		});
+
+		res.render(createPath('admin'), { title, users});
+	});
+});
+
+app.post('/deluser', (req, res) => {
+	const {id} = req.body;   // ^ Получаю данные с полей
+
+	console.log(id);
+
+	db.all(`DELETE FROM user WHERE id="${id}";`, (err, rows) => {   // ^ Перебор полей логина и майла
+		res.end();
 	});
 });
 

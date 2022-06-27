@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8"> <!-- ~ Кодировка страницы -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> <!-- ~ Адаптивность / Запрет масштабирования -->
+		<!-- ~ <meta name="robots" content="none"> / Запрет индексации страницы -->
+		<link rel="icon" href="/logo.ico">
+		<title>MKL World | <%= title %></title>
+		<link rel="preconnect" href="https://fonts.googleapis.com"> <!-- ~ Ускорение загрузки шрифта -->
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet"> <!-- ~ Подключение шрифта -->
+		<link rel="stylesheet" href="/zeroing.css"> <!-- ~ Подключение CSS обнуления -->
+		<link rel="stylesheet" href="/admin.css">   <!-- ~ Подключение основных стилей -->
+	</head>
+
+	<body>
+		
+		<div class="wrapper">
+			<header class="header">
+				<div class="header__content container">
+					<div class="header__burger" onclick="Menu()">
+						<span></span>
+					</div>
+	
+					<div class="header__link">
+						<li class="header__item" onclick="Home()">
+							<img src="/admin/Главная.png" alt="Home">
+							<span class="item__name">Главная</span>
+						</li>
+						<li class="header__item" onclick="User()">
+							<img src="/admin/Пользователи.png" alt="User">
+							<span class="item__name">Пользователи</span>
+						</li>
+						<li class="header__item" onclick="Info()">
+							<img src="/admin/Инфо.png" alt="Info">
+							<span class="item__name">Информация</span>
+						</li>
+					</div>
+	
+					<li class="header__item" onclick="Exit()">
+						<img src="/admin/Выход.png" alt="Exit">
+						<span class="item__name">Выход</span>
+					</li>
+				</div>
+			</header>
+	
+			<main class="main">
+				<div class="main__content container">
+					<section class="home__section section active">
+						<h1 class="home__title title">Главная</h1>
+
+						<div class="home__body">
+							<span class="no__complete">Пока не готова...</span>
+						</div>
+					</section>
+					
+					<section class="user__section section">
+						<h1 class="user__title title">Пользователи</h1>
+
+						<div class="user__body">
+							<div class="user__table table">
+								<div class="table__head">
+									<div class="table__item">ID</div>
+									<div class="table__item">Email</div>
+									<div class="table__item">Login</div>
+									<div class="table__item">Name</div>
+									<div class="table__item"></div>
+								</div>
+
+								<div class="table__body">
+
+									<% if(users.length){ %>   <!-- ^ Проверяю длину массива с обсуждениями -->
+
+										<% users.forEach(({id, email, login, name}) => { %>   <!-- ^ Если не пустой запускаю цикл -->
+										
+											<div class="table__row">
+												<div class="table__user"><%= id %></div>
+												<div class="table__user"><%= email %></div>
+												<div class="table__user"><%= login %></div>
+												<div class="table__user"><%= name %></div>
+												<div class="table__user user">
+													<div class="user__edit" onclick="Edit()">
+														Редактировать
+													</div>
+												</div>
+											</div>
+					
+										<% }); %>
+					
+										<% } %>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="edit">
+							<div class="profile__warning warning">
+								<div class="warning__body">
+									<div class="warning__close"></div>
+
+									<div class="delete" onclick="deleteAcc()">
+										Удалить аккаунт
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+					
+					<section class="info__section section">
+						<h1 class="info__title title">Информация</h1>
+
+						<div class="info__body">
+							<div class="info">
+								<span>Разработчики</span>
+								<span>Люба Гайдаш</span>
+								<span>Кривеньков Андрей</span>
+							</div>
+							<div class="info">
+								<span>Версия</span>
+								<span>1.0.0</span>
+							</div>
+						</div>
+					</section>
+				</div>
+
+				<!-- !-------Окно предупреждения удаления аккаунта-------- -->
+				<div class="popap">
+					<div class="profile__warning warning">
+						<div class="warning__body">
+							<div class="warning__close"></div>
+
+							<div class="warning__title">
+								<p>Вы уверены, что хотите выйти?</p>
+							</div>
+
+							<div class="warning__answer">
+								<span id="warning__yes" onclick="goHome()">ДА</span>
+								<span id="warning__no">НЕТ</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+
+		<script src="/admin.js"></script> <!-- ~ Подключение JavaScript -->
+	</body>
+</html>

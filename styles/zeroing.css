@@ -32,7 +32,10 @@ input,button,textarea {
 	font-family: inherit;
 }
 
-input, textarea {outline:none;}
+input, textarea {
+	outline:none;
+	resize: none;
+}
 
 button {
 	cursor: pointer;
