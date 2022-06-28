@@ -83,33 +83,12 @@ function goHome() {
 
 //~===================================
 
-const tableBody = document.querySelector(".table__body");
-let id
+const tableBody = document.querySelector(".table__body");   // ^ Получаю таблицу
+let id;
 
-tableBody.addEventListener("click", function(event){
+tableBody.addEventListener("click", function(event){   // ^ При клике проверяю родителя и беру значение поля id
 	if(event.target.closest(".table__row")) {
 		let row = event.target.closest(".table__row")
 		id  = row.children[0].textContent;
 	}
 });
-
-function deleteAcc() {
-	fetch("/deluser", {
-		method: "POST",
-		headers: {   // ^ заголовки пакета
-			Accept: "application/json",   // ^ разрешаем json
-			"Content-Type": "application/json",   // ^ пишем тип контента json
-		},
-		// тело запроса
-		body: JSON.stringify({
-			id: id,
-		}),
-	}).then((res) => {
-		if (res.status >= 200 && res.status < 300) {   // ^ Если всё хорошо
-			editButton.classList.remove('active');
-		} else {   // ^ В противном случае вывожу ошибку
-			let error = new Error(res.statusText);
-			console.log(error);
-		}
-	});
-}
