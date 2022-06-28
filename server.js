@@ -191,6 +191,7 @@ app.post('/register', (req, res) => {
 				db.all(`INSERT INTO user ("login", "email", "password", "date_reg") VALUES("${login}", "${email}", "${heshPassword}", "${date}")`);
 				
 				const token = jwt.sign(login, jwtSecret);
+				res.cookie('auth', token);
 				
 				res.json( {token} )
 			}
@@ -213,7 +214,6 @@ app.post('/auth', (req, res) => {
 						if(result) {   // ^ Если верный
 							const token = jwt.sign({login: login}, jwtSecret);
 
-							res.json( {token} )
 						} else {
 							res.status(409);
 							res.end();
@@ -233,23 +233,25 @@ app.post('/auth', (req, res) => {
 	});
 });
 
-app.use((req, res, next) => {   // ^ Проверка токена
-	const authHeader = req.headers.authorization;
-	console.log(authHeader);
+// app.use((req, res, next) => {   // ^ Проверка токена
+// 	console.log(req.cookies)
+// 	if	(req && req.cookies) {
+// 		token = req.cookies['jwt'];
+// 	}
+// 	console.log(token);
 
-	if(!authHeader) {
-		res.status(401).json({message: "Токен неверный!"})
-	}
+// 	if(!token) {
+// 		res.status(401).json({message: "Токен неверный!"})
+// 	}
 
-	const token = authHeader.replace('Bearer', '');
-	try {
-		jwt.verify(token, jwtSecret);
-	} catch(e) {
-		console.log("Токен написан неправильно")
-	}
+// 	try {
+// 		jwt.verify(token, jwtSecret);
+// 	} catch(e) {
+// 		console.log("Токен написан неправильно")
+// 	}
 
-	next();
-});
+// 	next();
+// });
 
 app.get('/profile', (req, res) => {
 	const title = "Профиль";

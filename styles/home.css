@@ -314,6 +314,36 @@ main {
 
 }
 
+/* ---- Кнопка создания темы ---- */
+.discussions__button {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #17E9E0;
+    color: #000;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+
+    border-radius: 10px;
+    border: none;
+
+    width: 140px;
+    height: 45px;
+}
+
+.discussions__button:hover {
+    background-color: #10c9c0;
+    box-shadow: 2px 2px 2px #076a65;
+}
+
+.discussions__button:active {
+    background-color: #0fece1;
+}
+
 /* ---- Подвал ---- */
 
 
