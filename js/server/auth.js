@@ -1,9 +1,12 @@
 window.addEventListener("DOMContentLoaded", () => {   // ^ При загрузке страницы
 
+	console.log("Страница загрузилась!")
+
 	// ^ Ищем форму auth и Прослушиваем нажатие на кнопку submit
 	document
 		.getElementById("auth")
 		.addEventListener("submit", (event) => {
+			console.log("Произошёл сабмит!")
 			event.preventDefault();
 			const login = event.target.login.value;
 			const password = event.target.password_auth.value;

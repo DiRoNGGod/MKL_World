@@ -78,7 +78,7 @@ function Edit() {   // * Оснавная функция показа и скр�
 //~==============
 
 function goHome() {
-	document.location.href = "/home";
+	document.location.href = "/";
 }
 
 //~===================================
