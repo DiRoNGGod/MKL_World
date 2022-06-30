@@ -7,6 +7,7 @@ const sqlite = require('sqlite3');
 const bodyParser = require("body-parser");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser')
 
 // ? ======== Методы других скриптов =========
 const {jwtSecret} = require("./server/config.js");
@@ -36,6 +37,7 @@ app.use(express.static('js'));   // ^ Общедоступная папка
 
 app.use(bodyParser.json());   // ^ Парсер json объекта
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());   // ^ Парсер cookies
 
 // ~ ================= Основная страница ===================
 
@@ -197,9 +199,9 @@ app.post('/register', (req, res) => {
 			if (!user) {   // ^ Если пользователя нет - создаём пользователя
 				db.all(`INSERT INTO user ("login", "email", "password", "date_reg") VALUES("${login}", "${email}", "${heshPassword}", "${date}")`);   // ^ Записываем пользователя в БД
 				
-				const token = jwt.sign({login: login}, jwtSecret);  // ^ Создаём токен
+				const token = jwt.sign(login, jwtSecret);  // ^ Создаём токен
 
-				res.json( {token} );   // ^ Отдаём токен в ответ
+				res.cookie("token", token).end();   // ^ Помещаем токен в cookie
 			}
 		});
 	});
@@ -219,9 +221,9 @@ app.post('/auth', (req, res) => {
 				if (data.login.toLowerCase() === login.toLowerCase()) {   // ^ Если нахожу совпадение с логином
 					bcrypt.compare(password, data.password, function(err, result) {   // ^ Расхэширую пароль
 						if(result) {   // ^ Если верный
-							const token = jwt.sign({login: login}, jwtSecret);  // ^ Создаём токен
+							const token = jwt.sign(login, jwtSecret);  // ^ Создаём токен
 
-							res.json( {token} );   // ^ Отдаём токен в ответ
+							res.cookie("token", token).end();   // ^ Помещаем токен в cookie
 						} else {   // ^ Если пароль не верный
 							res.status(409);
 							res.end();
