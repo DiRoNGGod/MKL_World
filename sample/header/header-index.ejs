@@ -17,9 +17,10 @@
 		<div class="dropdown">
 			<input type="image" onclick="myFunction()" class="dropbtn" src="/user.png" alt="Аккаунт">
 			<div id="myDropdown" class="dropdown-content">
-				<a href="/profile">Профиль</a>
-				<a href="/reg">Вход</a>
-				<a href="/admin">Админ-панель</a>
+				<% if (actions !== "Вход") { %>
+					<a href="/profile">Профиль</a>
+				<% } %>
+				<a href="/reg"><%= actions %></a>
 			</div>
 		</div>
 	</div>

@@ -43,7 +43,21 @@ app.use(cookieParser());   // ^ Парсер cookies
 
 app.get('/', (req, res) => {
 	const title = "Home";
+	let actions;
+	let admin = 0;
+
 	const discussions = [];   // ^ Массив для записей БД
+
+	const token = req.cookies.token;   // ^ Получаю токен из куки
+
+	if (token) {
+		const user = jwt.verify(token, jwtSecret);
+		admin = user.status;
+
+		actions = "Выход"
+	} else {
+		actions = "Вход"
+	}
 
 	db.all(`SELECT * FROM home_dis`, (err, rows) => {   // ^ Перебор полей логина и майла 
 		rows.forEach(data => {   // ^ Перебираю БД
@@ -55,7 +69,7 @@ app.get('/', (req, res) => {
 				discription: data.discription,
 			});
 		});
-		res.render(createPath('index'), { title, discussions });
+		res.render(createPath('index'), { title, actions, discussions, admin });
 	});
 });
 
@@ -117,7 +131,14 @@ app.get('/discussions/:id', (req, res) => {
 app.get('/reg', (req, res) => {   // ^ Страница авторизации
 	const title = "Вход";
 
-	res.render(createPath('authorization'), { title });
+	const token = req.cookies.token;
+
+	if (token) {   // ^ Если есть токен, удалить
+		res.clearCookie("token");
+		res.redirect("/");
+	} else {
+		res.render(createPath('authorization'), { title });
+	}
 });
 
 // ~ ================= Cтраница профиля(TOKEN) ===================
@@ -125,8 +146,31 @@ app.get('/reg', (req, res) => {   // ^ Страница авторизации
 app.get('/profile', authMiddle, (req, res) => {
 	const title = "Профиль";
 
-	res.render(createPath('way'), { title });
-	res.render(createPath('profile'), { title });
+	const token = req.cookies.token;   // ^ Получаю токен из куки
+	const user = jwt.verify(token, jwtSecret);
+
+	const login = user.login;
+	const admin = user.status;
+
+	db.all(`SELECT * FROM user WHERE login="${login}"`, (err, rows) => {   // ^ Проверка на существование БД, конкретно страницы
+		if (rows.length === 0) {   // ^ Если БД нет
+			res.redirect("/");
+		} else {
+			rows.forEach(data => {   // ^ Перебираю БД
+				let userInfo = {   // ^ Добавляю ноый объект в массив описаний
+					login: data.login,
+					name: data.name,
+					birthday: data.birthday,
+					sex: data.sex,
+					about: data.comment,
+					data_reg: data.date_reg,
+				};
+
+				res.render(createPath('way'), { title });
+				res.render(createPath('profile'), { title, userInfo , admin});
+			});
+		}
+	});
 });
 
 // ~ ================= Страница галереи ===================
@@ -134,8 +178,17 @@ app.get('/profile', authMiddle, (req, res) => {
 app.get('/gallery', (req, res) => {
 	const title = "Галерея";
 
+	let admin = 0;
+
+	const token = req.cookies.token;   // ^ Получаю токен из куки
+
+	if (token) {
+		const user = jwt.verify(token, jwtSecret);
+		admin = user.status;
+	}
+
 	res.render(createPath('way'), { title });
-	res.render(createPath('gallery'), { title });
+	res.render(createPath('gallery'), { title, admin });
 });
 
 // ~ ================= Страница википедии ===================
@@ -143,8 +196,17 @@ app.get('/gallery', (req, res) => {
 app.get('/wiki', (req, res) => {
 	const title = "Википедия";
 
+	let admin = 0;
+
+	const token = req.cookies.token;   // ^ Получаю токен из куки
+
+	if (token) {
+		const user = jwt.verify(token, jwtSecret);
+		admin = user.status;
+	}
+
 	res.render(createPath('way'), { title });
-	res.render(createPath('wiki'), { title });
+	res.render(createPath('wiki'), { title, admin });
 });
 
 // ~ ================= Cтраница админ-панели(TOKEN) ===================
@@ -154,13 +216,14 @@ app.get('/admin', authMiddle, (req, res) => {
 
 	const users = [];   // ^ Массив пользователей
 
-	db.all(`SELECT ID, email, login, name FROM user`, (err, rows) => {   // ^ Перебор БД
+	db.all(`SELECT ID, email, login, name, status FROM user`, (err, rows) => {   // ^ Перебор БД
 		rows.forEach(data => {
 			users.push({   // ^ Добавляю ноый объект в массив описаний
 				id: data.ID,
 				email: data.email,
 				login: data.login,
 				name: data.name,
+				status: data.status,
 			})
 		});
 
@@ -197,11 +260,17 @@ app.post('/register', (req, res) => {
 				});
 			}
 			if (!user) {   // ^ Если пользователя нет - создаём пользователя
-				db.all(`INSERT INTO user ("login", "email", "password", "date_reg") VALUES("${login}", "${email}", "${heshPassword}", "${date}")`);   // ^ Записываем пользователя в БД
-				
-				const token = jwt.sign(login, jwtSecret);  // ^ Создаём токен
-
-				res.cookie("token", token).end();   // ^ Помещаем токен в cookie
+				db.all(`INSERT INTO user ("login", "email", "password", "date_reg", "status") VALUES("${login}", "${email}", "${heshPassword}", "${date}", "1")`, (err) => {
+					db.all(`SELECT status FROM user WHERE login="${login}"`, (err, rows) => {   // ^ Перебор полей БД
+						if (rows === 0) {   // ^ Если БД пустая
+							res.status(401);
+							res.end();
+						} else {
+							const token = jwt.sign({login: login, status: rows[0].status}, jwtSecret, {expiresIn: "1h"});  // ^ Создаём токен
+							res.cookie("token", token).end();   // ^ Помещаем токен в cookie
+						}
+					});
+				});   // ^ Записываем пользователя в БД
 			}
 		});
 	});
@@ -210,6 +279,8 @@ app.post('/register', (req, res) => {
 // ! ================= Запрос на авторизацию ===================
 
 app.post('/auth', (req, res) => {
+	let user = false;
+
 	const { login, password } = req.body;   // ^ Получаю с формы
 
 	db.all(`SELECT login, password FROM user`, (err, rows) => {   // ^ Перебор полей логина и майла
@@ -219,32 +290,79 @@ app.post('/auth', (req, res) => {
 		} else {
 			rows.forEach(data => {
 				if (data.login.toLowerCase() === login.toLowerCase()) {   // ^ Если нахожу совпадение с логином
+					user = true;
+
 					bcrypt.compare(password, data.password, function(err, result) {   // ^ Расхэширую пароль
 						if(result) {   // ^ Если верный
-							const token = jwt.sign(login, jwtSecret);  // ^ Создаём токен
-
-							res.cookie("token", token).end();   // ^ Помещаем токен в cookie
+							db.all(`SELECT status FROM user WHERE login="${login}"`, (err, rows) => {   // ^ Перебор полей БД
+								if (rows === 0) {   // ^ Если БД пустая
+									res.status(401);
+									res.end();
+								} else {
+									const token = jwt.sign({login: login, status: rows[0].status}, jwtSecret, {expiresIn: "1h"});  // ^ Создаём токен
+									res.cookie("token", token).end();   // ^ Помещаем токен в cookie
+								}
+							});
 						} else {   // ^ Если пароль не верный
 							res.status(409);
 							res.end();
 						}
 					});
-				} else {   // ^ Если такого логина не существует
-					res.status(401);
-					res.end();
 				}
 			});
+		}
+
+		if (!user) {   // ^ Если такого логина не существует   
+			res.status(401);
+			res.end();
 		}
 	});
 });
 
 // ! ================= Запрос на удаление(Админ-панель) ===================
 
-app.post('/deluser', (req, res) => {
+app.post('/deluserAdmin', (req, res) => {
 	const {id} = req.body;   // ^ Получаю данные о id конкретного пользователя
 
-	db.all(`DELETE FROM user WHERE id="${id}";`, (err, rows) => {   // ^ Удаляю пользователя
+	db.all(`DELETE FROM user WHERE id="${id}";`, (err) => {   // ^ Удаляю пользователя
 		res.end();
+	});
+});
+
+// ! ================= Запрос на удаление(Профиль) ===================
+
+app.post('/deluser', (req, res) => {
+	const token = req.cookies.token;   // ^ Получаю токен из куки
+	const user = jwt.verify(token, jwtSecret);
+
+	const login = user.login;
+
+	db.all(`DELETE FROM user WHERE login="${login}";`, (err) => {   // ^ Удаляю пользователя
+		if (err) {
+			console.log(err);
+		} else {
+			res.clearCookie("token");
+			res.redirect("/");
+		}
+	});
+});
+
+// ! ================= Запрос на обновление данных(Профиль) ===================
+
+app.post('/update', (req, res) => {
+	const {name, birthday, sex, about} = req.body;   // ^ Получаю данные о конкретном пользователе
+
+	const token = req.cookies.token;   // ^ Получаю токен из куки
+	const user = jwt.verify(token, jwtSecret);
+
+	const login = user.login;
+
+	db.all(`UPDATE user SET name = "${name}", birthday = "${birthday}", sex = "${sex}", comment = "${about}" WHERE login = "${login}"`, (err) => {   // ^ Обновляю пользователя
+		if (err) {
+			console.log(err);
+		} else {
+			res.end();
+		}
 	});
 });
 

@@ -22,14 +22,16 @@
 				<section class="profile__section">
 					<div class="profile__content container">
 						<!-- !----Навигация профиля---- -->
-						<nav class="profile__nav nav">
-							<div class="nav__content">
-								<div class="profile__login">{login}</div>
-								<div id="info" class="nav__item active">Информация</div>
-								<div id="discus" class="nav__item">Обсуждения</div>
-								<div id="edit" class="nav__item">Редактирование</div>
-							</div>
-						</nav>
+						<% const {login, name, birthday, sex, about, data_reg} = userInfo %>
+											
+							<nav class="profile__nav nav">
+								<div class="nav__content">
+									<div class="profile__login"><%= login %></div>
+									<div id="info" class="nav__item active">Информация</div>
+									<div id="discus" class="nav__item">Обсуждения</div>
+									<div id="edit" class="nav__item">Редактирование</div>
+								</div>
+							</nav>
 
 						<!-- !----Основная область профиля 'Информация'----- -->
 						<section class="profile__info active profile">
@@ -42,30 +44,30 @@
 							<div class="profile__info-user info">   <!-- ^ Информация пользователя -->
 								<li class="info__row">
 									<span class="info__item">Настоящее имя:</span>
-									<span class="info__item info__value active">Не указано</span>
+									<span class="info__item info__value active"><%= name %></span>
 								</li>
 								<li class="info__row">
 									<span class="info__item">Дата рождения:</span>
-									<span class="info__item info__value active">Не указано</span>
+									<span class="info__item info__value active"><%= birthday %></span>
 								</li>
 								<li class="info__row">
 									<span class="info__item">Пол:</span>
-									<span class="info__item info__value active">Не указано</span>
+									<span class="info__item info__value active"><%= sex %></span>
 								</li>
 								<li class="info__row info__row_ta">
 									<span class="info__item">О себе:</span>
-									<span class="info__item info__item-status info__value active"></span>
+									<span class="info__item info__item-status info__value active"><%= about %></span>
 								</li>
 							</div>
 
 							<div class="profile__info-reg info">   <!-- ^ Постоянная информация пользователя -->
 								<li class="info__row">
 									<span class="info__item">Последняя активность:</span>
-									<span class="info__item">Не указано</span>
+									<span class="info__item">Неизвестно</span>
 								</li>
 								<li class="info__row">
 									<span class="info__item">Регистрация:</span>
-									<span class="info__item">Не указано</span>
+									<span class="info__item"><%= data_reg %></span>
 								</li>
 							</div>
 						</section>
@@ -97,24 +99,6 @@
 										</span>
 									</div>
 								</div>
-
-								<div class="discussions__item">
-									<div class="discussions__header">
-										<span class="discussions__name">
-											Тема обсуждения
-										</span>
-
-										<span class="discussions__date">
-											|Дата создания обсуждения|
-										</span>
-									</div>
-
-									<div class="discussions__description">
-										<span>
-											Описание обсуждения
-										</span>
-									</div>
-								</div>
 							</div>
 						</section>
 
@@ -131,21 +115,21 @@
 								<p class="edit__text edit__user-info active">Изменить данные профиля</p>
 							</div>
 
-							<form action="" method="get" class="profile__info-user info">   <!-- ^ Форма для отправки информации на сервер -->
+							<form method="post" class="profile__info-user info" id="info__form">   <!-- ^ Форма для отправки информации на сервер -->
 								<li class="info__row">
 									<span class="info__item">Настоящее имя:</span>
-									<span class="info__item info__value active">Не указано</span>
-									<input type="text" required name="userName" class="user__input user__name" tabindex="1">
+									<span class="info__item info__value active"><%= name %></span>
+									<input type="text" name="userName" class="user__input user__name" tabindex="1">
 								</li>
 								<li class="info__row">
 									<span class="info__item">Дата рождения:</span>
-									<span class="info__item info__value active">Не указано</span>
-									<input type="date" required name="userDate" class="user__input user__date" tabindex="2">
+									<span class="info__item info__value active"><%= birthday %></span>
+									<input type="date" name="userDate" class="user__input user__date" tabindex="2">
 								</li>
 								<li class="info__row">
 									<span class="info__item">Пол:</span>
-									<span class="info__item info__value active">Не указано</span>
-									<select name="userSex" required class="user__input user__select" tabindex="3">
+									<span class="info__item info__value active"><%= sex %></span>
+									<select name="userSex" class="user__input user__select" tabindex="3">
 										<option hidden >Пол</option>
 										<option value="Мужской">Мужской</option>
 										<option value="Женский">Женский</option>
@@ -153,24 +137,24 @@
 								</li>
 								<li class="info__row info__row_ta">
 									<span class="info__item">О себе:</span>
-									<span class="info__item info__item-status info__value active"></span>
+									<span class="info__item info__item-status info__value active"><%= about %></span>
 									<textarea name="userComment" class="user__input user__comment" tabindex="4"></textarea>
 								</li>
 								<li class="info__row">   <!-- ^ Кнопка сохранить -->
-									<div class="edit__complete">
+									<button class="edit__complete">
 										Сохранить
-									</div>
+									</button>
 								</li>
 							</form>
 
 							<div class="profile__info-reg info">
 								<li class="info__row">
 									<span class="info__item">Последняя активность:</span>
-									<span class="info__item">Не указано</span>
+									<span class="info__item">Неизвестно</span>
 								</li>
 								<li class="info__row">
 									<span class="info__item">Регистрация:</span>
-									<span class="info__item">Не указано</span>
+									<span class="info__item"><%= data_reg %></span>
 								</li>
 							</div>
 
@@ -190,7 +174,7 @@
 										</div>
 	
 										<div class="warning__answer">
-											<span id="warning__yes">ДА</span>
+											<span id="warning__yes" onclick="deleteUser()">ДА</span>
 											<span id="warning__no">НЕТ</span>
 										</div>
 									</div>
@@ -206,6 +190,8 @@
 		</div>
 		
 		<script src="/profile.js"></script> <!-- ~ Подключение JavaScript -->
+		<script src="/server/userInfo.js"></script> <!-- ~ Подключение JavaScript -->
+		<script src="/server/delete.js"></script> <!-- ~ Подключение JavaScript -->
 	</body>
 
 </html>

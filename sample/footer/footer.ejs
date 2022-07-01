@@ -22,8 +22,11 @@
 			</div>
 		</nav>
 
-		<a href="/admin" class="footer__button button">   <!-- ^ Кнопка перехода в админ-панель -->
-			Админ-панель
-		</a>
+		<% if (admin == 1) { %>
+			<a href="/admin" class="footer__button button">   <!-- ^ Кнопка перехода в админ-панель -->
+				Админ-панель
+			</a>
+		<% } %>
+		
 	</div>
 </footer>
