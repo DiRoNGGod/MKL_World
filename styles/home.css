@@ -152,19 +152,19 @@ main {
 .discussions__topic {
     overflow: hidden;
 
-	border: 3px dashed transparent;
-	border-radius: 10px;
+    border: 3px dashed transparent;
+    border-radius: 10px;
 
     margin: 30px;
 
-	transition: 0.2s linear;
+    transition: 0.2s linear;
 }
 
 .discussions__topic:hover {
     cursor: pointer;
     -webkit-filter: drop-shadow(3px 3px 2px #17E9E0);
     filter: drop-shadow(3px 3px 2px #17E9E0);
-	/* border: 3px dashed #17E9E0; */
+    /* border: 3px dashed #17E9E0; */
 
     z-index: 1;
 }
@@ -178,14 +178,14 @@ main {
     overflow: hidden;
 
     text-decoration: none;
-	text-transform: uppercase;
+    text-transform: uppercase;
 
     display: block;
 
-	display: flex;
-	justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 
-	transition: 0.2s linear;
+    transition: 0.2s linear;
 }
 
 .discussions__content {
@@ -196,26 +196,28 @@ main {
     padding: 15px;
 
     display: grid;
-	grid-template: 1fr / 100px 1fr 100px;
+    grid-template: 1fr / 100px 1fr 100px;
 
     overflow: hidden;
 }
 
-.discussions__image {   /* ^ Добавил для вертикального выравнивания имени и фото */
-	display: flex;
-	align-items: center;
-	flex-direction: column;
+.discussions__image {
+    /* ^ Добавил для вертикального выравнивания имени и фото */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .discussions__image img {
-	margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
-.discussions__description {   /* ^ Отдельное выравние по центру элемента грид сетки)))) */
-	justify-self: center;
-	align-self: center;
+.discussions__description {
+    /* ^ Отдельное выравние по центру элемента грид сетки)))) */
+    justify-self: center;
+    align-self: center;
 
-	margin-left: 50px;
+    margin-left: 50px;
 }
 
 @media (max-width: 900px) {
@@ -258,9 +260,10 @@ main {
 }
 
 @media (max-width: 700px) {
-	.subscription__aside {
-		display: none;
-	}
+    .subscription__aside {
+        display: none;
+    }
+
     .discussions__section {
         display: block;
     }
@@ -290,7 +293,7 @@ main {
         height: 70px;
     }
 
-	.discussions__date {
+    .discussions__date {
         font-size: 16px;
     }
 }
@@ -342,6 +345,72 @@ main {
 
 .discussions__button:active {
     background-color: #0fece1;
+}
+
+/* ---- Модальное окно ---- */
+.discussions__window {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: .3s;
+    transition: .3s;
+    top: -1000px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.9);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    overflow-y: scroll;
+    padding: 60px 15px;
+}
+
+.discussions__window_active {
+    position: fixed;
+    top: 0;
+    visibility: visible;
+    opacity: 1;
+    -webkit-transition: .3s;
+    transition: .3s;
+}
+
+.modal__close-button {
+    background: #ff0000;
+    height: 30px;
+    width: 30px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: none;
+    cursor: pointer;
+    -webkit-transition: .3s;
+    transition: .3s;
+    outline: none;
+}
+
+.modal__close-button:hover {
+    -webkit-transition: .3s;
+    transition: .3s;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
 /* ---- Подвал ---- */
