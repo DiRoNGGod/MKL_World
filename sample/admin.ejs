@@ -70,7 +70,7 @@
 
 									<% if(users.length){ %>   <!-- ^ Проверяю длину массива с обсуждениями -->
 
-										<% users.forEach(({id, email, login, name}) => { %>   <!-- ^ Если не пустой запускаю цикл -->
+										<% users.forEach(({id, email, login, name, status}) => { %>   <!-- ^ Если не пустой запускаю цикл -->
 										
 											<div class="table__row">
 												<div class="table__user"><%= id %></div>
@@ -78,9 +78,11 @@
 												<div class="table__user"><%= login %></div>
 												<div class="table__user"><%= name %></div>
 												<div class="table__user user">
-													<div class="user__edit" onclick="Edit()">
-														Редактировать
-													</div>
+													<% if(status != 1){ %>
+														<div class="user__edit" onclick="Edit()">
+															Редактировать
+														</div>
+													<% } %>
 												</div>
 											</div>
 					
