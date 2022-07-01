@@ -373,7 +373,7 @@ main {
     padding: 60px 15px;
 }
 
-.discussions__window_active {
+.discussions__window:active {
     position: fixed;
     top: 0;
     visibility: visible;
