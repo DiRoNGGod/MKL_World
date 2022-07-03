@@ -44,19 +44,22 @@ app.use(cookieParser());   // ^ Парсер cookies
 app.get('/', (req, res) => {
 	const title = "Home";
 	let actions;
-	let admin = 0;
+	let user = {};
 
 	const discussions = [];   // ^ Массив для записей БД
 
 	const token = req.cookies.token;   // ^ Получаю токен из куки
 
 	if (token) {
-		const user = jwt.verify(token, jwtSecret);
-		admin = user.status;
+		const userToken = jwt.verify(token, jwtSecret);
+		user = {   // ^ Получаю объект пользователя
+			status: userToken.status,
+			login: userToken.login,
+		};
 
-		actions = "Выход"
+		actions = "Выход";
 	} else {
-		actions = "Вход"
+		actions = "Вход";
 	}
 
 	db.all(`SELECT * FROM home_dis`, (err, rows) => {   // ^ Перебор полей логина и майла 
@@ -69,7 +72,7 @@ app.get('/', (req, res) => {
 				discription: data.discription,
 			});
 		});
-		res.render(createPath('index'), { title, actions, discussions, admin });
+		res.render(createPath('index'), { title, actions, discussions, user });
 	});
 });
 
@@ -143,14 +146,19 @@ app.get('/reg', (req, res) => {   // ^ Страница авторизации
 
 // ~ ================= Cтраница профиля(TOKEN) ===================
 
-app.get('/profile', authMiddle, (req, res) => {
+app.get('/profile/:login', authMiddle, (req, res) => {
 	const title = "Профиль";
 
-	const token = req.cookies.token;   // ^ Получаю токен из куки
-	const user = jwt.verify(token, jwtSecret);
+	let login = req.params.login;   // ^ Получаю параметр login
+	let isTrueEdit   // ^ Подтверждение пользоателя
 
-	const login = user.login;
-	const admin = user.status;
+	const token = req.cookies.token;   // ^ Получаю токен из куки
+	const userToken = jwt.verify(token, jwtSecret);
+
+	let user = {   // ^ Получаю объект пользователя
+		status: userToken.status,
+		login: userToken.login,
+	};
 
 	db.all(`SELECT * FROM user WHERE login="${login}"`, (err, rows) => {   // ^ Проверка на существование БД, конкретно страницы
 		if (rows.length === 0) {   // ^ Если БД нет
@@ -166,8 +174,14 @@ app.get('/profile', authMiddle, (req, res) => {
 					data_reg: data.date_reg,
 				};
 
+				if(login != user.login) {   // ^ Проверяю чей профиль
+					isTrueEdit = false;
+				} else {
+					isTrueEdit = true;
+				}
+
 				res.render(createPath('way'), { title });
-				res.render(createPath('profile'), { title, userInfo , admin});
+				res.render(createPath('profile'), { title, userInfo , user, isTrueEdit});
 			});
 		}
 	});
@@ -178,17 +192,22 @@ app.get('/profile', authMiddle, (req, res) => {
 app.get('/gallery', (req, res) => {
 	const title = "Галерея";
 
-	let admin = 0;
+	let user = {
+		status: "0",
+	};
 
 	const token = req.cookies.token;   // ^ Получаю токен из куки
 
 	if (token) {
-		const user = jwt.verify(token, jwtSecret);
-		admin = user.status;
+		const userToken = jwt.verify(token, jwtSecret); 
+		user = {   // ^ Получаю объект пользователя
+			status: userToken.status,
+			login: userToken.login.toLowerCase(),
+		};
 	}
 
 	res.render(createPath('way'), { title });
-	res.render(createPath('gallery'), { title, admin });
+	res.render(createPath('gallery'), { title, user });
 });
 
 // ~ ================= Страница википедии ===================
@@ -196,17 +215,23 @@ app.get('/gallery', (req, res) => {
 app.get('/wiki', (req, res) => {
 	const title = "Википедия";
 
-	let admin = 0;
+	let user = {
+		status: "0",
+	};
 
 	const token = req.cookies.token;   // ^ Получаю токен из куки
 
 	if (token) {
-		const user = jwt.verify(token, jwtSecret);
-		admin = user.status;
+		const userToken = jwt.verify(token, jwtSecret);
+
+		user = {   // ^ Получаю объект пользователя
+			status: userToken.status,
+			login: userToken.login.toLowerCase(),
+		};
 	}
 
 	res.render(createPath('way'), { title });
-	res.render(createPath('wiki'), { title, admin });
+	res.render(createPath('wiki'), { title, user });
 });
 
 // ~ ================= Cтраница админ-панели(TOKEN) ===================
@@ -235,6 +260,7 @@ app.get('/admin', authMiddle, (req, res) => {
 
 app.post('/register', (req, res) => {
 	let user = false;   // ^ Есть ли пользователь
+	const rights = 0;   // ^ Роль пользователя
 
 	const { login, email, password, date } = req.body;   // ^ Получаю данные из формы
 
@@ -245,28 +271,27 @@ app.post('/register', (req, res) => {
 
 		db.all(`SELECT login, email FROM user`, (err, rows) => {   // ^ Перебор полей БД
 			if (rows === 0) {   // ^ Если БД пустая
-				res.status(401);
-				res.end();
+				res.status(401).end();
 			} else {
 				rows.forEach(data => {
-					if (data.login === login) {   // ^ Если существует логин
-						res.status(401);
-						res.end();
+					if (data.login.toLowerCase() === login.toLowerCase()) {   // ^ Если существует логин
+						user = true;
+						res.status(401).end();
 					} 
-					else if (data.email === email) {   // ^ Если существует почта
-						res.status(402);
-						res.end();
+					else if (data.email.toLowerCase() === email.toLowerCase()) {   // ^ Если существует почта
+						user = true;
+						res.status(402).end();
 					}
 				});
 			}
 			if (!user) {   // ^ Если пользователя нет - создаём пользователя
-				db.all(`INSERT INTO user ("login", "email", "password", "date_reg", "status") VALUES("${login}", "${email}", "${heshPassword}", "${date}", "1")`, (err) => {
+				db.all(`INSERT INTO user ("login", "email", "password", "date_reg", "status") VALUES("${login}", "${email}", "${heshPassword}", "${date}", "${rights}")`, (err) => {
 					db.all(`SELECT status FROM user WHERE login="${login}"`, (err, rows) => {   // ^ Перебор полей БД
 						if (rows === 0) {   // ^ Если БД пустая
 							res.status(401);
 							res.end();
 						} else {
-							const token = jwt.sign({login: login, status: rows[0].status}, jwtSecret, {expiresIn: "1h"});  // ^ Создаём токен
+							const token = jwt.sign({login: login, status: rows[0].status}, jwtSecret);  // ^ Создаём токен
 							res.cookie("token", token).end();   // ^ Помещаем токен в cookie
 						}
 					});
@@ -296,16 +321,14 @@ app.post('/auth', (req, res) => {
 						if(result) {   // ^ Если верный
 							db.all(`SELECT status FROM user WHERE login="${login}"`, (err, rows) => {   // ^ Перебор полей БД
 								if (rows === 0) {   // ^ Если БД пустая
-									res.status(401);
-									res.end();
+									res.status(401).end();
 								} else {
-									const token = jwt.sign({login: login, status: rows[0].status}, jwtSecret, {expiresIn: "1h"});  // ^ Создаём токен
+									const token = jwt.sign({login: login, status: rows[0].status}, jwtSecret);  // ^ Создаём токен
 									res.cookie("token", token).end();   // ^ Помещаем токен в cookie
 								}
 							});
 						} else {   // ^ Если пароль не верный
-							res.status(409);
-							res.end();
+							res.status(409).end();
 						}
 					});
 				}

@@ -22,14 +22,16 @@
 				<section class="profile__section">
 					<div class="profile__content container">
 						<!-- !----Навигация профиля---- -->
-						<% const {login, name, birthday, sex, about, data_reg} = userInfo %>
+						<% const {login, name, birthday, sex, about, data_reg} = userInfo %>   <!-- ^ Получаю данные пользователя -->
 											
 							<nav class="profile__nav nav">
 								<div class="nav__content">
 									<div class="profile__login"><%= login %></div>
-									<div id="info" class="nav__item active">Информация</div>
-									<div id="discus" class="nav__item">Обсуждения</div>
-									<div id="edit" class="nav__item">Редактирование</div>
+									<% if (isTrueEdit) { %>   <!-- ^ Проверяю чей профиль, если пользователя, то можно редактировать -->
+										<div id="info" class="nav__item active">Информация</div>
+										<div id="discus" class="nav__item">Обсуждения</div>
+										<div id="edit" class="nav__item">Редактирование</div>
+									<% } %>
 								</div>
 							</nav>
 

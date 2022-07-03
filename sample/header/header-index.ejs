@@ -17,8 +17,8 @@
 		<div class="dropdown">
 			<input type="image" onclick="myFunction()" class="dropbtn" src="/user.png" alt="Аккаунт">
 			<div id="myDropdown" class="dropdown-content">
-				<% if (actions !== "Вход") { %>
-					<a href="/profile">Профиль</a>
+				<% if (actions !== "Вход") { %>   <!-- ^ Проверка есть ли токен -->
+					<a href="/profile/<%= user.login %>">Профиль</a>
 				<% } %>
 				<a href="/reg"><%= actions %></a>
 			</div>
