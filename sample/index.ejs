@@ -73,37 +73,49 @@
                             <% }); %>
 
                                 <% } %>
-                                    <button id="discussions__modal" class="discussions__button">Создать тему</button>
-                                    <div class="discussions__window">
-                                        <button class="modal__close-button"><img src="./img/close.svg" width="12"
-                                                alt=""></button>
-                                        <div class="discussions__content">
-                                            <form class="discussions__categories">
-                                                <label for="categories">Выберите Категорию темы</label>
-                                                <select id="categories">
-                                                    <option value="1">Ким Намджун</option>
-                                                    <option value="2">Ким Сокджин</option>
-                                                    <option value="3">Мин Юнги</option>
-                                                    <option value="4">Чон Хосок</option>
-                                                    <option value="5">Пак Чимин</option>
-                                                    <option value="6">Ким Тэхён</option>
-                                                    <option value="7">Чон Чонгук</option>
-                                                    <option value="8">BTS</option>
-                                                </select>
-                                            </form>
-                                            <form class="discussions__heading">
-                                                <label class="label__discussions">Назовите тему:</label>
-                                                <textarea placeholder="Пример: Шок! Чонгук купил машину!"
-                                                    class="discussiond__input"></textarea>
-                                            </form>
-                                            <form class="discussions__text">
-                                                <textarea placeholder="Введите текст обсуждения"
-                                                    class="text__discussions"></textarea>
+
+                                    <button id="discussions__button">Создать тему</button>
+
+
+                                    <div id="myModal" class="modal">
+
+
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <span class="close">&times;</span>
+                                              </div>
+                                            <div class="modal-body">
+                                                <form class="discussions__categories">
+                                                    <label for="categories">Выберите категорию темы:</label>
+                                                    <select id="categories">
+                                                        <option value="1">Ким Намджун</option>
+                                                        <option value="2">Ким Сокджин</option>
+                                                        <option value="3">Мин Юнги</option>
+                                                        <option value="4">Чон Хосок</option>
+                                                        <option value="5">Пак Чимин</option>
+                                                        <option value="6">Ким Тэхён</option>
+                                                        <option value="7">Чон Чонгук</option>
+                                                        <option value="8">BTS</option>
+                                                    </select>
+                                                </form>
+                                                <form class="discussions__heading">
+                                                    <label class="label__discussions">Назовите тему:</label>
+                                                    <textarea placeholder="Пример: Шок! Чонгук купил машину!"
+                                                        class="discussiond__input"></textarea>
+                                                </form>
+                                                <form class="discussions__text">
+                                                    <textarea placeholder="Введите текст обсуждения"
+                                                        class="text__discussions"></textarea>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
                                                 <button formnovalidate type="submit" class="discussions__but">Создать
                                                     обсуждение</button>
-                                            </form>
+                                            </div>
                                         </div>
+
                                     </div>
+
     </div>
     </section>
     </main>
@@ -113,7 +125,6 @@
         </div>
 
         <script src="/index.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 
 </html>

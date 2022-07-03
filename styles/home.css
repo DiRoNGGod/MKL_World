@@ -318,9 +318,10 @@ main {
 }
 
 /* ---- Кнопка создания темы ---- */
-.discussions__button {
+#discussions__button {
     display: block;
     margin: 0 auto;
+    margin-top: 10px;
     margin-bottom: 10px;
     justify-content: center;
     align-items: center;
@@ -338,79 +339,94 @@ main {
     height: 45px;
 }
 
-.discussions__button:hover {
+#discussions__button:hover {
     background-color: #10c9c0;
     box-shadow: 2px 2px 2px #076a65;
 }
 
-.discussions__button:active {
+#discussions__button:active {
     background-color: #0fece1;
 }
 
 /* ---- Модальное окно ---- */
-.discussions__window {
-    position: absolute;
-    visibility: hidden;
-    opacity: 0;
-    -webkit-transition: .3s;
-    transition: .3s;
-    top: -1000px;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    background: rgba(0, 0, 0, 0.9);
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-    overflow-y: scroll;
-    padding: 60px 15px;
-}
-
-.discussions__window:active {
+.modal {
+    display: none;
     position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
     top: 0;
-    visibility: visible;
-    opacity: 1;
-    -webkit-transition: .3s;
-    transition: .3s;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal__close-button {
-    background: #ff0000;
-    height: 30px;
-    width: 30px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    border: none;
-    position: absolute;
-    right: 0;
-    top: 0;
-    background: none;
+.modal-content {
+    position: relative;
+    background-color: #17E9E0;
+    margin: auto;
+    padding: 0;
+    border: 3px solid #076a65;
+    border-radius: 10px;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+@-webkit-keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
     cursor: pointer;
-    -webkit-transition: .3s;
-    transition: .3s;
-    outline: none;
-}
-
-.modal__close-button:hover {
     -webkit-transition: .3s;
     transition: .3s;
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
+}
+
+.modal-body {
+    padding: 30px 30px;
+}
+
+.modal-footer {
+    padding: 30px 30px;
 }
 
 /* ---- Подвал ---- */
