@@ -5,115 +5,112 @@
 <!-- Контейнер для других важных данных (не отображается) -->
 
 <head>
-    <%- include("header/head.ejs") %>
-        <link rel="stylesheet" href="/home.css"> <!-- ~ Подключение основных стилей -->
+	<%- include("header/head.ejs") %>
+		<link rel="stylesheet" href="/home.css"> <!-- ~ Подключение основных стилей -->
 </head>
 <!-- Отображаемое тело страницы -->
 
 <body>
-    <div class="wrapper">
-        <!-- Кнопка наверх -->
-        <div class="button__up">
-            <a href="#">
-                <img src="/up-arrow.png" width="30" height="30" alt="Кнопка наверх">
-            </a>
-        </div>
-        <!-- Шапка сайта -->
-        <%- include("header/header-index.ejs") %>
-            <!--* Подключение шапки -->
+	<div class="wrapper">
+		<!-- Кнопка наверх -->
+		<div class="button__up">
+			<a href="#">
+				<img src="/up-arrow.png" width="30" height="30" alt="Кнопка наверх">
+			</a>
+		</div>
+		<!-- Шапка сайта -->
+		<%- include("header/header-index.ejs") %> <!--* Подключение шапки -->
 
-            <main class="main">
-                <!-- Секция подписок -->
-                <aside class="aside subscription__aside">
-                    <div class="subscription__heading">
-                        Обновление обсуждений
-                    </div>
-                    <div class="subscription__ul">
-                        <ul>
-                            <a href="/">
-                                <li>{Тема №}</li>
-                            </a>
-                        </ul>
-                    </div>
-                </aside>
-                <!-- Секция обсуждений по сортировке -->
-                <section class="section discussions__section">
-                    <div class="discussions__sorting">
-                        Сортировка по {Дате}
-                    </div>
+		<main class="main">
+			<!-- Секция подписок -->
+			<aside class="aside subscription__aside">
+				<div class="subscription__heading">
+					Обновление обсуждений
+				</div>
+				<div class="subscription__ul">
+					<ul>
+						<a href="/">
+							<li>{Тема №}</li>
+						</a>
+					</ul>
+				</div>
+			</aside>
+			<!-- Секция обсуждений по сортировке -->
+			<section class="section discussions__section">
+				<div class="discussions__sorting">
+					Сортировка по {Дате}
+				</div>
 
-                    <% if(discussions.length){ %>
-                        <!-- ^ Проверяю длину массива с обсуждениями -->
+				<% if(discussions.length){ %>
+					<!-- ^ Проверяю длину массива с обсуждениями -->
 
-                        <% discussions.forEach(({id, author, date, theme, discription})=> { %>
-                            <!-- ^ Если не пустой запускаю цикл -->
+					<% discussions.forEach(({id, author, date, theme, discription})=> { %>
+						<!-- ^ Если не пустой запускаю цикл -->
 
-                            <div class="discussions__topic" onclick="location.href='/discussions/' + <%= id %>">
-                                <div class="discussions__name">
-                                    <span>
-                                        <%= theme %>
-                                    </span>
-                                    <div class="discussions__date">
-                                        <%= date %>
-                                    </div>
-                                </div>
-                                <div class="discussions__content">
-                                    <div class="discussions__image">
-                                        <img src="/b-1.png" width="100" height="100" alt="Фото профиля">
-                                        <p>
-                                            <%= author %>
-                                        </p>
-                                    </div>
-                                    <div class="discussions__description">
-                                        <%= discription %>
-                                    </div>
-                                </div>
-                            </div>
+						<div class="discussions__topic" onclick="location.href='/discussions/' + <%= id %>">
+							<div class="discussions__name">
+								<span>
+									<%= theme %>
+								</span>
+								<div class="discussions__date">
+									<%= date %>
+								</div>
+							</div>
+							<div class="discussions__content">
+								<div class="discussions__image">
+									<img src="/b-1.png" width="100" height="100" alt="Фото профиля">
+									<p>
+										<%= author %>
+									</p>
+								</div>
+								<div class="discussions__description">
+									<%= discription %>
+								</div>
+							</div>
+						</div>
 
-                            <% }); %>
+					<% }); %>
 
-                                <% } %>
-                                    <button id="discussions__modal" class="discussions__button">Создать тему</button>
-                                    <div class="discussions__window">
-                                        <button class="modal__close-button"><img src="./img/close.svg" width="12"
-                                                alt=""></button>
-                                        <div class="discussions__content">
-                                            <form class="discussions__categories">
-                                                <label for="categories">Выберите Категорию темы</label>
-                                                <select id="categories">
-                                                    <option value="1">Ким Намджун</option>
-                                                    <option value="2">Ким Сокджин</option>
-                                                    <option value="3">Мин Юнги</option>
-                                                    <option value="4">Чон Хосок</option>
-                                                    <option value="5">Пак Чимин</option>
-                                                    <option value="6">Ким Тэхён</option>
-                                                    <option value="7">Чон Чонгук</option>
-                                                    <option value="8">BTS</option>
-                                                </select>
-                                            </form>
-                                            <form class="discussions__heading">
-                                                <label class="label__discussions">Назовите тему:</label>
-                                                <textarea placeholder="Пример: Шок! Чонгук купил машину!"
-                                                    class="discussiond__input"></textarea>
-                                            </form>
-                                            <form class="discussions__text">
-                                                <textarea placeholder="Введите текст обсуждения"
-                                                    class="text__discussions"></textarea>
-                                                <button formnovalidate type="submit" class="discussions__but">Создать
-                                                    обсуждение</button>
-                                            </form>
-                                        </div>
-                                    </div>
-    </div>
-    </section>
-    </main>
+				<% } %>
+				<button id="discussions__modal" class="discussions__button">Создать тему</button>
+				<div class="discussions__window">
+					<button class="modal__close-button"><img src="/close.svg" width="12"
+							alt=""></button>
+					<div class="discussions__content">
+						<form class="discussions__categories">
+							<label for="categories">Выберите Категорию темы</label>
+							<select id="categories">
+								<option value="1">Ким Намджун</option>
+								<option value="2">Ким Сокджин</option>
+								<option value="3">Мин Юнги</option>
+								<option value="4">Чон Хосок</option>
+								<option value="5">Пак Чимин</option>
+								<option value="6">Ким Тэхён</option>
+								<option value="7">Чон Чонгук</option>
+								<option value="8">BTS</option>
+							</select>
+						</form>
+						<form class="discussions__heading">
+							<label class="label__discussions">Назовите тему:</label>
+							<textarea placeholder="Пример: Шок! Чонгук купил машину!"
+								class="discussiond__input"></textarea>
+						</form>
+						<form class="discussions__text">
+							<textarea placeholder="Введите текст обсуждения"
+								class="text__discussions"></textarea>
+							<button formnovalidate type="submit" class="discussions__but">Создать
+								обсуждение</button>
+						</form>
+					</div>
+				</div>
+			</section>
+		</main>
 
-    <%- include("footer/footer.ejs") %>
-        <!--* Подключение подвала -->
-        </div>
+	<%- include("footer/footer.ejs") %>   <!--* Подключение подвала -->
+	</div>
 
-        <script src="/index.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="/index.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 
 </html>

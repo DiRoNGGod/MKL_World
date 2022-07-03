@@ -30,7 +30,7 @@ window.addEventListener("DOMContentLoaded", () => {   // ^ При загрузк
 				document.querySelector('.confirm').classList.add('go');   // ^ Добавляю зелёное окошко
 				document.querySelector('.confirm').innerHTML = 'Регистрация прошла успешнa!';
 				setTimeout(function () {
-					document.location.href = "/profile";   // ^ Через секунду отправляю пользователя в профиль
+					document.location.href = "/profile/" + login;   // ^ Через секунду отправляю пользователя в профиль
 				}, 1000);
 			} else if (res.status == 401) {   // ^ Если логин уже существует
 				event.target.name.value = "";   // ^ Обнуляю логин

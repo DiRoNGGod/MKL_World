@@ -29,7 +29,7 @@ window.addEventListener("DOMContentLoaded", () => {   // ^ При загрузк
 					document.querySelector('.confirm').classList.add('go');
 					document.querySelector('.confirm').innerHTML = 'Вход выполнен успешно!';
 					setTimeout(function () {
-						document.location.href = "/profile";   // ^ Перенести в профиль через секунду
+						document.location.href = "/profile/" + login;   // ^ Перенести в профиль через секунду
 					}, 1000);
 				} else if (res.status == 401) {   // ^ Если логин не найден в БД
 					event.target.login.value = "";   // ^ Обнуляю логин
