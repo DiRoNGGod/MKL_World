@@ -161,7 +161,6 @@ section {
 	height: 100%;
 
 	object-fit: cover;
-	object-position: top;
 }
 
 .big__block.active {
@@ -338,6 +337,10 @@ section {
 }
 .profile__edit.active {
 	display: flex;
+}
+
+#img-u {   /* ^ Отключаю инпут */
+	display: none;
 }
 
 .profile__left {

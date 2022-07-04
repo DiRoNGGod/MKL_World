@@ -22,7 +22,8 @@
 				<section class="profile__section">
 					<div class="profile__content container">
 						<!-- !----Навигация профиля---- -->
-						<% const {login, name, birthday, sex, about, data_reg} = userInfo %>   <!-- ^ Получаю данные пользователя -->
+						<% let {login, name, birthday, sex, about, data_reg} = userInfo %>   <!-- ^ Получаю данные пользователя -->
+						<% birthday = birthday.split('-').reverse().join('.'); %>   <!-- ^ Получаю данные пользователя -->
 											
 							<nav class="profile__nav nav">
 								<div class="nav__content">
@@ -39,7 +40,7 @@
 						<section class="profile__info active profile">
 							<div class="big__block">
 								<div class="profile__img">   <!-- ^ Картинка проиля -->
-									<img class="profile__img-item" src="/test-ava.jpg" alt="Avatarka">
+									<img class="profile__img-item" src="/avatars/default.jpg" alt="Avatarka">
 								</div>
 							</div>
 
@@ -78,7 +79,7 @@
 						<section class="profile__discussions profile">
 							<div class="big__block">
 								<div class="profile__img">   <!-- ^ Картинка профиля -->
-									<img class="profile__img-item" src="/test-ava.jpg" alt="Avatarka">
+									<img class="profile__img-item" src="/avatars/default.jpg" alt="Avatarka">
 								</div>
 							</div>
 
@@ -109,11 +110,14 @@
 							<div class="profile__left">
 								<div class="big__block">
 									<div class="profile__img">   <!-- ^ Картинка профиля -->
-										<img class="profile__img-item" src="/test-ava.jpg" alt="Avatarka">
+										<img class="profile__img-item" src="/avatars/default.jpg" alt="Avatarka">
 									</div>
 								</div>
 								<!-- ^ Кнопки изменения информации профиля -->
-								<p class="edit__text">Сменить фотографию профиля</p>
+								<form action="" method="post" id="user__img">
+									<label class="edit__text" for="img-u">Сменить фотографию профиля</label>
+									<input type="file" id="img-u" accept="image/jpeg, image/png" onchange="downloadImg(this)">
+								</form>
 								<p class="edit__text edit__user-info active">Изменить данные профиля</p>
 							</div>
 
@@ -194,6 +198,7 @@
 		<script src="/profile.js"></script> <!-- ~ Подключение JavaScript -->
 		<script src="/server/userInfo.js"></script> <!-- ~ Подключение JavaScript -->
 		<script src="/server/delete.js"></script> <!-- ~ Подключение JavaScript -->
+		<script src="/server/downloadImg.js"></script> <!-- ~ Подключение JavaScript -->
 	</body>
 
 </html>

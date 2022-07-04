@@ -389,6 +389,30 @@ app.post('/update', (req, res) => {
 	});
 });
 
+// ! ================= Запрос на обновление фотографии(Профиль) ===================
+
+app.post('/uploadImg', (req, res) => {
+    let file = req.files.file;
+	console.log(file);
+
+	const token = req.cookies.token;   // ^ Получаю токен из куки
+	const user = jwt.verify(token, jwtSecret);
+
+	const login = user.login;
+
+    let file_name = `${login}.jpg`;
+
+    let path = 'images/avatars/' + file_name;
+
+    file.mv(path, (err, result) => {
+        if (err) {
+            cosnole.log(err);
+        } else {
+            cosnole.log("Всё прошло успешно");
+        }
+    })
+})
+
 // todo ================== Страница ошибки ======================
 
 app.use((req, res) => {
