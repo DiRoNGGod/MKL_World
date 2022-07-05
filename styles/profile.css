@@ -339,7 +339,7 @@ section {
 	display: flex;
 }
 
-#img-u {   /* ^ Отключаю инпут */
+#filedata {   /* ^ Отключаю инпут */
 	display: none;
 }
 

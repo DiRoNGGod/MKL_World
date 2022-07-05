@@ -114,9 +114,9 @@
 									</div>
 								</div>
 								<!-- ^ Кнопки изменения информации профиля -->
-								<form action="" method="post" id="user__img">
-									<label class="edit__text" for="img-u">Сменить фотографию профиля</label>
-									<input type="file" id="img-u" accept="image/jpeg, image/png" onchange="downloadImg(this)">
+								<form action="/uploadImg" method="post" id="user__img">
+									<label class="edit__text" for="filedata">Сменить фотографию профиля</label>
+									<input type="file" id="filedata" accept="image/jpeg, image/png" onchange="downloadImg(this)">
 								</form>
 								<p class="edit__text edit__user-info active">Изменить данные профиля</p>
 							</div>
