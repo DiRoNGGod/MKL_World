@@ -284,13 +284,13 @@ app.post('/register', (req, res) => {
 				});
 			}
 			if (!user) {   // ^ Если пользователя нет - создаём пользователя
-				db.all(`INSERT INTO user ("login", "email", "password", "date_reg", "status", avatars) VALUES("${login}", "${email}", "${heshPassword}", "${date}", "${rights}", "false")`, (err) => {
+				db.all(`INSERT INTO user ("login", "email", "password", "date_reg", "status", avatars) VALUES("${login}", "${email}", "${heshPassword}", "${date}", "${rights}", 0)`, (err) => {
 					db.all(`SELECT status FROM user WHERE login="${login}"`, (err, rows) => {   // ^ Перебор полей БД
 						if (rows === 0) {   // ^ Если БД пустая
 							res.status(401);
 							res.end();
 						} else {
-							const token = jwt.sign({login: login, status: rows[0].status}, jwtSecret);  // ^ Создаём токен
+							const token = jwt.sign({login: login.toLowerCase(), status: rows[0].status}, jwtSecret);  // ^ Создаём токен
 							res.cookie("token", token).end();   // ^ Помещаем токен в cookie
 						}
 					});
@@ -322,7 +322,7 @@ app.post('/auth', (req, res) => {
 								if (rows === 0) {   // ^ Если БД пустая
 									res.status(401).end();
 								} else {
-									const token = jwt.sign({login: login, status: rows[0].status}, jwtSecret);  // ^ Создаём токен
+									const token = jwt.sign({login: login.toLowerCase(), status: rows[0].status}, jwtSecret);  // ^ Создаём токен
 									res.cookie("token", token).end();   // ^ Помещаем токен в cookie
 								}
 							});

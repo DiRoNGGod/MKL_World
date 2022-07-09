@@ -25,24 +25,28 @@
 						<% let {login, name, birthday, sex, about, data_reg, avatar} = userInfo %>   <!-- ^ Получаю данные пользователя -->
 						<% let userImage %>   <!-- ^ Создаю переменную названия аватарки пользователя -->
 
-						<% if (avatar) { %>   <!-- ^ Проверяю наличие аватара у пользователя -->
-						<% userImage = login %>
-						<% } else { %>
-						<% userImage = "default" %>
+						<% if (avatar == 1 && isTrueEdit){ %>   <!-- ^ Проверяю наличие аватара у пользователя -->
+							<% userImage = login.toLowerCase() %>
+						<% } else if (avatar == 1 && !isTrueEdit){ %>
+							<% userImage = login.toLowerCase() %>
+						<% } else if (avatar != 0) {%>
+							<% userImage = "default" %>
 						<% } %>
 						
-						<% birthday = birthday.split('-').reverse().join('.'); %>   <!-- ^ Получаю данные пользователя -->
+						<% if (birthday) { %>   <!-- ^ Проверяю наличие аватара у пользователя -->
+							<% birthday = birthday.split('-').reverse().join('.');  %>
+						<% } %>
 											
-							<nav class="profile__nav nav">
-								<div class="nav__content">
-									<div class="profile__login"><%= login %></div>
-									<% if (isTrueEdit) { %>   <!-- ^ Проверяю чей профиль, если пользователя, то можно редактировать -->
-										<div id="info" class="nav__item active">Информация</div>
-										<div id="discus" class="nav__item">Обсуждения</div>
-										<div id="edit" class="nav__item">Редактирование</div>
-									<% } %>
-								</div>
-							</nav>
+						<nav class="profile__nav nav">
+							<div class="nav__content">
+								<div class="profile__login"><%= login %></div>
+								<% if (isTrueEdit) { %>   <!-- ^ Проверяю чей профиль, если пользователя, то можно редактировать -->
+									<div id="info" class="nav__item active">Информация</div>
+									<div id="discus" class="nav__item">Обсуждения</div>
+									<div id="edit" class="nav__item">Редактирование</div>
+								<% } %>
+							</div>
+						</nav>
 
 						<!-- !----Основная область профиля 'Информация'----- -->
 						<section class="profile__info active profile">
