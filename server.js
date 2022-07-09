@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
+const fileupload = require("express-fileupload");
 
 // ? ======== Методы других скриптов =========
 const {jwtSecret} = require("./server/config.js");
@@ -38,6 +39,8 @@ app.use(express.static('js'));   // ^ Общедоступная папка
 app.use(bodyParser.json());   // ^ Парсер json объекта
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());   // ^ Парсер cookies
+
+app.use(fileupload());   // ^ Парсер файлов
 
 // ~ ================= Основная страница ===================
 
@@ -108,8 +111,7 @@ app.get('/discussions/:id', (req, res) => {
 					comment VARCHAR NOT NULL
 					)`
 				)
-
-				res.render(createPath('way'), { title });
+				
 				res.render(createPath('discussions'), { title, discussions, user_disc });
 			} else {   // ^ Если таблица уже имеется
 				db.all(`SELECT * FROM discussions_${id}`, (err, rows) => {
@@ -121,7 +123,6 @@ app.get('/discussions/:id', (req, res) => {
 							comment: data.comment,
 						});
 					});
-					res.render(createPath('way'), { title });
 					res.render(createPath('discussions'), { title, discussions, user_disc });
 				});
 			}
@@ -172,6 +173,7 @@ app.get('/profile/:login', authMiddle, (req, res) => {
 					sex: data.sex,
 					about: data.comment,
 					data_reg: data.date_reg,
+					avatar: data.avatars,
 				};
 
 				if(login != user.login) {   // ^ Проверяю чей профиль
@@ -180,7 +182,6 @@ app.get('/profile/:login', authMiddle, (req, res) => {
 					isTrueEdit = true;
 				}
 
-				res.render(createPath('way'), { title });
 				res.render(createPath('profile'), { title, userInfo , user, isTrueEdit});
 			});
 		}
@@ -206,7 +207,6 @@ app.get('/gallery', (req, res) => {
 		};
 	}
 
-	res.render(createPath('way'), { title });
 	res.render(createPath('gallery'), { title, user });
 });
 
@@ -230,7 +230,6 @@ app.get('/wiki', (req, res) => {
 		};
 	}
 
-	res.render(createPath('way'), { title });
 	res.render(createPath('wiki'), { title, user });
 });
 
@@ -285,7 +284,7 @@ app.post('/register', (req, res) => {
 				});
 			}
 			if (!user) {   // ^ Если пользователя нет - создаём пользователя
-				db.all(`INSERT INTO user ("login", "email", "password", "date_reg", "status") VALUES("${login}", "${email}", "${heshPassword}", "${date}", "${rights}")`, (err) => {
+				db.all(`INSERT INTO user ("login", "email", "password", "date_reg", "status", avatars) VALUES("${login}", "${email}", "${heshPassword}", "${date}", "${rights}", "false")`, (err) => {
 					db.all(`SELECT status FROM user WHERE login="${login}"`, (err, rows) => {   // ^ Перебор полей БД
 						if (rows === 0) {   // ^ Если БД пустая
 							res.status(401);
@@ -392,7 +391,27 @@ app.post('/update', (req, res) => {
 // ! ================= Запрос на обновление фотографии(Профиль) ===================
 
 app.post('/uploadImg', (req, res) => {
-    
+    let file = req.files.file;   // ^ Получаю файл с клиента
+
+	const token = req.cookies.token;   // ^ Получаю токен из куки
+	const user = jwt.verify(token, jwtSecret);
+
+    let path = 'images/avatars/' + user.login + ".jpg";   // ^ Путь аватарки пользователя
+
+    file.mv(path, (err, result) => {   // ^ Перемещаю файл с нужную папку
+        if (err) {
+            res.status(402).end()
+        } else {
+			db.all(`UPDATE user SET avatars = "true" WHERE login = "${user.login}"`, (err) => {   // ^ Статус аватара пользователя
+				if (err) {
+					console.log(err);
+					res.status(401).end()
+				} else {
+					res.status(201).end()
+				}
+			});
+		}
+    })
 });
 
 // todo ================== Страница ошибки ======================

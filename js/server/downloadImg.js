@@ -1,17 +1,21 @@
-function downloadImg(input) {
-	const file = input.files[0];
+function downloadImg (input) {
+    const file = input.files[0];
 
 	const formdata = new FormData();
 	formdata.append('file', file);
 
 	fetch('/uploadImg', {
-		method: 'POST',
+		method: 'post',
+		credentials: 'include',
+		headers: {
+			Accept: 'application/json'
+		},
 		body: formdata,
-	}).then(res => {
+	}).then((res) => {
 		if (res.status >= 200 && res.status < 300) {   // ^ Если всё хорошо
-			console.log("Сохранение выполнено!");
+			window.location.href = window.location.href;
 		} else {   // ^ В противном случае вывожу ошибку
-			console.log("Произошла ошибка");
+			console.log("Ошибка перемещения");
 		}
-	})
+	});
 }

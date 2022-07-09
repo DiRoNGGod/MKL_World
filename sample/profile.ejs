@@ -22,7 +22,15 @@
 				<section class="profile__section">
 					<div class="profile__content container">
 						<!-- !----Навигация профиля---- -->
-						<% let {login, name, birthday, sex, about, data_reg} = userInfo %>   <!-- ^ Получаю данные пользователя -->
+						<% let {login, name, birthday, sex, about, data_reg, avatar} = userInfo %>   <!-- ^ Получаю данные пользователя -->
+						<% let userImage %>   <!-- ^ Создаю переменную названия аватарки пользователя -->
+
+						<% if (avatar) { %>   <!-- ^ Проверяю наличие аватара у пользователя -->
+						<% userImage = login %>
+						<% } else { %>
+						<% userImage = "default" %>
+						<% } %>
+						
 						<% birthday = birthday.split('-').reverse().join('.'); %>   <!-- ^ Получаю данные пользователя -->
 											
 							<nav class="profile__nav nav">
@@ -40,7 +48,7 @@
 						<section class="profile__info active profile">
 							<div class="big__block">
 								<div class="profile__img">   <!-- ^ Картинка проиля -->
-									<img class="profile__img-item" src="/avatars/default.jpg" alt="Avatarka">
+									<img class="profile__img-item" src="/avatars/<%= userImage %>.jpg" alt="Avatarka">
 								</div>
 							</div>
 
@@ -79,7 +87,7 @@
 						<section class="profile__discussions profile">
 							<div class="big__block">
 								<div class="profile__img">   <!-- ^ Картинка профиля -->
-									<img class="profile__img-item" src="/avatars/default.jpg" alt="Avatarka">
+									<img class="profile__img-item" src="/avatars/<%= userImage %>.jpg" alt="Avatarka">
 								</div>
 							</div>
 
@@ -110,11 +118,11 @@
 							<div class="profile__left">
 								<div class="big__block">
 									<div class="profile__img">   <!-- ^ Картинка профиля -->
-										<img class="profile__img-item" src="/avatars/default.jpg" alt="Avatarka">
+										<img class="profile__img-item" src="/avatars/<%= userImage %>.jpg" alt="Avatarka">
 									</div>
 								</div>
 								<!-- ^ Кнопки изменения информации профиля -->
-								<form action="/uploadImg" method="post" id="user__img">
+								<form action="/uploadImg" enctype="multipart/form-data" method="post" id="user__img">
 									<label class="edit__text" for="filedata">Сменить фотографию профиля</label>
 									<input type="file" id="filedata" accept="image/jpeg, image/png" onchange="downloadImg(this)">
 								</form>
