@@ -79,22 +79,26 @@
                                     <div id="myModal" class="modal">
 
 
-                                        <form method="post" class="modal-content">
+                                        <form method="post" class="modal-content" id="form__discussions">
                                             <div class="modal-header">
                                                 <span class="close">&times;</span>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="discussions__discussions">
-                                                    <label class="label__discussions">Назовите тему:</label>
-                                                    <textarea placeholder="Пример: Шок! Чонгук купил машину!"
-                                                        class="discussiond__input"></textarea>
-                                                    <textarea placeholder="Введите текст обсуждения"
-                                                        class="text__discussions"></textarea>
+                                                    <div class="input__discription">
+														<input type="text" class="disc__input" required minlength="6" maxlength="30" placeholder=" ">
+														<label class="label__discussions">Назовите тему:</label>
+													</div>
+
+                                                    <div class="input__discription">
+														<textarea type="text" class="disc__input input_big" minlength="1" maxlength="120" placeholder=" "></textarea>
+														<label class="label__discussions">Описание темы:</label>
+													</div>
                                                 </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button formnovalidate type="submit" class="discussions__but">Создать
-                                                    обсуждение</button>
+
+												<div class="modal-footer">
+													<button type="submit" class="discussions__but">Создать обсуждение</button>
+												</div>
                                             </div>
                                         </form>
 

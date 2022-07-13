@@ -366,8 +366,9 @@ main {
 .modal-content {
     position: relative;
     background-color: #17E9E0;
+	width: 60%;
     margin: auto;
-    padding: 0;
+    padding: 40px;
     border: 3px solid #076a65;
     border-radius: 10px;
     width: 50%;
@@ -408,6 +409,10 @@ main {
     font-size: 28px;
     font-weight: bold;
     margin-right: 10px;
+
+	position: absolute;
+	top: 10px;
+	right: 10px;
 }
 
 .close:hover,
@@ -422,11 +427,81 @@ main {
 }
 
 .modal-body {
-    padding: 30px 30px;
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.discussions__discussions {
+	display: flex;
+	flex-direction: column;
+
+	margin-bottom: 40px;
+}
+.discussions__discussions > *:not(:last-child) {
+	margin-bottom: 30px;
+}
+
+.label__discussions {
+	margin: 0 20px 15px 0;
+
+	font-weight: 600;
+}
+
+.disc__input {
+	width: 100%;
+	height: 35px;
+
+	background-color: #F5E6CC;
+
+	border-radius: 10px;
+	border: 2px;
+
+	padding: 5px 20px;
+
+	font-size: 20px;
+}
+
+.input__discription {
+	display: flex;
+	flex-direction: column-reverse;
+}
+
+.input_big {
+	height: 105px;
+}
+
+input:invalid:focus:not(:placeholder-shown),
+textarea:invalid:focus:not(:placeholder-shown) {
+	background-color: rgba(231, 6, 6, 0.623);
+}
+
+input:valid:focus:not(:placeholder-shown),
+textarea:valid:focus:not(:placeholder-shown),
+input:valid:not(:focus):not(:placeholder-shown),
+textarea:valid:not(:focus):not(:placeholder-shown){
+	background-color: rgba(6, 139, 6, 0.5);
 }
 
 .modal-footer {
-    padding: 30px 30px;
+	margin: 0 auto;
+}
+
+.discussions__but {
+	background-color: #A64AC9;
+	padding: 10px 25px;
+
+	border-radius: 10px;
+
+	color: #fff;
+	font-weight: 600;
+
+	transition: 0.2s linear;
+}
+.discussions__but:hover {
+	background-color: #a923df;
 }
 
 /* ---- Подвал ---- */

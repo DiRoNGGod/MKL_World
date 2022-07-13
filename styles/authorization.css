@@ -125,21 +125,6 @@ body {
     background-color: #F5E6CC;
 }
 
-/* 
-.input-login:focus ~ .login,
-.input-login:valid ~ .login {
-    font-size: 15px;
-    transform: translateY(-20px);
-}
-
-.main__forms_login:focus-within .login {
-    transform: translate(0, -20px) scale(.8);
-
-    color: #000;
-    font-size: 15px;
-} 
-*/
-
 /* Окно ввода почты */
 .main__forms_mail {
     position: relative;
@@ -174,21 +159,6 @@ body {
     background-color: #F5E6CC;
 }
 
-/* 
-.input-mail:focus ~ .maiil,
-.input-mail:valid ~ .maiil {
-    font-size: 15px;
-    transform: translateY(-20px);
-}
-
-.main__forms_mail:focus-within .maiil {
-    transform: translate(0, -20px) scale(.8);
-
-    color: #000;
-    font-size: 15px;
-} 
-*/
-
 /* Окно ввода пароля и его подтверждение */
 .main__forms_password {
     position: relative;
@@ -221,12 +191,6 @@ body {
     color: #000;
 
     background-color: #F5E6CC;
-}
-
-.input-password:focus ~ .pass,
-.input-password:valid ~ .paas {
-    font-size: 15px;
-    transform: translateY(-20px);
 }
 
 .main__forms_password:focus-within .pass {
@@ -312,21 +276,6 @@ body {
     background-color: #F5E6CC;
 }
 
-/* 
-.input-login:focus ~ .login,
-.input-login:valid ~ .login {
-    font-size: 15px;
-    transform: translateY(-20px);
-} 
-
-.main__forms_login:focus-within .login {
-    transform: translate(0, -20px) scale(.8);
-
-    color: #000;
-    font-size: 15px;
-}
-*/
-
 input:invalid:not(:focus):not(:placeholder-shown) {
 	background-color: rgba(231, 6, 6, 0.623);
 }
@@ -386,21 +335,6 @@ input:valid:not(:focus):not(:placeholder-shown) ~ label {
 
     background-color: #F5E6CC;
 }
-
-/* 
-.input-password:focus ~ .pass,
-.input-password:valid ~ .pass {
-    font-size: 15px;
-    transform: translateY(-20px);
-}
-
-.main__forms_password:focus-within .pass {
-    transform: translate(0, -20px) scale(.8);
-
-    color: #000;
-    font-size: 15px;
-} 
-*/
 
 .main__recovery_pass {
     padding-left: 10px;
@@ -481,22 +415,6 @@ input:valid:not(:focus):not(:placeholder-shown) ~ label {
 
     background-color: #F5E6CC;
 }
-
-/* 
-.input-mail:focus ~ .maiil,
-.input-mail:not(:placeholder-shown) ~ .maiil,
-.input-mail:valid ~ .maiil {
-    font-size: 15px;
-    transform: translateY(-20px);
-}
-
-.main__forms_mail:focus-within .maiil {
-    transform: translate(0, -20px) scale(.8);
-
-    color: #000;
-    font-size: 15px;
-} 
-*/
 
 /* ---- Кнопка для всех 3 форм ---- */
 .button {
